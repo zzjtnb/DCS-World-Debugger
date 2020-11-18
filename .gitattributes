@@ -1,0 +1,7 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+
+# 将所有文件的行尾设置为 LF
+* text=lf
+
+# 将 BAT 文件的行尾设置为 CRLF
+*.bat text eol=crlf

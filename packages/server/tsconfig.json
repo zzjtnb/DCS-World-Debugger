@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    // 生成js 的版本
+    "target": "esnext",
+    // 用于设置解析非相对模块名称的基本目录,相对模块不会受到baseUrl的影响
+    "baseUrl": ".",
+    // 指定输入文件的根目录,默认情况下当前的项目目录为根目录
+    "rootDir": "src",
+    // 生成的module的形式,esm,cmd,amd啥的
+    "module": "NodeNext",
+    // 设置模块解析策略,与上面的module属性有关联.
+    // module为AMD | System | ES2015,对应moduleResolution:"Classic"
+    // 其余情况moduleResolution:"node".Classic为之前老版本typescript的模块解析策略
+    "moduleResolution": "NodeNext",
+    // 路径映射
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    // 声明文件目录,默认时node_modules/@types
+    "typeRoots": [
+      "node_modules/@types",
+      "types"
+    ],
+    // 用于指定需要包含的模块,只有在这里列出的模块的声明文件才会被加载
+    "types": ["node"],
+    "outDir": "dist",
+    // 允许对不包含默认导出的模块使用默认导入.这个选项不会影响生成的代码,只会影响类型检查
+    "allowSyntheticDefaultImports": true, // 声明文件打包的位置
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+
+  },
+  // 需要编译的文件或目录
+  "include": [
+    "types/**/*.d.ts",
+    "src/**/*.ts"
+  ],
+  // 排除的文件或目录
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

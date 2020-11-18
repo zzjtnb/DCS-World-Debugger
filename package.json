@@ -1,0 +1,32 @@
+{
+  "name": "dcs-world-debugger",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "dev": "pnpm -r dev",
+    "preinstall": "node .husky/preinstall.js",
+    "prepare": "husky",
+    "lint:lint-staged": "lint-staged -c ./.husky/.lintstagedrc.js",
+    "lint:eslint": "eslint \"**/**/*.{js,ts,cjs,mjs,vue,html,md,json,jsonc,yaml}\"",
+    "lint:eslint-fix": "eslint \"**/**/*.{js,ts,cjs,mjs,vue,html,md,json,jsonc,yaml}\" --fix",
+    "lint:stylelint": "stylelint \"**/*.{css,scss,vue,html,xml,svelte,astro,php}\"",
+    "lint:stylelint-fix": "stylelint \"**/*.{css,scss,vue,html,xml,svelte,astro,php}\" --fix",
+    "lint": "pnpm lint:eslint && pnpm lint:stylelint",
+    "lint:fix": "pnpm lint:eslint-fix && pnpm lint:stylelint-fix",
+    "clear": "pnpm exec -- rm -rf packages/*/node_modules && pnpm exec -- rm -rf node_modules",
+    "test": "node test/app.js"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.20.0",
+    "eslint": "^9.4.0",
+    "eslint-plugin-format": "^0.1.1",
+    "get-installed-apps": "^1.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.5",
+    "stylelint": "^16.6.1",
+    "stylelint-config-zzjtnb": "^0.0.4"
+  }
+}

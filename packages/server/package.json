@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "type": "commonjs",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "keywords": [],
+  "main": "dist/app.js",
+  "engines": {
+    "node": ">= 22.0.0"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "preinstall": "npx only-allow pnpm",
+    "dev": "ts-node-dev --env-file=.env src/app.ts",
+    "start": "ts-node-dev --env-file=.env src/app.ts",
+    "build": "tsc -p tsconfig.json",
+    "clear": "pnpm exec -- rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "socket.io": "^4.7.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.5"
+  }
+}
