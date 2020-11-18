@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title  %> </title>
+  <%- include('../common/head'); -%>
+  <link rel="stylesheet" href="/css/agate.css">
+</head>
+
+<body>
+  <div class="flex h-screen bg-gray-200">
+    <div class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
+    <%- include('../layout/sidebar'); -%>
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <%- include('../layout/header'); -%>
+      <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+        <div class="container mx-auto px-6 py-8">
+          <div class="editor">
+            <div class="textarea">
+              <textarea autocomplete="off" placeholder="请输入内容" class="textarea__inner" id="textarea">
+              </textarea>
+            </div>
+            <div class="send">
+              <button type="button" class="bg-blue-500 button button--primary is-round" onclick="sendLua()">
+                <span>发送</span>
+              </button>
+              <button type="button" class="bg-red-600	 button button--primary is-round" onclick="clearLua()">
+                <span>清空</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="result">
+          <pre><code  id='dcsValue'></code></pre>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/highlight.min.js"></script>
+
+<script>
+  var socket = io();
+  let textarea = 'return net.get_player_list()'
+  document.querySelector("#textarea").value = textarea;
+  // 发送消息
+  function sendMessage(event, data) {
+    socket.open(); // 开始连接socket
+    socket.emit(event, data);
+  };
+  function sendLua() {
+    let luaValue = document.querySelector("#textarea").value
+    if (luaValue) {
+      this.sendMessage('debuggerLua', luaValue.replace(/\r{0,}\n/g, ' '));
+      socket.on('loadstring', (data) => {
+        document.querySelector('#dcsValue').innerHTML = JSON.stringify(data)
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+      });
+    } else {
+      alert("请输入内容")
+    }
+  }
+  function clearLua() {
+    document.querySelector("#textarea").value = ''
+    let parent = document.querySelector("#dcsValue")
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
+  }
+</script>
+
+</html>

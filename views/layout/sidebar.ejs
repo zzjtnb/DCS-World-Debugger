@@ -1,0 +1,37 @@
+<div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'"
+  class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-gray-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
+  <div class="flex items-center justify-center">
+    <div class="flex items-center">
+      <a href="/">
+        <img src="/images/code.gif" alt="" srcset=""></a>
+    </div>
+  </div>
+  <nav class="mt-10">
+    <a class="flex items-center mt-4 py-2 px-6 " href="/dotring" id="dotring">
+      <img class="w-4 h-4" src="/images/icons/1794804.png" alt="" srcset="">
+      <span class="mx-5">dotring</span>
+    </a>
+    <a class="flex items-center mt-4 py-2 px-6 " href="/loadstring" id="loadstring">
+      <img class="w-5 h-5" src="/images/icons/1541402.png" alt="">
+      <span class="mx-3">loadstring</span>
+    </a>
+  </nav>
+</div>
+<script>
+  switch (window.location.pathname) {
+    case '/dotring':
+      document.querySelector("#dotring").classList.add("bg-gray-700", "bg-opacity-25", "text-gray-100");
+      document.querySelector("#loadstring").classList.add("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
+      break;
+    case '/loadstring':
+      document.querySelector("#loadstring").classList.add("bg-gray-700", "bg-opacity-25", "text-gray-100");
+      document.querySelector("#loadstring").classList.remove("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
+      document.querySelector("#dotring").classList.remove("bg-gray-700", "bg-opacity-25", "text-gray-100");
+      document.querySelector("#dotring").classList.add("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
+      break;
+    default:
+      document.querySelector("#dotring").classList.add("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
+      document.querySelector("#loadstring").classList.add("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
+      break;
+  }
+</script>

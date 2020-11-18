@@ -1,0 +1,81 @@
+html,
+body {
+  height: 100%;
+}
+
+/* .editor {
+  display: flex;
+  align-items: center;
+} */
+
+.editor .textarea {
+  width: 100%;
+  border-right: 2px #dcdfe6 solid;
+}
+
+.textarea {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: bottom;
+  font-size: 14px;
+}
+
+.textarea__inner {
+  display: block;
+  resize: vertical;
+  padding: 5px 15px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: inherit;
+  color: #606266;
+  background-color: #FFF;
+  background-image: none;
+  border: 1px solid #DCDFE6;
+  border-radius: 4px;
+  transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+  min-height: 54px;
+  height: 201px;
+}
+
+textarea {
+  overflow: auto;
+}
+
+.send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button.is-round {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #606266;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  transition: .1s;
+  font-weight: 500;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 20px;
+  padding: 12px 23px;
+  color: #FFF;
+  border-color: #409EFF;
+
+}
+
+#dcsValue {
+  white-space: pre-wrap;
+  word-break: break-all;
+  background: #333;
+  padding: 0.5em;
+  display: block;
+  overflow-x: auto;
+}
