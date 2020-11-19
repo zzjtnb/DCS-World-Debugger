@@ -4,21 +4,25 @@
   "description": "DCS World ",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --trace-warnings app.js "
+    "start": "nodemon --trace-warnings app.js ",
+    "dev": "nodemon app.js",
+    "build": "npm run tailwind:css && nodemon app.js",
+    "tailwind:css": "postcss public/css/tailwind.css -o public/css/style.css"
   },
-  "keywords": [
-    "DCS",
-    "World"
-  ],
   "author": "zzjtnb",
   "license": "MIT",
   "dependencies": {
+    "@fullhuman/postcss-purgecss": "^3.0.0",
+    "autoprefixer": "^10.0.2",
+    "cssnano": "^4.1.10",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "highlight.js": "^10.3.2",
     "log4js": "^6.3.0",
     "nodemon": "^2.0.6",
-    "socket.io": "^2.3.0"
+    "postcss": "^8.1.8",
+    "postcss-cli": "^8.3.0",
+    "socket.io": "^2.3.0",
+    "tailwindcss": "^2.0.1"
   }
 }

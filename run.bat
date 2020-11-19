@@ -1,11 +1,12 @@
 @ECHO off 
 SETLOCAL EnableDelayedExpansion 
-TITLE DCS World Lua½Å±¾µ÷ÊÔÆ÷
+TITLE DCS World Luaè°ƒè¯•å™¨
 COLOR 0a
 CLS
-if exist %~dp0node_modules (
-  call npm run dev
-) else (
-  call npm install
-  npm run dev
+:START
+IF EXIST %~dp0node_modules (
+  CALL npm run dev
+) ELSE (
+  CALL npm install  
 )
+GOTO START
