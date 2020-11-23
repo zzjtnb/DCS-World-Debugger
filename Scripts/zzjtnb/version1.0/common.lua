@@ -38,8 +38,14 @@ if zzjtnb == nil then
       zzjtnb.net.sendMsg(res)
     else
       res.type = 'dostring_in'
-      isJSON, data = zzjtnb.jsonDecode(net.dostring_in(data.state, data.lua_string))
-      res.data = data
+      local result, status = net.dostring_in(data.state, data.lua_string)
+      res.status = status
+      local isJSON, data = zzjtnb.jsonDecode(result)
+      if isJSON then
+        res.data = data
+      else
+        res.data = result
+      end
       zzjtnb.net.sendMsg(res)
     end
   end
