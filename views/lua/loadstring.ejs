@@ -22,7 +22,7 @@
               <textarea autocomplete="off" placeholder="请输入内容" class="textarea__inner" id="textarea">
               </textarea>
             </div>
-            <div class="flex items-center justify-center  py-4">
+            <div class="flex items-center justify-center m-2">
               <button type="button" class="bg-blue-500 button button--primary is-round focus:outline-none"
                 onclick="sendLua()">
                 <span>发送</span>
@@ -30,6 +30,12 @@
               <button type="button" class="bg-red-600	 button button--primary is-round focus:outline-none"
                 onclick="clearLua()">
                 <span>清空</span>
+              </button>
+            </div>
+            <div class="flex justify-center flex-col pb-2">
+              <button
+                class="bg-red-500 bg-green-500 button button--primary is-round status cursor-not-allowed block focus:outline-none font-black text-lg leading-4">
+                <span class="statusValue">执行状态</span>
               </button>
             </div>
           </div>
@@ -58,12 +64,27 @@
   function sendLua() {
     let luaValue = document.querySelector("#textarea").value
     if (luaValue) {
-      this.sendMessage('debuggerLua', luaValue.replace(/\r{0,}\n/g, ' '));
+      let luaStr = {
+        state: 'loadstring',
+        lua_string: luaValue.replace(/\r{0,}\n/g, ' '),
+      };
+      this.sendMessage('debuggerLua', luaStr);
       socket.on('loadstring', (data) => {
-        document.querySelector('#dcsValue').innerHTML = JSON.stringify(data)
+        let element = document.querySelector('.status');
+        let statusValue = document.querySelector('.statusValue');
+        document.querySelector('#dcsValue').innerHTML = JSON.stringify(data.data)
         document.querySelectorAll('pre code').forEach((block) => {
           hljs.highlightBlock(block);
         });
+        if (data.status) {
+          removeClass(element, 'bg-red-500');
+          addClass(element, 'bg-green-500');
+          statusValue.innerHTML = "执行成功,时间:" + data.timeS.os;
+        } else {
+          addClass(element, 'bg-red-500')
+          removeClass(element, 'bg-green-500')
+          statusValue.innerHTML = "执行失败"
+        }
       });
     } else {
       let element = document.querySelector('#toast');

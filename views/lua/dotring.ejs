@@ -41,18 +41,27 @@
                   </div>
                 </div>
               </div>
-              <div class="w-64 mx-auto my-2">
+              <div class="flex items-center justify-center m-2">
+                <button type="button" class="bg-blue-500 button button--primary is-round focus:outline-none"
+                  onclick="sendLua()">
+                  <span>发送</span>
+                </button>
+                <button type="button" class="bg-red-600	 button button--primary is-round focus:outline-none"
+                  onclick="clearLua()">
+                  <span>清空</span>
+                </button>
               </div>
               <div class="flex justify-center flex-col ">
-                <button type="submit" class="bg-blue-500 button button--primary is-round block focus:outline-none "
+                <!-- <button type="submit" class="bg-blue-500 button button--primary is-round block focus:outline-none "
                   onclick="sendLua()">
                   <span>发送</span>
                 </button>
                 <button type="reset" class="bg-purple-600 button button--primary is-round block my-2 focus:outline-none"
                   onclick="clearLua()">
                   <span>清空</span>
-                </button>
-                <button class="bg-red-500 bg-green-500 button button--primary is-round status cursor-not-allowed block">
+                </button> -->
+                <button
+                  class="bg-red-500 bg-green-500 button button--primary is-round status cursor-not-allowed block focus:outline-none font-black text-lg leading-4">
                   <span class="statusValue">执行状态</span>
                 </button>
               </div>
@@ -102,16 +111,18 @@
       };
       this.sendMessage('debuggerLua', luaStr);
       socket.on('dostring_in', (data) => {
+        console.log(data);
         let element = document.querySelector('.status');
         let statusValue = document.querySelector('.statusValue');
         document.querySelector('#dcsValue').innerHTML = JSON.stringify(data.data)
         document.querySelectorAll('pre code').forEach((block) => {
           hljs.highlightBlock(block);
         });
+
         if (data.status) {
-          removeClass(element, 'bg-red-500')
-          addClass(element, 'bg-green-500')
-          statusValue.innerHTML = "执行成功"
+          removeClass(element, 'bg-red-500');
+          addClass(element, 'bg-green-500');
+          statusValue.innerHTML = "执行成功,时间:" + data.timeS.os;
         } else {
           addClass(element, 'bg-red-500')
           removeClass(element, 'bg-green-500')

@@ -26,26 +26,24 @@ if zzjtnb == nil then
   end
   zzjtnb.debuggerLua = function(str)
     local res = {}
-    local isJSON, data = zzjtnb.jsonDecode(str)
-    if not isJSON then
+    local luatb = net.json2lua(str)
+    if luatb.state == 'loadstring' then
       res.type = 'loadstring'
-      local fun, err = loadstring(str)
-      if fun then
-        res.data = fun()
-      else
-        res.data = err
-      end
+      local status, retval =
+        pcall(
+        function()
+          local fun = loadstring(luatb.lua_string)
+          return fun()
+        end
+      )
+      res.status = status
+      res.data = retval
       zzjtnb.net.sendMsg(res)
     else
       res.type = 'dostring_in'
-      local result, status = net.dostring_in(data.state, data.lua_string)
+      local result, status = net.dostring_in(luatb.state, luatb.lua_string)
       res.status = status
-      local isJSON, data = zzjtnb.jsonDecode(result)
-      if isJSON then
-        res.data = data
-      else
-        res.data = result
-      end
+      res.data = net.json2lua(result)
       zzjtnb.net.sendMsg(res)
     end
   end

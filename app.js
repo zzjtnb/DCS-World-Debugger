@@ -49,5 +49,5 @@ event.on('dostring_in', (msg) => {
   socketClint.emit('dostring_in', msg);
 });
 event.on('loadstring', (msg) => {
-  socketClint.emit('loadstring', msg.data);
+  socketClint.emit('loadstring', msg);
 });
