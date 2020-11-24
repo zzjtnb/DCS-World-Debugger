@@ -61,7 +61,7 @@ if zzjtnbDebuggerTCP == nil then
     if zzjtnbTCP.server then
       zzjtnbTCP.server:close()
     end
-    zzjtnb.net.sendMsg({type = 'serverStatus', data = {msg = '游戏界面已关闭'}})
+    zzjtnb.net.sendMsg({type = 'onSimulationStop', data = {msg = '游戏界面已停止'}})
   end
 
   DCS.setUserCallbacks(zzjtnbDebuggerTCP.callbacks)
