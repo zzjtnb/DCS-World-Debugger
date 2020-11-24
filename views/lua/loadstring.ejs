@@ -16,13 +16,13 @@
     <div class="flex-1 flex flex-col overflow-hidden">
       <%- include('../layout/header'); -%>
       <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-        <div class="container mx-auto px-6 py-8">
+        <div class="container mx-auto px-6 mt-4">
           <div class="editor">
             <div class="textarea">
               <textarea autocomplete="off" placeholder="请输入内容" class="textarea__inner" id="textarea">
               </textarea>
             </div>
-            <div class="send">
+            <div class="flex items-center justify-center  py-4">
               <button type="button" class="bg-blue-500 button button--primary is-round" onclick="sendLua()">
                 <span>发送</span>
               </button>
@@ -37,10 +37,12 @@
         </div>
       </main>
     </div>
+    <%- include('../common/toast',{user: '顶顶顶'}); -%>
   </div>
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/highlight.min.js"></script>
+<script src="/js/common.js"></script>
 
 <script>
   var socket = io();
@@ -62,7 +64,8 @@
         });
       });
     } else {
-      alert("请输入内容")
+      let element = document.querySelector('#toast');
+      removeClass(element, 'hidden')
     }
   }
   function clearLua() {

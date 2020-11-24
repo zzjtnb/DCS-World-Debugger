@@ -16,36 +16,45 @@
     <div class="flex-1 flex flex-col overflow-hidden">
       <%- include('../layout/header'); -%>
       <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-        <div class="container mx-auto px-6 py-8">
+        <div class="container mx-auto px-6 pt-8">
           <div class="editor">
             <div class="textarea">
               <textarea autocomplete="off" placeholder="请输入内容" class="textarea__inner" id="textarea">
               </textarea>
             </div>
             <div class="text-center my-2">
-              <h1 class="text-gray-600 text-lg font-black">选择运行环境,默认server</h1>
-              <div class="inline-block relative w-30 text-center my-2">
-                <select
-                  class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline state">
-                  <option>server</option>
-                  <option>mission</option>
-                  <option>net</option>
-                  <option>export</option>
-                  <option>config</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+              <h1 class="text-gray-600 text-lg font-black">当前运行环境:<span class="setting">server</span></h1>
+              <div class="flex items-center justify-center">
+                <div class="inline-block relative w-30 text-center my-2">
+                  <select
+                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline state"
+                    onchange="gradeChange()">
+                    <option>server</option>
+                    <option>mission</option>
+                    <option>net</option>
+                    <option>export</option>
+                    <option>config</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="send">
-              <button type="button" class="bg-blue-500 button button--primary is-round" onclick="sendLua()">
-                <span>发送</span>
-              </button>
-              <button type="button" class="bg-red-600	 button button--primary is-round" onclick="clearLua()">
-                <span>清空</span>
-              </button>
+              <div class="w-64 mx-auto my-2">
+              </div>
+              <div class="flex justify-center flex-col ">
+                <button type="submit" class="bg-blue-500 button button--primary is-round block " onclick="sendLua()">
+                  <span>发送</span>
+                </button>
+                <button type="reset" class="bg-purple-600 button button--primary is-round block my-2"
+                  onclick="clearLua()">
+                  <span>清空</span>
+                </button>
+                <button class="bg-red-500 bg-green-500 button button--primary is-round status cursor-not-allowed block">
+                  <span class="statusValue">执行状态</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -54,8 +63,11 @@
         </div>
       </main>
     </div>
+    <%- include('../common/toast',{user: '顶顶顶'}); -%>
+
   </div>
 </body>
+<script src="/js/common.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/highlight.min.js"></script>
 
@@ -69,12 +81,19 @@
     socket.open(); // 开始连接socket
     socket.emit(event, data);
   };
+
+  function gradeChange(params) {
+    let myselect = document.querySelector(".state");
+    let index = myselect.selectedIndex;
+    document.querySelector(".setting").innerHTML = myselect.options[index].text
+  }
+
   function sendLua() {
     let luaValue = document.querySelector("#textarea").value
     if (luaValue) {
       let str = luaValue.replace(/\r{0,}\n/g, ' ');
       let myselect = document.querySelector(".state");
-      let index = myselect.selectedIndex;             // selectedIndex代表的是你所选中项的index
+      let index = myselect.selectedIndex; // selectedIndex代表的是你所选中项的index
       console.log(myselect.options[index].text);
       let luaStr = {
         state: myselect.options[index].text,
@@ -82,15 +101,29 @@
       };
       this.sendMessage('debuggerLua', luaStr);
       socket.on('dostring_in', (data) => {
-        document.querySelector('#dcsValue').innerHTML = JSON.stringify(data)
+        let element = document.querySelector('.status');
+        let statusValue = document.querySelector('.statusValue');
+        document.querySelector('#dcsValue').innerHTML = JSON.stringify(data.data)
         document.querySelectorAll('pre code').forEach((block) => {
           hljs.highlightBlock(block);
         });
+        if (data.status) {
+          removeClass(element, 'bg-red-500')
+          addClass(element, 'bg-green-500')
+          statusValue.innerHTML = "执行成功"
+        } else {
+          addClass(element, 'bg-red-500')
+          removeClass(element, 'bg-green-500')
+          statusValue.innerHTML = "执行失败"
+        }
       });
     } else {
-      alert("请输入内容")
+      // alert("请输入内容")
+      let element = document.querySelector('#toast');
+      removeClass(element, 'hidden')
     }
   }
+
   function clearLua() {
     document.querySelector("#textarea").value = ''
     let parent = document.querySelector("#dcsValue")
@@ -98,6 +131,7 @@
       parent.removeChild(parent.firstChild);
     }
   }
+
 </script>
 
 </html>
