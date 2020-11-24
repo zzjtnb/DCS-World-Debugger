@@ -41,12 +41,23 @@ if zzjtnb == nil then
       zzjtnb.net.sendMsg(res)
     else
       res.type = 'dostring_in'
-      local result, status = net.dostring_in(luatb.state, luatb.lua_string)
-      res.status = status
+      local result, fettle = net.dostring_in(luatb.state, luatb.lua_string)
       if #result > 0 then
-        res.data = net.json2lua(result)
+        local status, retval =
+          pcall(
+          function()
+            return net.json2lua(result)
+          end
+        )
+        if status then
+          res.data = retval
+        else
+          res.data = result
+        end
+        res.status = status
       else
-        res.data = result
+        res.status = fettle
+        res.data = '执行成功'
       end
       zzjtnb.net.sendMsg(res)
     end
