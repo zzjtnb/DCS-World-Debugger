@@ -100,19 +100,16 @@
 
   function sendLua() {
     let luaValue = document.querySelector("#textarea").value
-    console.log(JSON.stringify(luaValue));
     if (luaValue) {
       // let str = luaValue.replace(/\r{0,}\n/g, ' ');
       let myselect = document.querySelector(".state");
       let index = myselect.selectedIndex; // selectedIndex代表的是你所选中项的index
-      console.log(myselect.options[index].text);
       let luaStr = {
         state: myselect.options[index].text,
         lua_string: luaValue
       };
       this.sendMessage('debuggerLua', luaStr);
       socket.on('dostring_in', (data) => {
-        console.log(data);
         let element = document.querySelector('.status');
         let statusValue = document.querySelector('.statusValue');
         document.querySelector('#dcsValue').innerHTML = JSON.stringify(data.data)
