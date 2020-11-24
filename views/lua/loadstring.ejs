@@ -66,7 +66,7 @@
     if (luaValue) {
       let luaStr = {
         state: 'loadstring',
-        lua_string: luaValue.replace(/\r{0,}\n/g, ' '),
+        lua_string: luaValue
       };
       this.sendMessage('debuggerLua', luaStr);
       socket.on('loadstring', (data) => {

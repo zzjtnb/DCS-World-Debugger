@@ -8,7 +8,8 @@ const client = net.Socket();
 const event = require('../middleware/event');
 function tcpClient(luaStr) {
   client.connect(CFG.DCS.TCP, CFG.DCS.IP, () => {
-    client.write(JSON.stringify(luaStr) + '\n');
+    let luaText = JSON.stringify(luaStr) + '\n'
+    client.write(luaText);
   })
 
   client.on("error", (error) => {
