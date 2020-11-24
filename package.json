@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --trace-warnings app.js ",
-    "dev": "nodemon app.js",
+    "dev": "nodemon --trace-warnings app.js",
     "build": "npm run tailwind:css && nodemon app.js",
     "tailwind:css": "postcss public/css/tailwind.css -o public/css/style.css"
   },

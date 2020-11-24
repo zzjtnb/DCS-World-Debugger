@@ -43,7 +43,11 @@ if zzjtnb == nil then
       res.type = 'dostring_in'
       local result, status = net.dostring_in(luatb.state, luatb.lua_string)
       res.status = status
-      res.data = net.json2lua(result)
+      if #result ~= 0 then
+        res.data = net.json2lua(result)
+      else
+        res.data = result
+      end
       zzjtnb.net.sendMsg(res)
     end
   end
