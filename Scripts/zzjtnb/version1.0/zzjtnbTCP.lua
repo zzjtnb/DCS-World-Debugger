@@ -2,7 +2,7 @@ if zzjtnbTCP == nil then
   net.log('正在加载zzjtnbUDP.lua ...')
   zzjtnbTCP = {}
   zzjtnbTCP.host = 'localhost'
-  zzjtnbTCP.port = '3001'
+  zzjtnbTCP.port = '8888'
   --------------------------------    定义zzjtnbTCP的callbacks  --------------------------------
   zzjtnbTCP.callbacks = {}
   function zzjtnbTCP.callbacks.onSimulationStart()

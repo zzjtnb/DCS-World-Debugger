@@ -27,7 +27,7 @@ app.use((req, res) => {
 const tcpClient = require('./server/tcpClient'); require('./server/udpServer');
 const server = require('http').createServer(app);
 const host = "localhost";
-const port = 3000;
+const port = 8080;
 const { appLog, serverStatus } = require('./middleware/log4');
 server.listen(port, () => {
   appLog.info(`WEB Server running at http://${host}:${port}`);
