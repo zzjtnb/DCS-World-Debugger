@@ -22,6 +22,7 @@
     "nodemon": "^2.0.6",
     "postcss": "^8.1.8",
     "postcss-cli": "^8.3.0",
+    "silly-datetime": "^0.1.2",
     "socket.io": "^2.3.0",
     "tailwindcss": "^2.0.1"
   }

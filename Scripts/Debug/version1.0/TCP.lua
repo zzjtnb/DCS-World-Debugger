@@ -1,5 +1,5 @@
 if TCP == nil then
-  net.log("正在加载UDP.lua ...")
+  net.log("正在加TCP.lua ...")
   TCP = {}
   TCP.host = "localhost"
   TCP.port = "8888"

@@ -6,18 +6,20 @@ const CFG = require(path.join(__dirname, '../config/db'))
 const net = require("net");
 const client = net.Socket();
 const event = require('../middleware/event');
+const sd = require('silly-datetime');
+const timer = sd.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
 function tcpClient(luaStr) {
   client.connect(CFG.DCS.TCP, CFG.DCS.IP, () => {
     let luaText = JSON.stringify(luaStr) + '\n'
     client.write(luaText);
-    console.log(luaText);
+    console.log(`[${timer}] [INFO] tcpClient.js --> 发送成功\n`, JSON.stringify(luaStr));
   })
 
   client.on("error", (error) => {
-    console.log("连接DCS World失败->" + error);
     let data = { status: false, "type": luaStr.state, data: error }
     if (luaStr.state != 'loadstring') luaStr.state = 'dostring_in'
     event.emit(luaStr.state, data);
+    console.log(`[${timer}] 连接DCS World失败 --> ` + error);
   })
 }
 
