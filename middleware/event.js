@@ -1,7 +1,5 @@
 const { EventEmitter } = require('events');
 const emitter = new EventEmitter()
-emitter.on('error', (err) => {
-  // console.log(err)
-})
-emitter.setMaxListeners(0)
+emitter.setMaxListeners(10000000);
+// console.log("监听器数量:" + emitter.getMaxListeners());
 module.exports = emitter

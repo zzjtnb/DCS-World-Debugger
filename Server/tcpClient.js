@@ -10,6 +10,7 @@ function tcpClient(luaStr) {
   client.connect(CFG.DCS.TCP, CFG.DCS.IP, () => {
     let luaText = JSON.stringify(luaStr) + '\n'
     client.write(luaText);
+    console.log(luaText);
   })
 
   client.on("error", (error) => {
