@@ -6,7 +6,7 @@ if TCP == nil then
   --------------------------------    定义TCP的callbacks  --------------------------------
   TCP.callbacks = {}
   function TCP.callbacks.onSimulationStart()
-    socket = require("socket")
+    local socket = require("socket")
     TCP.server = socket.tcp()
     assert(TCP.server:bind(TCP.host, TCP.port))
     assert(TCP.server:listen()) --转为服务器
