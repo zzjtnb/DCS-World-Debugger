@@ -2,7 +2,7 @@
 # Frist
 move Scripet folder: (depending on the DCS World version you have installed..)
 * `c:\Users\{Your username}\Saved Games\DCS.openbeta\`
-* `c:\Users\{Your username}\Saved Games\DCS\`  
+* `c:\Users\{Your username}\Saved Games\DCS\`
 or if you have both, choose one or both DCS versions to install script;-)
 
 
@@ -22,6 +22,6 @@ Run Your DCS World Server
 
 *Note: The third and fourth steps are not fixed in order*
 
-Finally the browser open [http://localhost:3000](http://localhost:3000) start enjoying
+Finally the browser open [http://localhost:9090](http://localhost:9090) start enjoying
 
 [DCS_World_Debugger Github Address](https://github.com/zzjtnb/DCS_World_Debugger)
