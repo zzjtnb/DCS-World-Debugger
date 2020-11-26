@@ -2,7 +2,7 @@ if TCP == nil then
   net.log("正在加TCP.lua ...")
   TCP = {}
   TCP.host = "localhost"
-  TCP.port = "9091"
+  TCP.port = "20200"
   --------------------------------    定义TCP的callbacks  --------------------------------
   TCP.callbacks = {}
   function TCP.callbacks.onSimulationStart()

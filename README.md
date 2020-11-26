@@ -22,6 +22,6 @@ Run Your DCS World Server
 
 *Note: The third and fourth steps are not fixed in order*
 
-Finally the browser open [http://localhost:9090](http://localhost:9090) start enjoying
+Finally the browser open [http://localhost:3000](http://localhost:3000) start enjoying
 
 [DCS_World_Debugger Github Address](https://github.com/zzjtnb/DCS_World_Debugger)
