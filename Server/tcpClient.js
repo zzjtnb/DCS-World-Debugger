@@ -8,7 +8,9 @@ const client = net.Socket();
 const event = require('../middleware/event');
 const sd = require('silly-datetime');
 const timer = sd.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
-function tcpClient(luaStr) {
+let luaStr = null;
+function tcpClient(str) {
+  luaStr = str
   client.connect(CFG.DCS.TCP, CFG.DCS.IP, () => {
     let luaText = JSON.stringify(luaStr) + '\n'
     client.write(luaText);
