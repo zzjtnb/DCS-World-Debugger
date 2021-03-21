@@ -21,8 +21,7 @@
             <div class="container mx-auto px-6 pt-8">
               <div class="editor">
                 <div class="textarea">
-                  <textarea autocomplete="off" placeholder="请输入内容" class="textarea__inner" id="textarea">
-              </textarea>
+                  <textarea autocomplete="off" placeholder="请输入内容" class="textarea__inner" id="textarea"></textarea>
                 </div>
                 <div class="text-center my-2">
                   <h1 class="text-gray-600 text-lg font-black">当前运行环境:<span class="setting">server</span></h1>
@@ -44,6 +43,27 @@
                       </div>
                     </div>
                   </div>
+                  <div class="flex text-left space-x-5">
+                    <p class="border-dotted border-4 border-green-500">
+                      -- 'server': 多游戏时当前运行的任务是什么,仅服务器(holds the
+                      current mission when
+                      multiplayer?
+                      server only)
+                      <br />
+                      return DCS.getRealTime()或者env.info('测试LUA')
+                    </p>
+                    <p class="border-dotted border-4 border-green-500">-- 'config':
+                      游戏安装目录下/Config/main.cfg的执行状态,以及用于配置设置的保存的游戏目录下/Config/autoexec.cfg. (the
+                      state in which $INSTALL_DIR/Config/main.cfg is executed, as well as
+                      $WRITE_DIR/Config/autoexec.cfg. used for configuration settings)
+                    </p class="border-dotted border-4 border-green-500">
+                    <p class="border-dotted border-4 border-green-500">--'mission':当前运行的任务(holds current mission)</p>
+                    <p class="border-dotted border-4 border-green-500">
+                      --'export':运行保存的游戏目录下/Scripts/Export.lua和相关的导出API(runs
+                      $WRITE_DIR/Scripts/Export.lua and
+                      the relevant export API) </p>
+                    <p class="border-dotted border-4 border-green-500">server:既能运行DCS server中的API也能运行任务环境的API</p>
+                  </div>
                   <div class="flex items-center justify-center m-2">
                     <button type="button" class="bg-blue-500 button button--primary is-round focus:outline-none"
                       onclick="sendLua()">
@@ -56,13 +76,13 @@
                   </div>
                   <div class="flex justify-center flex-col ">
                     <!-- <button type="submit" class="bg-blue-500 button button--primary is-round block focus:outline-none "
-                  onclick="sendLua()">
-                  <span>发送</span>
-                </button>
-                <button type="reset" class="bg-purple-600 button button--primary is-round block my-2 focus:outline-none"
-                  onclick="clearLua()">
-                  <span>清空</span>
-                </button> -->
+onclick="sendLua()">
+<span>发送</span>
+</button>
+<button type="reset" class="bg-purple-600 button button--primary is-round block my-2 focus:outline-none"
+onclick="clearLua()">
+<span>清空</span>
+</button> -->
                     <button
                       class="bg-red-500 bg-green-500 button button--primary is-round status cursor-not-allowed block focus:outline-none font-black text-lg leading-4">
                       <span class="statusValue">执行状态</span>
@@ -77,7 +97,6 @@
           </main>
       </div>
       <%- include('../common/toast',{user: '顶顶顶' }); -%>
-
   </div>
 </body>
 <script src="/js/common.js"></script>
@@ -108,11 +127,12 @@
       let myselect = document.querySelector(".state");
       let index = myselect.selectedIndex; // selectedIndex代表的是你所选中项的index
       let luaStr = {
-        state: myselect.options[index].text,
-        lua_string: luaValue
+        type: 'net_dostring',
+        env: myselect.options[index].text,
+        content: luaValue
       };
       this.sendMessage('debuggerLua', luaStr);
-      socket.on('dostring_in', (data) => {
+      socket.on('net_dostring', (data) => {
         let element = document.querySelector('.status');
         let statusValue = document.querySelector('.statusValue');
         document.querySelector('#dcsValue').innerHTML = JSON.stringify(data.data)
@@ -144,7 +164,6 @@
       parent.removeChild(parent.firstChild);
     }
   }
-
 </script>
 
 </html>

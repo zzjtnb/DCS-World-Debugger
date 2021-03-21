@@ -46,9 +46,9 @@ event.on('serverStatus', (msg) => {
   serverStatus.info(msg.data.msg);
 });
 
-event.on('dostring_in', function dostring_in(msg) {
-  socketClint.emit('dostring_in', msg);
+event.on('net_dostring', (msg) => {
+  socketClint.emit('net_dostring', msg);
 });
-event.on('loadstring', function loadstring(msg) {
-  socketClint.emit('loadstring', msg);
+event.on('api_loadstring', (msg) => {
+  socketClint.emit('api_loadstring', msg);
 });
