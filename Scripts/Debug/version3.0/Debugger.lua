@@ -7,7 +7,8 @@ Debugger.callbacks = {}
 function Debugger.callbacks.onNetConnect(localPlayerID) -- only if isServer()
   -- this is where the netview is initiated?
   net.log("onNetConnect-->网络已连接")
-  -- map slot and id and things
+  --[[
+    -- map slot and id and things
   NetSlotInfo = {} -- reset NetSlotInfo
   -- local coals = DCS.getAvailableCoalitions() --> table { [coalition_id] = { name = "coalition name", } ... }
   local slots = DCS.getAvailableSlots("blue")
@@ -25,11 +26,18 @@ function Debugger.callbacks.onNetConnect(localPlayerID) -- only if isServer()
       ["unitId"] = slot_info.unitId
     }
   end
+--]]
   do_step = true -- onSimulationFrame can start step()
+  net.log("启动DCS API CONTROL服务器")
+  local ip, port = TCP.server:getsockname()
+  local msg = string.format("DCS API Server started on at %s:%s", ip, port)
+  Debugger.net.send_udp_msg({type = "serverStatus", data = {msg = msg}})
 end
 
 function Debugger.callbacks.onNetDisconnect(reason_msg, err_code)
   net.log("onNetDisconnect-->网络已断开连接")
+  local msg = string.format("DCS API Server stoped ")
+  Debugger.net.send_udp_msg({type = "serverStatus", data = {msg = msg}})
   do_step = false -- onSimulationFrame can start step()
 end
 function Debugger.callbacks.onMissionLoadBegin()
@@ -49,8 +57,6 @@ function Debugger.callbacks.onSimulationFrame()
   if do_step then
     step_frame_count = step_frame_count + 1
     if step_frame_count == 1 then
-      -- net.log("this is frame: " .. step_frame_count .. " at " .. os.time())
-      -- call step if in game env?
       local success, error = pcall(step)
       if not success then
         net.log("Error: " .. error)

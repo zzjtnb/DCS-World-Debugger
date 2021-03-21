@@ -19,18 +19,17 @@ if TCP == nil then
   -- server:listen(32)
   -- local client = server:accept()
   TCP.server = assert(socket.bind(TCP.host, TCP.port))
-  TCP.server:settimeout(0.01) --设置超时时间 give up if no connection
+  TCP.server:settimeout(0.001) --设置超时时间
   TCP.server:setoption("reuseaddr", true) --重用地址
-  net.log("启动DCS API CONTROL服务器")
-  local ip, port = TCP.server:getsockname()
-  net.log(string.format("DCS API Server started on at %s:%s", ip, port))
+
   function step()
     if TCP.server then
+      TCP.server:settimeout(0.001) -- give up if no connection
       TCP.client = TCP.server:accept() --等待任何客户端的连接( accept client)
       if TCP.client then -- if client not nil, connection established
         -- TCP.client:setoption("keepalive", true) --保持连接
         -- TCP.client:setoption("reuseaddr", true) --重用地址
-        TCP.client:settimeout(0.01) --如果在0.01秒之内没有收到数据,则client:receive函数将返回:nil,'timeout'
+        -- TCP.client:settimeout(0.001) --如果在0.001秒之内没有收到数据,则client:receive函数将返回:nil,'timeout'
         local line, err = TCP.client:receive()
         if not err then
           --net.log(line)

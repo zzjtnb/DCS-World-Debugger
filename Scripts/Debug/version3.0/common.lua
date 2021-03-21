@@ -57,46 +57,54 @@ Debugger.net.send_tcp_msg = function(data)
   if TCP.client then
     local bytes, status, lastbyte = TCP.client:send(data .. "\n")
     net.log(bytes, status, lastbyte)
-  -- if err then
-  --   net.log("sendData -> " .. err)
-  -- end
   end
 end
 
 -------------------------------------------  执行接收到的Lua脚本 -------------------------------------------
-Debugger.lua_str = function(luatb)
-  local res = {}
-  res.type = luatb.state
-  if luatb.state == "loadstring" then
-    local status, retval =
-      pcall(
-      function()
-        local fun = loadstring(luatb.lua_string)
-        return fun()
-      end
-    )
-    res.status = status
-    res.data = retval
-  else
-    res.type = "dostring_in"
-    local result, fettle = net.dostring_in(luatb.state, luatb.lua_string)
-    if #result > 0 then
-      local status, retval =
+Debugger.lua_str = function(request)
+  local msg = {}
+  msg.type = request.type
+  if request.type == "net_dostring" then
+    local res, fettle = net.dostring_in(request.env, request.content) -- res is a string
+    -- 'server': holds the current mission when multiplayer? server only
+    -- 'config': the state in which $INSTALL_DIR/Config/main.cfg is executed, as well as $WRITE_DIR/Config/autoexec.cfg
+    --           used for configuration settings
+    -- 'mission': holds current mission
+    -- 'export': runs $WRITE_DIR/Scripts/Export.lua and the relevant export API
+    if #res > 0 then
+      local success, result =
         pcall(
         function()
-          return net.json2lua(result)
+          return net.json2lua(res)
         end
       )
-      if status then
-        res.data = retval
-      else
-        res.data = result
+      msg.status = success
+      if success then -- is json string
+        msg.data = result
+      else -- normal string
+        msg.data = res
       end
-      res.status = status
     else
-      res.status = fettle
-      res.data = "执行成功"
+      net.log(res)
+      net.log(fettle)
+      msg.status = fettle
+      msg.data = "执行成功"
+    end
+  elseif request.type == "api_loadstring" then
+    local status, retval = dostring_api_env(request.content)
+    msg.status = status
+    msg.data = retval
+    if status and retval == nil then
+      msg.data = "执行成功"
     end
   end
-  return res
+  return msg
+end
+function dostring_api_env(s)
+  local f, err = loadstring(s)
+  if f then
+    return true, f()
+  else
+    return false, err
+  end
 end
