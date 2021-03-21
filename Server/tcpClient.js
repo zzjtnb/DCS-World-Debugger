@@ -23,9 +23,9 @@ client.on("data", function (data) {
   event.emit(msg.type, msg);
 })
 client.on("error", (error) => {
-  let data = { status: false, "type": luaStr.state, data: error }
-  if (luaStr.state != 'loadstring') luaStr.state = 'dostring_in'
-  event.emit(luaStr.state, data);
+  let data = { status: false, "type": luaStr.env, data: error }
+  if (luaStr.env != 'api_loadstring') luaStr.env = 'net_dostring'
+  event.emit(luaStr.env, data);
   console.log(`[${timer}] 连接DCS World失败 --> ` + error);
 })
 module.exports = tcpClient

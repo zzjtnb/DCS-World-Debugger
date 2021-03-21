@@ -67,14 +67,14 @@
     let luaValue = document.querySelector("#textarea").value
     if (luaValue) {
       let luaStr = {
-        state: 'loadstring',
-        lua_string: luaValue
+        type: 'api_loadstring',
+        content: luaValue
       };
       this.sendMessage('debuggerLua', luaStr);
-      socket.on('loadstring', (data) => {
+      socket.on('api_loadstring', (data) => {
         let element = document.querySelector('.status');
         let statusValue = document.querySelector('.statusValue');
-        document.querySelector('#dcsValue').innerHTML = JSON.stringify(data.data) || '执行成功'
+        document.querySelector('#dcsValue').innerHTML = JSON.stringify(data.data)
         document.querySelectorAll('pre code').forEach((block) => {
           hljs.highlightBlock(block);
         });
