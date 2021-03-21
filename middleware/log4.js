@@ -20,7 +20,7 @@ const config = {
   "categories": {
     "default": { "appenders": ["consoleout"], "level": "INFO" },
     "app": { "appenders": ["appFile", "consoleout"], "level": "INFO" },
-    "server": { "appenders": ["serverFile"], "level": "INFO" },
+    "server": { "appenders": ["serverFile", "consoleout"], "level": "INFO" },
   }
 }
 log4js.configure(config);
