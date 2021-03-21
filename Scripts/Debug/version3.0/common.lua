@@ -1,30 +1,29 @@
 Debugger = Debugger or {}
-Debugger.JSON = require("JSON") --decode转json       encode转字符串
 Debugger.net = {}
 --------------------------------    定义Debugger的方法  --------------------------------
 Debugger.jsonDecode = function(data)
-  local isJSON, data =
+  local success, result =
     pcall(
     function()
-      return Debugger.JSON:decode(data)
+      return JSON:decode(data)
     end
   )
-  return isJSON, data
+  return success, result
 end
 Debugger.jsonEncode = function(data)
-  local isJSON, data =
+  local success, result =
     pcall(
     function()
-      return Debugger.JSON:encode(data)
+      return JSON:encode(data)
     end
   )
-  return isJSON, data
+  return success, result
 end
 Debugger.isEmptytb = function(tbl)
   if next(tbl) ~= nil then
-    return true
-  else
     return false
+  else
+    return true
   end
 end
 -------------------------------------------  定义Debugger的net  -------------------------------------------
@@ -46,16 +45,29 @@ Debugger.net.getTimeStamp = function()
     model = DCS.getModelTime()
   }
 end
-Debugger.net.sendMsg = function(msg)
+Debugger.net.send_udp_msg = function(msg)
   msg.timeS = Debugger.net.getTimeStamp()
   Debugger.net.sendJSON(msg)
 end
+
+Debugger.net.send_tcp_msg = function(data)
+  data.timeS = Debugger.net.getTimeStamp()
+  data = net.lua2json(data)
+  net.log("process_request --> " .. data)
+  if TCP.client then
+    local bytes, status, lastbyte = TCP.client:send(data .. "\n")
+    net.log(bytes, status, lastbyte)
+  -- if err then
+  --   net.log("sendData -> " .. err)
+  -- end
+  end
+end
+
 -------------------------------------------  执行接收到的Lua脚本 -------------------------------------------
-Debugger.debuggerLua = function(str)
+Debugger.lua_str = function(luatb)
   local res = {}
-  local luatb = net.json2lua(str)
+  res.type = luatb.state
   if luatb.state == "loadstring" then
-    res.type = "loadstring"
     local status, retval =
       pcall(
       function()
@@ -65,7 +77,6 @@ Debugger.debuggerLua = function(str)
     )
     res.status = status
     res.data = retval
-    Debugger.net.sendMsg(res)
   else
     res.type = "dostring_in"
     local result, fettle = net.dostring_in(luatb.state, luatb.lua_string)
@@ -86,6 +97,6 @@ Debugger.debuggerLua = function(str)
       res.status = fettle
       res.data = "执行成功"
     end
-    Debugger.net.sendMsg(res)
   end
+  return res
 end

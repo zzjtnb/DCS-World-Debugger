@@ -4,55 +4,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title  %> </title>
+  <title>
+    <%= title %>
+  </title>
   <%- include('../common/head'); -%>
-  <link rel="stylesheet" href="/css/agate.css">
+    <link rel="stylesheet" href="/css/agate.css">
 </head>
 
 <body>
   <div class="flex h-screen bg-gray-200">
-    <div class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
+    <div id="side" class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden" onclick="t2()"></div>
     <%- include('../layout/sidebar'); -%>
-    <div class="flex-1 flex flex-col overflow-hidden">
-      <%- include('../layout/header'); -%>
-      <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-        <div class="container mx-auto px-6 pt-8">
-          <div class="editor">
-            <div class="textarea">
-              <textarea autocomplete="off" placeholder="请输入内容" class="textarea__inner" id="textarea">
+      <div class="flex-1 flex flex-col overflow-hidden">
+        <%- include('../layout/header'); -%>
+          <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+            <div class="container mx-auto px-6 pt-8">
+              <div class="editor">
+                <div class="textarea">
+                  <textarea autocomplete="off" placeholder="请输入内容" class="textarea__inner" id="textarea">
               </textarea>
-            </div>
-            <div class="text-center my-2">
-              <h1 class="text-gray-600 text-lg font-black">当前运行环境:<span class="setting">server</span></h1>
-              <div class="flex items-center justify-center">
-                <div class="inline-block relative w-30 text-center my-2">
-                  <select
-                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline state"
-                    onchange="gradeChange()">
-                    <option>server</option>
-                    <option>mission</option>
-                    <option>net</option>
-                    <option>export</option>
-                    <option>config</option>
-                  </select>
-                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                  </div>
                 </div>
-              </div>
-              <div class="flex items-center justify-center m-2">
-                <button type="button" class="bg-blue-500 button button--primary is-round focus:outline-none"
-                  onclick="sendLua()">
-                  <span>发送</span>
-                </button>
-                <button type="button" class="bg-red-600	 button button--primary is-round focus:outline-none"
-                  onclick="clearLua()">
-                  <span>清空</span>
-                </button>
-              </div>
-              <div class="flex justify-center flex-col ">
-                <!-- <button type="submit" class="bg-blue-500 button button--primary is-round block focus:outline-none "
+                <div class="text-center my-2">
+                  <h1 class="text-gray-600 text-lg font-black">当前运行环境:<span class="setting">server</span></h1>
+                  <div class="flex items-center justify-center">
+                    <div class="inline-block relative w-30 text-center my-2">
+                      <select
+                        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline state"
+                        onchange="gradeChange()">
+                        <option>server</option>
+                        <option>mission</option>
+                        <option>net</option>
+                        <option>export</option>
+                        <option>config</option>
+                      </select>
+                      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-center m-2">
+                    <button type="button" class="bg-blue-500 button button--primary is-round focus:outline-none"
+                      onclick="sendLua()">
+                      <span>发送</span>
+                    </button>
+                    <button type="button" class="bg-red-600	 button button--primary is-round focus:outline-none"
+                      onclick="clearLua()">
+                      <span>清空</span>
+                    </button>
+                  </div>
+                  <div class="flex justify-center flex-col ">
+                    <!-- <button type="submit" class="bg-blue-500 button button--primary is-round block focus:outline-none "
                   onclick="sendLua()">
                   <span>发送</span>
                 </button>
@@ -60,20 +63,20 @@
                   onclick="clearLua()">
                   <span>清空</span>
                 </button> -->
-                <button
-                  class="bg-red-500 bg-green-500 button button--primary is-round status cursor-not-allowed block focus:outline-none font-black text-lg leading-4">
-                  <span class="statusValue">执行状态</span>
-                </button>
+                    <button
+                      class="bg-red-500 bg-green-500 button button--primary is-round status cursor-not-allowed block focus:outline-none font-black text-lg leading-4">
+                      <span class="statusValue">执行状态</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="result">
-          <pre><code  id='dcsValue'></code></pre>
-        </div>
-      </main>
-    </div>
-    <%- include('../common/toast',{user: '顶顶顶'}); -%>
+            <div class="result">
+              <pre><code  id='dcsValue'></code></pre>
+            </div>
+          </main>
+      </div>
+      <%- include('../common/toast',{user: '顶顶顶' }); -%>
 
   </div>
 </body>

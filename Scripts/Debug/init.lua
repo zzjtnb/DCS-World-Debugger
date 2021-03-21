@@ -1,4 +1,4 @@
-local loadVersion = "version2.0"
+local loadVersion = "version3.0"
 dofile(lfs.writedir() .. "Scripts/Debug/" .. loadVersion .. "/UDP.lua")
 dofile(lfs.writedir() .. "Scripts/Debug/" .. loadVersion .. "/TCP.lua")
 dofile(lfs.writedir() .. "Scripts/Debug/" .. loadVersion .. "/common.lua")
