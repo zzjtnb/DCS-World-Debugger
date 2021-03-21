@@ -4,48 +4,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title  %> </title>
+  <title>
+    <%= title %>
+  </title>
   <%- include('../common/head'); -%>
-  <link rel="stylesheet" href="/css/agate.css">
+    <link rel="stylesheet" href="/css/agate.css">
 </head>
 
 <body>
   <div class="flex h-screen bg-gray-200">
-    <div class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
+    <div class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden" onclick="t2()" id="side"></div>
     <%- include('../layout/sidebar'); -%>
-    <div class="flex-1 flex flex-col overflow-hidden">
-      <%- include('../layout/header'); -%>
-      <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-        <div class="container mx-auto px-6 mt-4">
-          <div class="editor">
-            <div class="textarea">
-              <textarea autocomplete="off" placeholder="请输入内容" class="textarea__inner" id="textarea">
+      <div class="flex-1 flex flex-col overflow-hidden">
+        <%- include('../layout/header'); -%>
+          <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+            <div class="container mx-auto px-6 mt-4">
+              <div class="editor">
+                <div class="textarea">
+                  <textarea autocomplete="off" placeholder="请输入内容" class="textarea__inner" id="textarea">
               </textarea>
+                </div>
+                <div class="flex items-center justify-center m-2">
+                  <button type="button" class="bg-blue-500 button button--primary is-round focus:outline-none"
+                    onclick="sendLua()">
+                    <span>发送</span>
+                  </button>
+                  <button type="button" class="bg-red-600	 button button--primary is-round focus:outline-none"
+                    onclick="clearLua()">
+                    <span>清空</span>
+                  </button>
+                </div>
+                <div class="flex justify-center flex-col pb-2">
+                  <button
+                    class="bg-red-500 bg-green-500 button button--primary is-round status cursor-not-allowed block focus:outline-none font-black text-lg leading-4">
+                    <span class="statusValue">执行状态</span>
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class="flex items-center justify-center m-2">
-              <button type="button" class="bg-blue-500 button button--primary is-round focus:outline-none"
-                onclick="sendLua()">
-                <span>发送</span>
-              </button>
-              <button type="button" class="bg-red-600	 button button--primary is-round focus:outline-none"
-                onclick="clearLua()">
-                <span>清空</span>
-              </button>
+            <div class="result">
+              <pre><code  id='dcsValue'></code></pre>
             </div>
-            <div class="flex justify-center flex-col pb-2">
-              <button
-                class="bg-red-500 bg-green-500 button button--primary is-round status cursor-not-allowed block focus:outline-none font-black text-lg leading-4">
-                <span class="statusValue">执行状态</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="result">
-          <pre><code  id='dcsValue'></code></pre>
-        </div>
-      </main>
-    </div>
-    <%- include('../common/toast',{user: '顶顶顶'}); -%>
+          </main>
+      </div>
+      <%- include('../common/toast',{user: '顶顶顶' }); -%>
   </div>
 </body>
 <script src="/socket.io/socket.io.js"></script>
@@ -72,7 +74,7 @@
       socket.on('loadstring', (data) => {
         let element = document.querySelector('.status');
         let statusValue = document.querySelector('.statusValue');
-        document.querySelector('#dcsValue').innerHTML = JSON.stringify(data.data)
+        document.querySelector('#dcsValue').innerHTML = JSON.stringify(data.data) || '执行成功'
         document.querySelectorAll('pre code').forEach((block) => {
           hljs.highlightBlock(block);
         });

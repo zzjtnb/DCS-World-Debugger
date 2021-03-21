@@ -20,7 +20,7 @@ const config = {
   "categories": {
     "default": { "appenders": ["consoleout"], "level": "INFO" },
     "app": { "appenders": ["appFile", "consoleout"], "level": "INFO" },
-    "server": { "appenders": ["serverFile", "consoleout"], "level": "INFO" },
+    "server": { "appenders": ["serverFile"], "level": "INFO" },
   }
 }
 log4js.configure(config);
@@ -30,6 +30,6 @@ exports.info = function (message) {
   logger.info(message)
 }
 exports.consoleout = log4js.getLogger("consoleout")
-exports.serverStatus = log4js.getLogger("serverStatus");
+exports.serverStatus = log4js.getLogger("server");
 exports.appLog = log4js.getLogger("app.js");
 exports.serverLog = log4js.getLogger("udp.js");

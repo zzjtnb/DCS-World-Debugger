@@ -12,15 +12,18 @@ function tcpClient(luaStr) {
   client.connect(CFG.DCS.TCP, CFG.DCS.IP, () => {
     let luaText = JSON.stringify(luaStr) + '\n'
     client.write(luaText);
-    console.log(`[${timer}] [INFO] tcpClient.js --> 发送成功\n`, JSON.stringify(luaStr));
-  })
-
-  client.on("error", (error) => {
-    let data = { status: false, "type": luaStr.state, data: error }
-    if (luaStr.state != 'loadstring') luaStr.state = 'dostring_in'
-    event.emit(luaStr.state, data);
-    console.log(`[${timer}] 连接DCS World失败 --> ` + error);
+    // console.log(`[${timer}] [INFO] tcpClient.js --> 发送成功\n`, JSON.stringify(luaStr));
   })
 }
-
+/* 监听服务器传来的data数据 */
+client.on("data", function (data) {
+  const msg = JSON.parse(data.toString());
+  event.emit(msg.type, msg);
+})
+client.on("error", (error) => {
+  let data = { status: false, "type": luaStr.state, data: error }
+  if (luaStr.state != 'loadstring') luaStr.state = 'dostring_in'
+  event.emit(luaStr.state, data);
+  console.log(`[${timer}] 连接DCS World失败 --> ` + error);
+})
 module.exports = tcpClient
