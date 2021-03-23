@@ -20,35 +20,26 @@ app.get('/dotring', (req, res) => {
 app.get('/loadstring', (req, res) => {
   res.render('lua/loadstring', { title: 'loadstring' });
 });
-//处理路径不存在
+
 app.use((req, res) => {
   res.render('index', { title: '首页' });
 })
-const tcpClient = require('./server/tcpClient'); require('./server/udpServer');
+
 const server = require('http').createServer(app);
 const host = "localhost";
 const port = 3000;
-const { appLog, serverStatus } = require('./middleware/log4');
+const { appLog } = require('./middleware/logger');
 server.listen(port, () => {
   appLog.info(`WEB Server running at http://${host}:${port}`);
 })
-const event = require('./middleware/event')
+
 const io = require('socket.io')(server);
-let socketClint
+const { tcpClient } = require('./server/tcpClient');
 //监听connect事件
 io.on('connection', (socket) => {
-  socketClint = socket
-  socket.on('debuggerLua', data => {
-    tcpClient(data);
+  socket.on('debuggerLua', async (data) => {
+    let res = await tcpClient(data);
+    res ? socket.emit(res.type, res.data) : socket.emit(res.type, '未知错误,请打开控制台查看');
   });
 });
-event.on('serverStatus', (msg) => {
-  serverStatus.info(msg.data.msg);
-});
-
-event.on('net_dostring', (msg) => {
-  socketClint.emit('net_dostring', msg);
-});
-event.on('api_loadstring', (msg) => {
-  socketClint.emit('api_loadstring', msg);
-});
+require('./server/udpServer'); require('./server/event/index');

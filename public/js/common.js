@@ -18,6 +18,6 @@ function removeClass(element, yourClassName) {
 };
 
 function t2() {
-  document.querySelector("#side").style.display = 'none'
   document.querySelector("#sides").style.display = 'none'
+  document.querySelector("#tagcl").style.display = 'block'
 }

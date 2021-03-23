@@ -1,13 +1,12 @@
 const path = require('path');
 const dgram = require('dgram');
-const event = require('../middleware/event');
 const server = dgram.createSocket('udp4');
-const CFG = require(path.join(__dirname, '../config/db'))
-const { serverLog } = require('../middleware/log4');
+const event = require('../middleware/event');
+const CONFIG = require(path.join(__dirname, '../config/common'))
 /**
  * udp服务
  */
-server.bind(CFG.DCS.UDP, CFG.DCS.IP);
+server.bind(CONFIG.DCS.UDP, CONFIG.DCS.IP);
 server.on('error', (e) => {
   if (e.code === 'EADDRINUSE') {
     console.log('地址正被使用，重试中...');
