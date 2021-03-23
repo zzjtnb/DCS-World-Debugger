@@ -35,7 +35,7 @@ const common = {
 let dbOptions = {}
 const env = process.env.NODE_ENV;
 
-if (env === 'developent') {
+if (env === 'development') {
   const dev = {
     host: 'localhost',//数据库主机
     port: 3306,//数据库端口号

@@ -5,12 +5,12 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --trace-warnings app.js ",
-    "dev": "cross-env NODE_ENV=developent  nodemon app.js",
+    "dev": "cross-env NODE_ENV=development  nodemon app.js",
     "prod": "cross-env NODE_ENV=production nodemon app.js",
     "build": "npm run tailwind:css && nodemon app.js",
     "tailwind:css": "postcss public/css/tailwind.css -o public/css/style.css",
-    "dbsync": "cross-env NODE_ENV=developent  node models/dbsync.js",
-    "automate": "cross-env NODE_ENV=developent  node config/db/automate.js"
+    "dbsync": "cross-env NODE_ENV=development  node models/dbsync.js",
+    "automate": "cross-env NODE_ENV=development  node config/db/automate.js"
   },
   "author": "zzjtnb",
   "license": "MIT",
@@ -33,6 +33,7 @@
     "sequelize-automate": "^1.2.2",
     "silly-datetime": "^0.1.2",
     "socket.io": "^2.4.1",
-    "tailwindcss": "^2.0.4"
+    "tailwindcss": "^2.0.4",
+    "xss": "^1.0.8"
   }
 }

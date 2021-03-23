@@ -1,45 +1,56 @@
 const express = require('express');
+let port = 3000;
 const app = express()
+const host = "localhost";
 const path = require('path');
-app.set('views', path.join(__dirname, 'views'));//设定网页存放的目录.__dirname:返回当前文件所在的绝对路径
 app.set('view engine', 'ejs');//指定模板文件的后缀名为ejs
-//静态资源中间件-设定静态文件目录.
+app.set('views', path.join(__dirname, 'views'));//设定网页存放的目录.
+app.use(express.static(path.join(__dirname, 'views')));//静态资源中间件-设定静态文件目录.
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'views')));
-//路由
-/* GET home page. */
+const { probe } = require('./utils/port');
+const { debuggerLua } = require('./utils/debuggerLua');
+const { appLog, httpLogger, httpErrorLogger } = require('./middleware/logger');
+app.use(httpLogger)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get('/', function (req, res, next) {
   res.render('index', { title: '首页' });
 });
+const routes = require('./routes');
+app.use('/file', routes);
 
-app.get('/dotring', (req, res) => {
-
-  res.render('lua/dotring', { title: 'dotring' });
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  var err = new Error();
+  err.message = req.path + '-->路径不存在'
+  err.status = 404;
+  next(err);
 });
 
-app.get('/loadstring', (req, res) => {
-  res.render('lua/loadstring', { title: 'loadstring' });
+/**
+ * error handler
+ * 生产环境下的错误处理, 不会向用户显示堆栈信息
+ * 开发环境下的错误处理会输出堆栈信息
+ */
+app.use((err, req, res, next) => {
+  httpErrorLogger.error("Something went wrong:", err.message, err);
+  // set locals, only providing error in development//设置本地变量，仅在开发中提供错误
+  res.locals.message = err.message || '服务器内部错误';
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  console.log(req.app.get('env') === 'development');
+  console.log(res.locals.error);
+  console.log(req.app.get('env'));
+  // 设置响应状态
+  res.status(err.status || 500);
+  res.json({ message: res.locals.message, error: res.locals.error })
 });
-
-app.use((req, res) => {
-  res.render('index', { title: '首页' });
-})
-
 const server = require('http').createServer(app);
-const host = "localhost";
-const port = 3000;
-const { appLog } = require('./middleware/logger');
-server.listen(port, () => {
-  appLog.info(`WEB Server running at http://${host}:${port}`);
-})
-
 const io = require('socket.io')(server);
-const { tcpClient } = require('./server/tcpClient');
-//监听connect事件
-io.on('connection', (socket) => {
-  socket.on('debuggerLua', async (data) => {
-    let res = await tcpClient(data);
-    res ? socket.emit(res.type, res.data) : socket.emit(res.type, '未知错误,请打开控制台查看');
-  });
-});
-require('./server/udpServer'); require('./server/event/index');
+debuggerLua(io)
+probe(port, (bl, _pt) => {
+  bl ? port : port = _pt + 1
+  server.listen(port, () => {
+    appLog.info(`WEB Server running at http://${host}:${port}`);
+  })
+})

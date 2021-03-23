@@ -8,32 +8,32 @@
     </div>
   </div>
   <nav class="mt-10">
-    <a class="flex items-center mt-4 py-2 px-6 " href="/dotring" id="dotring">
+    <a class="flex items-center mt-4 py-2 px-6 " href="/file/net_dostring" id="net_dostring">
       <img class="w-4 h-4" src="/images/icons/1794804.png" alt="" srcset="">
-      <span class="mx-5">dotring</span>
+      <span class="mx-5">net_dostring</span>
     </a>
-    <a class="flex items-center mt-4 py-2 px-6 " href="/loadstring" id="loadstring">
+    <a class="flex items-center mt-4 py-2 px-6 " href="/file/api_loadstring" id="api_loadstring">
       <img class="w-5 h-5" src="/images/icons/1541402.png" alt="">
-      <span class="mx-3">loadstring</span>
+      <span class="mx-3">api_loadstring</span>
     </a>
   </nav>
 </div>
 <script>
 
   switch (window.location.pathname) {
-    case '/dotring':
-      document.querySelector("#dotring").classList.add("bg-gray-700", "bg-opacity-25", "text-gray-100");
-      document.querySelector("#loadstring").classList.add("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
+    case '/file/net_dostring':
+      document.querySelector("#net_dostring").classList.add("bg-gray-700", "bg-opacity-25", "text-gray-100");
+      document.querySelector("#api_loadstring").classList.add("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
       break;
-    case '/loadstring':
-      document.querySelector("#loadstring").classList.add("bg-gray-700", "bg-opacity-25", "text-gray-100");
-      document.querySelector("#loadstring").classList.remove("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
-      document.querySelector("#dotring").classList.remove("bg-gray-700", "bg-opacity-25", "text-gray-100");
-      document.querySelector("#dotring").classList.add("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
+    case '/file/api_loadstring':
+      document.querySelector("#api_loadstring").classList.add("bg-gray-700", "bg-opacity-25", "text-gray-100");
+      document.querySelector("#api_loadstring").classList.remove("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
+      document.querySelector("#net_dostring").classList.remove("bg-gray-700", "bg-opacity-25", "text-gray-100");
+      document.querySelector("#net_dostring").classList.add("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
       break;
     default:
-      document.querySelector("#dotring").classList.add("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
-      document.querySelector("#loadstring").classList.add("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
+      document.querySelector("#net_dostring").classList.add("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
+      document.querySelector("#api_loadstring").classList.add("text-gray-500", "hover:bg-gray-700", "hover:bg-opacity-25", "hover:text-gray-100")
       break;
   }
 </script>
