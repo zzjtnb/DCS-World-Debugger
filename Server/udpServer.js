@@ -22,6 +22,7 @@ server.on('message', (data) => {
   switch (msg.type) {
     case 'serverData':
       console.log(msg);
+      console.log(msg.data.mcurrent);
       // event.emit(msg.event, msg)
       break;
     case 'serverStatus':

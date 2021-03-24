@@ -1,4 +1,5 @@
 const event = require('../../middleware/event');
+const { gradesModel } = require('../../models');
 /**
  * 监听事件
  */

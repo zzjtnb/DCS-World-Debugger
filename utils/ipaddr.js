@@ -15,9 +15,6 @@ function getIPAdress() {
   }
 }
 
-// var ip = getIPAdress();
-// console.log("\n--------IP地址：" + ip + "------\n");
-
 /**
  * 获取客服端ip地址
  * @param {*} req  一个包含引发事件的HTTP请求的信息的对象。

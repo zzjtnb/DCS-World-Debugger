@@ -20,8 +20,6 @@ const automate = new Automate(dbOptions, options);
 (async function main() {
   // // get table definitions
   // const definitions = await automate.getDefinitions();//获取所有模型定义。sequelize-automate将使用这些定义生成不同的代码。
-  // console.log(definitions);
   // or generate codes
   const code = await automate.run();//生成模型代码
-  // console.log(code);
 })()

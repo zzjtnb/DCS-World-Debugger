@@ -7,6 +7,7 @@ app.set('view engine', 'ejs');//指定模板文件的后缀名为ejs
 app.set('views', path.join(__dirname, 'views'));//设定网页存放的目录.
 app.use(express.static(path.join(__dirname, 'views')));//静态资源中间件-设定静态文件目录.
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use('/favicon.ico', express.static('/images/favicon.ico'))
 const { probe } = require('./utils/port');
 const { debuggerLua } = require('./utils/debuggerLua');
 const { appLog, httpLogger, httpErrorLogger } = require('./middleware/logger');
@@ -38,9 +39,6 @@ app.use((err, req, res, next) => {
   // set locals, only providing error in development//设置本地变量，仅在开发中提供错误
   res.locals.message = err.message || '服务器内部错误';
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-  console.log(req.app.get('env') === 'development');
-  console.log(res.locals.error);
-  console.log(req.app.get('env'));
   // 设置响应状态
   res.status(err.status || 500);
   res.json({ message: res.locals.message, error: res.locals.error })

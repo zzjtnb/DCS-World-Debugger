@@ -4,13 +4,13 @@
 const net = require("net");
 const client = net.Socket();
 const path = require('path');
-const sd = require('silly-datetime');
+const dayjs = require('dayjs');
 const CONFIG = require(path.join(__dirname, '../config/common'))
 
 function tcpClient(str) {
   let old_lua_string = null;
   let result = null;
-  const timer = sd.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
+  const timer = dayjs.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
   return new Promise((resolve, reject) => {
     old_lua_string = str
     client.connect(CONFIG.DCS.TCP, CONFIG.DCS.IP, () => {

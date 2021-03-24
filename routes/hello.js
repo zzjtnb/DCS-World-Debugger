@@ -19,7 +19,6 @@ const router = require('express').Router();
  *         description: 成功返回 world
  */
 router.get("/", (req, res) => {
-  console.log(req.query);
   let name = req.query.name;
   res.send(`hello ${name}!!!`);
 });
