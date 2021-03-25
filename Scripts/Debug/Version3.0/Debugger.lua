@@ -57,7 +57,7 @@ function Debugger.callbacks.onSimulationFrame()
   if do_step then
     step_frame_count = step_frame_count + 1
     if step_frame_count == 1 then
-      local success, error = pcall(step)
+      local success, error = pcall(Step)
       if not success then
         net.log("Error: " .. error)
       end

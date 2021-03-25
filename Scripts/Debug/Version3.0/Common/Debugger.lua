@@ -1,11 +1,12 @@
 Debugger = Debugger or {}
-Debugger.net = {}
+Debugger.net = Debugger.net or {}
+
 --------------------------------    定义Debugger的方法  --------------------------------
 Debugger.jsonDecode = function(data)
   local success, result =
     pcall(
     function()
-      return JSON:decode(data)
+      return net.json2lua(data)
     end
   )
   return success, result
@@ -14,11 +15,14 @@ Debugger.jsonEncode = function(data)
   local success, result =
     pcall(
     function()
-      return JSON:encode(data)
+      return net.lua2json(data)
     end
   )
   return success, result
 end
+-- Make next function local - this improves performance
+-- 将next函数设为本地-这样可以提高性能
+local next = next
 Debugger.isEmptytb = function(tbl)
   if next(tbl) ~= nil then
     return false
@@ -26,6 +30,26 @@ Debugger.isEmptytb = function(tbl)
     return true
   end
 end
+Debugger.MergeTables = function(...)
+  local tabs = {...}
+  if not tabs then
+    return {}
+  end
+  local origin = tabs[1]
+  for i = 2, #tabs do
+    if origin then
+      if tabs[i] then
+        for k, v in pairs(tabs[i]) do
+          origin[k] = v
+        end
+      end
+    else
+      origin = tabs[i]
+    end
+  end
+  return origin
+end
+
 Debugger.dostring_api_env = function(s)
   local f, err = loadstring(s)
   if f then
@@ -37,30 +61,32 @@ end
 
 -------------------------------------------  定义Debugger的net  -------------------------------------------
 Debugger.net.sendData = function(data)
-  net.log("sendDataTo --> " .. UDP.host .. ":" .. UDP.port)
-  net.log("sendJSON --> " .. data)
+  net.log("udpSendDataTo --> " .. UDP.host .. ":" .. UDP.port)
+  net.log("udpSendJSON --> " .. data)
   local succ, err = UDP.udp:sendto(data, UDP.host, UDP.port)
   if err then
-    net.log("sendData -> " .. err)
+    net.log("updSendError -> " .. err)
   end
 end
 Debugger.net.sendJSON = function(data)
   Debugger.net.sendData(net.lua2json(data))
 end
 Debugger.net.getTimeStamp = function()
-  return {
-    os = os.date("%Y-%m-%d %X", os.time()),
+  local _TempData = {
+    os = os.date("%Y-%m-%d %H:%M:%S"),
     real = DCS.getRealTime(),
     model = DCS.getModelTime()
   }
+  return _TempData
 end
 Debugger.net.send_udp_msg = function(msg)
-  msg.timeS = Debugger.net.getTimeStamp()
+  msg.executionTime = msg.executionTime or {}
+  msg.executionTime = Debugger.MergeTables(msg.executionTime, Debugger.net.getTimeStamp())
   Debugger.net.sendJSON(msg)
 end
 
 Debugger.net.send_tcp_msg = function(data)
-  data.timeS = Debugger.net.getTimeStamp()
+  data.executionTime = Debugger.net.getTimeStamp()
   data = net.lua2json(data)
   net.log("process_request --> " .. data)
   if TCP.client then
@@ -104,6 +130,9 @@ Debugger.lua_str = function(request)
     if status and retval == nil then
       msg.data = "执行成功"
     end
+  end
+  if request.from then
+    msg.from = request.from
   end
   return msg
 end
