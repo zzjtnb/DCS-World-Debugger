@@ -1,5 +1,5 @@
 const event = require('../../middleware/event');
-const { gradesModel } = require('../../models');
+const { server_info_model } = require('../../models');
 /**
  * 监听事件
  */
@@ -16,8 +16,16 @@ event.on('updateQQ', async (msg) => {
   }
 });
 //任务加载完毕
-event.on('onMissionLoadEnd', (msg) => {
-  // console.log(msg);
+
+event.on('onMissionLoadEnd', async (msg) => {
+  const data = msg.data;
+  for (const key in data) {
+    if (Object.hasOwnProperty.call(data, key)) {
+      if (typeof data[key] === 'object') data[key] = JSON.stringify(data[key]);
+    }
+  }
+  const result = await server_info_model.create(data);
+  if (result) console.log("写入成功");
 });
 
 //每一帧渲染的hook

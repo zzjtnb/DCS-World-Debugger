@@ -1,89 +1,96 @@
-const {
-  DataTypes
-} = require('sequelize');
-
-module.exports = sequelize => {
+'use strict';
+const dayjs = require('dayjs');
+module.exports = (sequelize, DataTypes) => {
   const attributes = {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      defaultValue: null,
+      defaultValue: DataTypes.UNIQUE,
       primaryKey: true,
-      autoIncrement: false,
+      autoIncrement: true,
       comment: null,
       field: "id"
     },
-    fname: {
+    mission_name: {
       type: DataTypes.STRING(255),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: "任务文件",
-      field: "fname"
+      field: "mission_name"
     },
-    mname: {
+    mission_filename: {
       type: DataTypes.STRING(255),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: "任务名称",
-      field: "mname"
+      field: "mission_filename"
     },
-    description: {
-      type: DataTypes.STRING(255),
+    mission_description: {
+      type: DataTypes.TEXT,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: "任务描述",
-      field: "description"
+      field: "mission_description"
     },
-    alias: {
-      type: DataTypes.STRING(255),
+    result_red: {
+      type: DataTypes.DATE,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "alias"
+      field: "result_red",
+      get() {
+        return dayjs(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
+      },
     },
-    moptions: {
-      type: DataTypes.STRING(255),
+    result_blue: {
+      type: DataTypes.TEXT,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
-      comment: "任务设置",
-      field: "moptions"
+      comment: null,
+      field: "result_blue"
     },
-    mcurrent: {
-      type: DataTypes.STRING(255),
+    mission_current: {
+      type: DataTypes.TEXT,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
-      comment: "当前任务详情",
-      field: "mcurrent"
+      comment: "任务详情",
+      field: "mission_current"
     },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      defaultValue: null,
+      defaultValue: DataTypes.NOW, // 这样,当前日期/时间将用于填充此列(在插入时)
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "createdAt"
+      field: "createdAt",
+      get() {
+        return dayjs(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
+      },
     },
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      defaultValue: null,
+      defaultValue: DataTypes.NOW, // 这样,当前日期/时间将用于填充此列(在插入时)
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "updatedAt"
+      field: "updatedAt",
+      get() {
+        return dayjs(this.getDataValue('updatedAt')).format('YYYY-MM-DD HH:mm:ss');
+      },
     }
   };
   const options = {

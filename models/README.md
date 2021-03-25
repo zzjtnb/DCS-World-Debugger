@@ -37,8 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       comment: null,
       field: "updatedAt"
     }
-
-
+---------------------------------------------------
     createdAt: {
       type: DataTypes.DATE,
       allowNull: true,
