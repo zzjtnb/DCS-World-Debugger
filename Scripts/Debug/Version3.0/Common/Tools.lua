@@ -1,8 +1,8 @@
-Debugger = Debugger or {}
-Debugger.net = Debugger.net or {}
+Tools = Tools or {}
+Tools.net = Tools.net or {}
 
---------------------------------    定义Debugger的方法  --------------------------------
-Debugger.jsonDecode = function(data)
+--------------------------------    定义Tools的方法  --------------------------------
+Tools.jsonDecode = function(data)
   local success, result =
     pcall(
     function()
@@ -11,7 +11,7 @@ Debugger.jsonDecode = function(data)
   )
   return success, result
 end
-Debugger.jsonEncode = function(data)
+Tools.jsonEncode = function(data)
   local success, result =
     pcall(
     function()
@@ -23,14 +23,14 @@ end
 -- Make next function local - this improves performance
 -- 将next函数设为本地-这样可以提高性能
 local next = next
-Debugger.isEmptytb = function(tbl)
+Tools.isEmptytb = function(tbl)
   if next(tbl) ~= nil then
     return false
   else
     return true
   end
 end
-Debugger.MergeTables = function(...)
+Tools.MergeTables = function(...)
   local tabs = {...}
   if not tabs then
     return {}
@@ -50,7 +50,7 @@ Debugger.MergeTables = function(...)
   return origin
 end
 
-Debugger.dostring_api_env = function(s)
+Tools.dostring_api_env = function(s)
   local f, err = loadstring(s)
   if f then
     return true, f()
@@ -59,19 +59,20 @@ Debugger.dostring_api_env = function(s)
   end
 end
 
--------------------------------------------  定义Debugger的net  -------------------------------------------
-Debugger.net.sendData = function(data)
-  net.log("udpSendDataTo --> " .. UDP.host .. ":" .. UDP.port)
-  net.log("udpSendJSON --> " .. data)
-  local succ, err = UDP.udp:sendto(data, UDP.host, UDP.port)
-  if err then
-    net.log("updSendError -> " .. err)
+-------------------------------------------  定义Tools的net  -------------------------------------------
+Tools.net.sendData = function(data)
+  if TCP.client == nil then
+    TCP.client_connect()
   end
+  local ip, port = TCP.client:getsockname()
+  net.log("SendDataTo-->" .. ip .. ":" .. port)
+  net.log("SendJSON-->" .. data)
+  TCP.client_send(data)
 end
-Debugger.net.sendJSON = function(data)
-  Debugger.net.sendData(net.lua2json(data))
+Tools.net.sendJSON = function(data)
+  Tools.net.sendData(net.lua2json(data))
 end
-Debugger.net.getTimeStamp = function()
+Tools.net.getTimeStamp = function()
   local _TempData = {
     os = os.date("%Y-%m-%d %H:%M:%S"),
     real = DCS.getRealTime(),
@@ -79,24 +80,24 @@ Debugger.net.getTimeStamp = function()
   }
   return _TempData
 end
-Debugger.net.send_udp_msg = function(msg)
+Tools.net.client_send_msg = function(msg)
   msg.executionTime = msg.executionTime or {}
-  msg.executionTime = Debugger.MergeTables(msg.executionTime, Debugger.net.getTimeStamp())
-  Debugger.net.sendJSON(msg)
+  msg.executionTime = Tools.MergeTables(msg.executionTime, Tools.net.getTimeStamp())
+  Tools.net.sendJSON(msg)
 end
 
-Debugger.net.send_tcp_msg = function(data)
-  data.executionTime = Debugger.net.getTimeStamp()
+Tools.net.server_send_msg = function(data)
+  data.executionTime = Tools.net.getTimeStamp()
   data = net.lua2json(data)
   net.log("process_request --> " .. data)
-  if TCP.client then
-    local bytes, status, lastbyte = TCP.client:send(data .. "\n")
-    net.log(bytes, status, lastbyte)
+  if TCP.server_client then
+    local bytes, status, lastbyte = TCP.server_client:send(data .. "\r\n")
+  -- net.log(bytes, status, lastbyte)
   end
 end
 
 -------------------------------------------  执行接收到的Lua脚本 -------------------------------------------
-Debugger.lua_str = function(request)
+Tools.lua_str = function(request)
   local msg = {}
   msg.type = request.type
   if request.type == "net_dostring" then
@@ -124,7 +125,7 @@ Debugger.lua_str = function(request)
       msg.data = "执行成功"
     end
   elseif request.type == "api_loadstring" then
-    local status, retval = Debugger.dostring_api_env(request.content)
+    local status, retval = Tools.dostring_api_env(request.content)
     msg.status = status
     msg.data = retval
     if status and retval == nil then
