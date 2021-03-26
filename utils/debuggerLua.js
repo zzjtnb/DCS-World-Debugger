@@ -1,6 +1,6 @@
 
 const { tcpClient } = require('../server/tcpClient');
-require('../server/udpServer'); require('../server/event/index');
+require('../server/tcpServer'); require('../server/event/index');
 let socketClint
 const event = require('../middleware/event');
 event.on('net_dostring', (msg) => {
