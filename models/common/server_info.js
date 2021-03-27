@@ -11,44 +11,78 @@ module.exports = (sequelize, DataTypes) => {
       comment: null,
       field: "id"
     },
-    mission_name: {
+    name: {
       type: DataTypes.STRING(255),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: "任务文件",
-      field: "mission_name"
+      field: "name"
     },
-    mission_filename: {
+    filename: {
       type: DataTypes.STRING(255),
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: "任务名称",
-      field: "mission_filename"
+      field: "filename"
     },
-    mission_description: {
+    description: {
       type: DataTypes.TEXT,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: "任务描述",
-      field: "mission_description"
+      field: "description"
+    },
+    missionhash: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: "任务hash",
+      field: "missionhash"
+    },
+    theatre: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: "地图名称",
+      field: "theatre"
+    },
+    map: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: "地图坐标",
+      field: "map"
+    },
+
+    coalition: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: "阵营详情",
+      field: "coalition"
     },
     result_red: {
-      type: DataTypes.DATE,
+      type: DataTypes.TEXT,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "result_red",
-      get() {
-        return dayjs(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
-      },
+      field: "result_red"
     },
     result_blue: {
       type: DataTypes.TEXT,
@@ -59,14 +93,14 @@ module.exports = (sequelize, DataTypes) => {
       comment: null,
       field: "result_blue"
     },
-    mission_current: {
-      type: DataTypes.TEXT,
+    date: {
+      type: DataTypes.DATEONLY,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
-      comment: "任务详情",
-      field: "mission_current"
+      comment: "游戏日期",
+      field: "date"
     },
     createdAt: {
       type: DataTypes.DATE,

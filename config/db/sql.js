@@ -1,6 +1,6 @@
 const { sqlLog } = require('../../middleware/logger')
 const common = {
-  dialect: "mysql", //指定要连接哪种类型的数据库
+  dialect: "mariadb", //指定要连接哪种类型的数据库
   charset: "utf8mb4",//字符集
   collate: "utf8mb4_general_ci",//排序规则
   timezone: '+08:00',   // 时区,sequelize有很多自动时间的方法，都是和时区相关的，记得设置成东8区（+08:00）
@@ -30,7 +30,8 @@ const common = {
     paranoid: false
   },
   //如果选择log.logger.info,会有Cannot read property 'isLevelEnabled' of null的异常。
-  logging: sqlLog,
+  // logging: sqlLog,
+  logging: (sql) => sqlLog(sql)
 }
 let dbOptions = {}
 const env = process.env.NODE_ENV;

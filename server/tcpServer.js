@@ -16,7 +16,6 @@ server.on("error", (err) => {
   if (err.code === 'EADDRINUSE') console.log('该地址及端口被占用,请修正');
 })
 
-
 //Declare connection listener function
 function onClientConnection(client) {
   client.setTimeout(5 * 1000);
@@ -44,7 +43,7 @@ function onClientConnection(client) {
       switch (result.type) {
         case 'serverData':
           debug_mod(result)
-          // event.emit(result.event, result)
+          event.emit(result.event, result)
           break;
         case 'serverStatus':
           event.emit(result.type, result)
@@ -78,8 +77,8 @@ function onClientConnection(client) {
 function log(data) { console.log("TCP_Server-->" + data) }
 debug_mod = (result) => {
   if (!result.event || !result.executionTime.os) return
-  makedir(path.join(process.cwd(), 'logs/json/debug'))
-  const debug_dir = path.join(process.cwd(), `logs/json/debug/${result.event}`)
+  makedir(path.join(process.cwd(), 'logs/json'))
+  const debug_dir = path.join(process.cwd(), `logs/json/${result.event}`)
   const mksucess = makedir(debug_dir)
   if (mksucess) {
     const name = result.executionTime.os.replace(/:|-/g, '_')

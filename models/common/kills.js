@@ -101,6 +101,15 @@ module.exports = (sequelize, DataTypes) => {
       comment: null,
       field: "qq"
     },
+    missionhash: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: "任务hash",
+      field: "missionhash"
+    },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: true,

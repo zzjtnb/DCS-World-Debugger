@@ -20,33 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       comment: null,
       field: "ping"
     },
-    side: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "side"
-    },
-    slot: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "slot"
-    },
-    playerID: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "playerID"
-    },
+
     name: {
       type: DataTypes.STRING(255),
       allowNull: true,
@@ -55,15 +29,6 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: false,
       comment: null,
       field: "name"
-    },
-    pilotid: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "pilotid"
     },
     ucid: {
       type: DataTypes.STRING(255),
@@ -147,15 +112,6 @@ module.exports = (sequelize, DataTypes) => {
       comment: null,
       field: "landing"
     },
-    pilot_death: {
-      type: DataTypes.BIGINT,
-      allowNull: true,
-      defaultValue: null,
-      primaryKey: false,
-      autoIncrement: false,
-      comment: null,
-      field: "pilot_death"
-    },
     qq: {
       type: DataTypes.STRING(255),
       allowNull: true,
@@ -164,6 +120,15 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: false,
       comment: null,
       field: "qq"
+    },
+    missionhash: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+      defaultValue: null,
+      primaryKey: false,
+      autoIncrement: false,
+      comment: "任务hash",
+      field: "missionhash"
     },
     createdAt: {
       type: DataTypes.DATE,

@@ -50,12 +50,12 @@
       <%- include('../common/toast',{user: '顶顶顶' }); -%>
   </div>
 </body>
-<script src="/socket.io/socket.io.js"></script>
+
 <script src="/js/highlight.min.js"></script>
 <script src="/js/common.js"></script>
 
 <script>
-  var socket = io();
+  let socket = io("http://localhost");
   let textarea = 'return net.get_player_list()'
   document.querySelector("#textarea").value = textarea;
   // 发送消息
