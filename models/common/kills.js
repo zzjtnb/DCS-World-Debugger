@@ -1,6 +1,8 @@
-'use strict';
-const dayjs = require('dayjs');
-module.exports = (sequelize, DataTypes) => {
+const {
+  DataTypes
+} = require('sequelize');
+
+module.exports = sequelize => {
   const attributes = {
     id: {
       type: DataTypes.INTEGER(11),
@@ -113,26 +115,20 @@ module.exports = (sequelize, DataTypes) => {
     createdAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      defaultValue: DataTypes.NOW, // 这样,当前日期/时间将用于填充此列(在插入时)
+      defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "createdAt",
-      get() {
-        return dayjs(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm:ss');
-      },
+      field: "createdAt"
     },
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      defaultValue: DataTypes.NOW, // 这样,当前日期/时间将用于填充此列(在插入时)
+      defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "updatedAt",
-      get() {
-        return dayjs(this.getDataValue('updatedAt')).format('YYYY-MM-DD HH:mm:ss');
-      },
+      field: "updatedAt"
     }
   };
   const options = {

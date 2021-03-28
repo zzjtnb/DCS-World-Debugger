@@ -8,7 +8,7 @@
     <%= title %>
   </title>
   <%- include('../common/head'); -%>
-    <link rel="stylesheet" href="/css/agate.css">
+    <link rel="stylesheet" href="/stylesheets/agate.css">
 </head>
 
 <body>
@@ -99,8 +99,8 @@ onclick="clearLua()">
       <%- include('../common/toast',{user: '顶顶顶' }); -%>
   </div>
 </body>
-<script src="/js/common.js"></script>
-<script src="/js/highlight.min.js"></script>
+<script src="/javascripts/common.js"></script>
+<script src="/javascripts/highlight.min.js"></script>
 
 <script>
   let socket = io("http://localhost:3000");

@@ -13,7 +13,7 @@ server.listen(TCPCONFIG.SPORT, TCPCONFIG.IP, function () {
 });
 //设置TCP服务端错误时的回调函数
 server.on("error", (err) => {
-  if (err.code === 'EADDRINUSE') console.log('该地址及端口被占用,请修正');
+  if (err.code === 'EADDRINUSE') console.log('tcpServer.js-->该地址端口被占用,请修正');
 })
 
 //Declare connection listener function

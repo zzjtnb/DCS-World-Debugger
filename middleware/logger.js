@@ -7,12 +7,7 @@ const config = {
     consoleout: { type: 'console' },
     sqlFile: {
       type: "dateFile",
-      filename: path.join(__dirname, '../logs/db/success/sql.log'),
-      pattern: "-yyyy-MM-dd.log"
-    },
-    sqlErrFile: {
-      type: "dateFile",
-      filename: path.join(__dirname, '../logs/db/error/info.log'),
+      filename: path.join(__dirname, '../logs/db/sql.log'),
       pattern: "-yyyy-MM-dd.log"
     },
     appFile: {
@@ -45,7 +40,6 @@ const config = {
   categories: {
     default: { appenders: ['consoleout'], level: 'DEBUG' },
     db_sql: { "appenders": ["sqlFile"], "level": "INFO" },
-    db_err_sql: { "appenders": ["sqlErrFile"], "level": "ERROR" },
     http: { "appenders": ["access"], "level": "INFO" },
     httpError: { "appenders": ["accessError"], "level": "ERROR" },
     app: { "appenders": ["appFile", "consoleout"], "level": "INFO" },
@@ -60,10 +54,9 @@ log4js.addLayout('json', (config) => {
 log4js.configure(config);
 const logger = log4js.getLogger();
 const httpLogger = log4js.connectLogger(log4js.getLogger("http"), { level: 'INFO' })//记录所有访问级别的日志
-const httpErrorLogger = log4js.getLogger("httpError")
+const httpError = log4js.getLogger("httpError")
 const appLog = log4js.getLogger("app.js");
 const db_sql = log4js.getLogger('db_sql');
-const db_err_sql = log4js.getLogger('db_err_sql');
 const auto = log4js.getLogger('auto');
 const serverStatus = log4js.getLogger("server");
 const debugLog = log4js.getLogger("debug");
@@ -71,4 +64,4 @@ const debugLog = log4js.getLogger("debug");
 function sqlLog(sql) {
   db_sql.info(sql)
 }
-module.exports = { logger, httpLogger, httpErrorLogger, appLog, sqlLog, db_err_sql, auto, serverStatus, debugLog };
+module.exports = { logger, httpLogger, httpError, appLog, sqlLog, auto, serverStatus, debugLog };

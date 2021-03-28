@@ -4,13 +4,7 @@ const path = require('path');
 const basename = path.basename(__filename);
 const dbConfig = require('../config/db/sql')
 const modelsPath = path.join(__dirname, 'common')
-// const { db_err_sql } = require('../middleware/logger')
 const { Sequelize, DataTypes, Op } = require('sequelize');
-// Sequelize.prototype.query = function () {
-//   return originalQuery.apply(this, arguments).catch((err) => {
-//     db_err_sql(err) // log the error
-//   });
-// };
 /**
  * 连接到数据库的示例对象
  */

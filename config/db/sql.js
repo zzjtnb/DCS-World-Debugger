@@ -1,6 +1,8 @@
 const { sqlLog } = require('../../middleware/logger')
 const common = {
-  dialect: "mariadb", //指定要连接哪种类型的数据库
+  dialect: "mysql", //指定要连接哪种类型的数据库
+  host: 'localhost',//数据库主机
+  port: 3306,//数据库端口号
   charset: "utf8mb4",//字符集
   collate: "utf8mb4_general_ci",//排序规则
   timezone: '+08:00',   // 时区,sequelize有很多自动时间的方法，都是和时区相关的，记得设置成东8区（+08:00）
@@ -21,7 +23,7 @@ const common = {
     // 是否为表添加 createdAt 和 updatedAt 字段
     // createdAt 记录表的创建时间
     // updatedAt 记录字段更新时间
-    timestamps: false,
+    // timestamps: false,
     // createdAt: 'created_at',
     // updatedAt: 'updated_at',
     // 是否为表添加 deletedAt 字段
@@ -29,17 +31,21 @@ const common = {
     // 设置 paranoid 为 true 时，将会更新 deletedAt 字段，并不会真实删除数据。
     paranoid: false
   },
+  // 时间格式化
+  dialectOptions: {
+    dateStrings: true,
+    typeCast: true
+  },
   //如果选择log.logger.info,会有Cannot read property 'isLevelEnabled' of null的异常。
   // logging: sqlLog,
-  logging: (sql) => sqlLog(sql)
+  // 是否在日志中显示绑定参数
+  logQueryParameters: true,
+  logging: sqlLog
 }
 let dbOptions = {}
 const env = process.env.NODE_ENV;
-
 if (env === 'development') {
   const dev = {
-    host: 'localhost',//数据库主机
-    port: 3306,//数据库端口号
     username: 'root',//用户名
     password: 'root',//密码
     database: 'dcs world', //打开哪个数据库
@@ -48,8 +54,6 @@ if (env === 'development') {
 }
 if (env === 'production') {
   const prod = {
-    host: 'localhost',//数据库主机
-    port: 3306,//数据库端口号
     username: 'root',//用户名
     password: 'root',//密码
     database: 'dcs world', //打开哪个数据库

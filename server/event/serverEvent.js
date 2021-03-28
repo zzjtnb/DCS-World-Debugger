@@ -19,7 +19,7 @@ event.on('updateQQ', async (msg) => {
 //任务加载完毕
 event.on('UpdateMission', async (msg) => {
   const data = await json2string(msg.data);
-  server_info_model.create(data).catch((err) => { });
+  server_info_model.create(data, { logQueryParameters: false }).catch((err) => { });
 });
 
 //每一帧渲染的hook
@@ -34,16 +34,15 @@ event.on('onSimulationStart', (msg) => {
 event.on('onSimulationStop', (msg) => {
   // console.log(msg);
 })
+
 //玩家连接
 event.on('playerLogin', async (msg) => {
   if (!msg.data.ucid) return;
   const [user, created] = await user_info_model.findOrCreate({
     raw: true, where: { ucid: msg.data.ucid }, defaults: msg.data
   });
-  if (!created) {
-    const model = await user_info_model.update(msg.data, { raw: true, where: { ucid: msg.data.ucid } });
-    console.log(model);
-  }
+  if (created) return;
+  user_info_model.update(msg.data, { where: { ucid: msg.data.ucid } }).catch((err) => { });;
 });
 //改变角色
 event.on('change_slot', (msg) => {
