@@ -20,7 +20,7 @@ module.exports = {
       env_production: {
         NODE_ENV: 'production', //使用production模式 pm2 start ecosystem.config.js --env production
       },
-      instances: "max", //将应用程序分布在所有CPU核心上,可以是整数或负数,应用启动实例个数，仅在cluster模式有效 默认为fork；或者 max
+      // instances: "max", //将应用程序分布在所有CPU核心上,可以是整数或负数,应用启动实例个数，仅在cluster模式有效 默认为fork；或者 max
       exec_mode: "cluster",
       out_file: './logs/pm2/out.log', // 普通日志路径
       error_file: './logs/pm2/err.log', // 错误日志路径
