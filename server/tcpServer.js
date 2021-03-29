@@ -1,9 +1,8 @@
 //引入net模块
 const net = require("net");
-const path = require('path');
-const { TCPCONFIG } = require('../config/common')
-const { makedir, streamData } = require('../utils/fs');
+const { debug_mod } = require('../utils/debugmod');
 const event = require('../middleware/event');
+const { TCPCONFIG } = require('../config/common')
 const { serverStatus } = require('../middleware/logger');
 //创建TCP服务端
 const server = net.createServer(onClientConnection)
@@ -74,14 +73,3 @@ function onClientConnection(client) {
   });
 
 };
-function log(data) { console.log("TCP_Server-->" + data) }
-debug_mod = (result) => {
-  if (!result.event || !result.executionTime.os) return
-  makedir(path.join(process.cwd(), 'logs/json'))
-  const debug_dir = path.join(process.cwd(), `logs/json/${result.event}`)
-  const mksucess = makedir(debug_dir)
-  if (mksucess) {
-    const name = result.executionTime.os.replace(/:|-/g, '_')
-    streamData(`${path.join(debug_dir, name)}.json`, JSON.stringify(result) + '\n')
-  }
-}
