@@ -106,7 +106,7 @@ module.exports = sequelize => {
     createdAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      defaultValue: null,
+      defaultValue: DataTypes.NOW,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
@@ -115,7 +115,7 @@ module.exports = sequelize => {
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: true,
-      defaultValue: null,
+      defaultValue: DataTypes.NOW,
       primaryKey: false,
       autoIncrement: false,
       comment: null,

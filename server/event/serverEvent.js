@@ -1,6 +1,6 @@
 const event = require('../../middleware/event');
-const { server_info_model, user_info_model } = require('../../models');
-const { json2string } = require('../../utils/jon2str');
+const gameEvent = require('../../controller/gameEvent')
+
 /**
  * 监听事件
  */
@@ -18,10 +18,28 @@ event.on('updateQQ', async (msg) => {
 });
 //任务加载完毕
 event.on('UpdateMission', async (msg) => {
-  const data = await json2string(msg.data);
-  server_info_model.create(data, { logQueryParameters: false }).catch((err) => { });
+  gameEvent.UpdateMission(msg)
 });
-
+event.on('UpdatePlayersData', async (msg) => {
+  gameEvent.UpdatePlayersData(msg)
+});
+let msg = {
+  "data": {
+    "data": {
+      "t": {
+        "ucid": "t",
+        "airfield_takeoffs": 1,
+      },
+      "a": {
+        "ucid": "a",
+        "airfield_takeoffs": 5,
+      }
+    },
+    "theatre": "Caucasus",
+    "count_players": 2
+  }
+}
+// gameEvent.UpdatePlayersData(msg)
 //每一帧渲染的hook
 event.on('onSimulationFrame', (msg) => {
   // console.log(msg);
@@ -42,7 +60,7 @@ event.on('playerLogin', async (msg) => {
     raw: true, where: { ucid: msg.data.ucid }, defaults: msg.data
   });
   if (created) return;
-  user_info_model.update(msg.data, { where: { ucid: msg.data.ucid } }).catch((err) => { });;
+  user_info_model.update(msg.data, { where: { ucid: msg.data.ucid } }).catch((err) => { });
 });
 //改变角色
 event.on('change_slot', (msg) => {

@@ -40,11 +40,11 @@ function onClientConnection(client) {
       const result = JSON.parse(data.replace('exit', ''))
       if (!result) return
       switch (result.type) {
-        case 'serverData':
+        case 'ServerData':
           debug_mod(result)
           event.emit(result.event, result)
           break;
-        case 'serverStatus':
+        case 'ServerStatus':
           event.emit(result.type, result)
           break;
         default:
