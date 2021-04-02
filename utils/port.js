@@ -24,7 +24,7 @@ function probe(port, callback) {
   })
   server.on('error', function (err) {
     clearTimeout(timeoutRef)
-    const result = true
+    let result = true
     if (err.code === 'EADDRINUSE')
       result = false
     if (!calledOnce) {

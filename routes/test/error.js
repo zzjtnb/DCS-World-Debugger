@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const err = require('../controller/error')
+const err = require('../../controller/error')
 /* GET users listing. */
 router.get('/', err.index);
 router.get('/1', err.cuntom1);
