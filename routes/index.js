@@ -10,6 +10,8 @@ router.use(function (req, res, next) {
 })
 const fileRoutes = require('./file');
 const testRoutes = require('./test');
+const apiRoutes = require('./api');
 router.use('/file', fileRoutes);
 router.use('/test', testRoutes);
+router.use('/api/v1', apiRoutes);
 module.exports = router

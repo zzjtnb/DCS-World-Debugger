@@ -41,7 +41,7 @@ function onClientConnection(client) {
       if (!result) return
       switch (result.type) {
         case 'ServerData':
-          debug_mod(result)
+          // debug_mod(result)
           event.emit(result.event, result)
           break;
         case 'ServerStatus':
