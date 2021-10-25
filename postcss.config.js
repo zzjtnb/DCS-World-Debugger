@@ -1,16 +1,12 @@
-// npm install tailwindcss postcss-cli postcss autoprefixer cssnano @fullhuman/postcss-purgecss
-const purgecss = require('@fullhuman/postcss-purgecss')
-const cssnano = require('cssnano')
+// npm install tailwindcss postcss-cli postcss @fullhuman/postcss-purgecss
+const purgecss = require('@fullhuman/postcss-purgecss');
 module.exports = {
   plugins: [
     require('tailwindcss'),
-    require('autoprefixer'),
-    cssnano({
-      preset: 'default'
-    }),
+
     purgecss({
       content: ['./views/**/*.ejs'],
-      defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
-    })
-  ]
-}
+      defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+    }),
+  ],
+};

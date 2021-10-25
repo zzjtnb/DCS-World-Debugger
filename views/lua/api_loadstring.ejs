@@ -26,7 +26,7 @@
                 </div>
                 <div class="flex items-center justify-center m-2">
                   <button type="button" class="bg-blue-500 button button--primary is-round focus:outline-none"
-                    onclick="sendLua()">
+                    onclick="sendLua('api_loadstring')">
                     <span>发送</span>
                   </button>
                   <button type="button" class="bg-red-600	 button button--primary is-round focus:outline-none"
@@ -43,7 +43,7 @@
               </div>
             </div>
             <div class="result">
-              <pre><code  id='dcsValue'></code></pre>
+              <pre><code id='dcsValue' class="language-json"></code></pre>
             </div>
           </main>
       </div>
@@ -51,55 +51,10 @@
   </div>
 </body>
 
-<script src="/javascripts/highlight.min.js"></script>
-<script src="/javascripts/common.js"></script>
 
 <script>
-  let socket = io("http://localhost:3000");
-  let textarea = 'return net.get_player_list()'
-  document.querySelector("#textarea").value = textarea;
-  // 发送消息
-  function sendMessage(event, data) {
-    socket.open(); // 开始连接socket
-    socket.emit(event, data);
-  };
-  function sendLua() {
-    let luaValue = document.querySelector("#textarea").value
-    if (luaValue) {
-      let luaStr = {
-        type: 'api_loadstring',
-        content: luaValue
-      };
-      this.sendMessage('debuggerLua', luaStr);
-      socket.on('api_loadstring', (data) => {
-        let element = document.querySelector('.status');
-        let statusValue = document.querySelector('.statusValue');
-        document.querySelector('#dcsValue').innerHTML = JSON.stringify(data.data)
-        document.querySelectorAll('pre code').forEach((block) => {
-          hljs.highlightBlock(block);
-        });
-        if (data.status) {
-          removeClass(element, 'bg-red-500');
-          addClass(element, 'bg-green-500');
-          statusValue.innerHTML = "执行成功,时间:" + data.executionTime.os;
-        } else {
-          addClass(element, 'bg-red-500')
-          removeClass(element, 'bg-green-500')
-          statusValue.innerHTML = "执行失败,时间:" + data.times
-        }
-      });
-    } else {
-      let element = document.querySelector('#toast');
-      removeClass(element, 'hidden')
-    }
-  }
-  function clearLua() {
-    document.querySelector("#textarea").value = ''
-    let parent = document.querySelector("#dcsValue")
-    while (parent.firstChild) {
-      parent.removeChild(parent.firstChild);
-    }
-  }
+  document.querySelector('#textarea').value = 'return net.get_player_list()'
+
 </script>
 
 </html>

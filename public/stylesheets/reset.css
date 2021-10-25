@@ -30,11 +30,11 @@ body {
   width: 100%;
   font-size: inherit;
   color: #606266;
-  background-color: #FFF;
+  background-color: #fff;
   background-image: none;
-  border: 1px solid #DCDFE6;
+  border: 1px solid #dcdfe6;
   border-radius: 4px;
-  transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+  transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
   min-height: 54px;
   height: 201px;
 }
@@ -48,13 +48,13 @@ textarea {
   white-space: nowrap;
   text-align: center;
   outline: 0;
-  transition: .1s;
+  transition: 0.1s;
   font-weight: 500;
   font-size: 14px;
   border-radius: 20px;
   padding: 12px 23px;
-  color: #FFF;
-  border-color: #409EFF;
+  color: #fff;
+  border-color: #409eff;
 }
 
 #dcsValue {
@@ -62,6 +62,10 @@ textarea {
   word-break: break-all;
   background: #333;
   padding: 0.5em;
+  margin: 20px 60px 120px 60px;
   display: block;
   overflow-x: auto;
+  box-shadow: rgb(0 0 0 / 10%) 0px 10px 50px;
+  box-shadow: rgb(204 219 232) 3px 3px 6px 0px inset, rgb(255 255 255 / 50%) -3px -3px 6px 1px inset;
+  box-shadow: rgb(17 17 26 / 10%) 0px 4px 16px, rgb(17 17 26 / 5%) 0px 8px 32px;
 }

@@ -66,7 +66,7 @@
                   </div>
                   <div class="flex items-center justify-center m-2">
                     <button type="button" class="bg-blue-500 button button--primary is-round focus:outline-none"
-                      onclick="sendLua()">
+                      onclick="sendLua('net_dostring')">
                       <span>发送</span>
                     </button>
                     <button type="button" class="bg-red-600	 button button--primary is-round focus:outline-none"
@@ -75,14 +75,6 @@
                     </button>
                   </div>
                   <div class="flex justify-center flex-col ">
-                    <!-- <button type="submit" class="bg-blue-500 button button--primary is-round block focus:outline-none "
-onclick="sendLua()">
-<span>发送</span>
-</button>
-<button type="reset" class="bg-purple-600 button button--primary is-round block my-2 focus:outline-none"
-onclick="clearLua()">
-<span>清空</span>
-</button> -->
                     <button
                       class="bg-red-500 bg-green-500 button button--primary is-round status cursor-not-allowed block focus:outline-none font-black text-lg leading-4">
                       <span class="statusValue">执行状态</span>
@@ -92,76 +84,50 @@ onclick="clearLua()">
               </div>
             </div>
             <div class="result">
-              <pre><code  id='dcsValue'></code></pre>
+              <pre><code id='dcsValue' class="language-json"></code></pre>
             </div>
           </main>
       </div>
       <%- include('../common/toast',{user: '顶顶顶' }); -%>
   </div>
 </body>
-<script src="/javascripts/common.js"></script>
-<script src="/javascripts/highlight.min.js"></script>
 
 <script>
-  let socket = io("http://localhost:3000");
-  let textarea =
-    "local JSON = require('JSON')\nlocal res = {}\nres.name = {}\nres.id = {}\nfor i, tb in pairs(world.getAirbases()) do\nres.id[i] = Object.getName(tb)\nres.name[i] = tb:getName()\nend\nreturn JSON:encode(res)";
+
   document.querySelector("#textarea").value = textarea;
-  // 发送消息
-  function sendMessage(event, data) {
-    socket.open(); // 开始连接socket
-    socket.emit(event, data);
-  };
-
+  let myselect = document.querySelector('.state');
+  gradeChange(localStorage.getItem('grade') || 0)
   function gradeChange(params) {
-    let myselect = document.querySelector(".state");
-    let index = myselect.selectedIndex;
-    document.querySelector(".setting").innerHTML = myselect.options[index].text
-  }
-
-  function sendLua() {
-    let luaValue = document.querySelector("#textarea").value
-    if (luaValue) {
-      // let str = luaValue.replace(/\r{0,}\n/g, ' ');
-      let myselect = document.querySelector(".state");
-      let index = myselect.selectedIndex; // selectedIndex代表的是你所选中项的index
-      let luaStr = {
-        type: 'net_dostring',
-        env: myselect.options[index].text,
-        content: luaValue
-      };
-      this.sendMessage('debuggerLua', luaStr);
-      socket.on('net_dostring', (data) => {
-        let element = document.querySelector('.status');
-        let statusValue = document.querySelector('.statusValue');
-        document.querySelector('#dcsValue').innerHTML = JSON.stringify(data.data)
-        document.querySelectorAll('pre code').forEach((block) => {
-          hljs.highlightBlock(block);
-        });
-
-        if (data.status) {
-          removeClass(element, 'bg-red-500');
-          addClass(element, 'bg-green-500');
-          statusValue.innerHTML = "执行成功,时间:" + data.executionTime.os;
-        } else {
-          addClass(element, 'bg-red-500')
-          removeClass(element, 'bg-green-500')
-          statusValue.innerHTML = "执行失败,时间:" + data.times
-        }
-      });
-    } else {
-      // alert("请输入内容")
-      let element = document.querySelector('#toast');
-      removeClass(element, 'hidden')
+    let myselect = document.querySelector('.state');
+    let index = params || myselect.selectedIndex;
+    if (params) {
+      myselect.options[index].selected = true;
     }
-  }
-
-  function clearLua() {
-    document.querySelector("#textarea").value = ''
-    let parent = document.querySelector("#dcsValue")
-    while (parent.firstChild) {
-      parent.removeChild(parent.firstChild);
+    localStorage.setItem('grade', index);
+    const text = myselect.options[index].text
+    document.querySelector('.setting').innerHTML = text;
+    switch (text) {
+      case 'server':
+        textarea = `local JSON = require('JSON')\nlocal res = {}\nres.name = {}\nres.id = {}\nfor i, tb in pairs(world.getAirbases()) do\nres.id[i] = Object.getName(tb)\nres.name[i] = tb:getName()\nend\nreturn JSON:encode(res)`
+        break;
+      case 'mission':
+        textarea = `trigger.action.outText('加载成功-- > mission', 10 , false)`
+        break;
+      case 'net':
+        textarea = `local keys = {}\n for k, v in pairs(_G) do\nkeys[#keys + 1] = k\n end\n return keys\n`
+        break;
+      case 'export':
+        textarea = `local t = LoGetModelTime()\nlocal name = LoGetPilotName()\nlocal altBar = LoGetAltitudeAboveSeaLevel()\nlocal altRad = LoGetAltitudeAboveGroundLevel()\nlocal pitch, bank, yaw = LoGetADIPitchBankYaw()\n return string.format('t = %.2f, name = %s, altBar = %.2f, alrRad = %.2f, pitch = %.2f, bank = %.2f, yaw = %.2f\\n', t, name, altRad, altBar, pitch, bank, yaw)\n`
+        break;
+      case 'config':
+        textarea = `local JSON = loadfile('Scripts/JSON.lua')()\nlocal keys = {}\n for k, v in pairs(_G) do\n     table.insert(keys, k)\n end\n print(keys)\nreturn JSON:encode(keys)`
+        break;
+      default:
+        textarea = ''
+        break;
     }
+
+    document.querySelector("#textarea").value = textarea;
   }
 </script>
 
