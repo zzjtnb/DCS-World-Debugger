@@ -71,13 +71,13 @@ initNode().then(async () => {
     // console.log('出生', event);
   });
   addEventHandler(EVENTS.EventShot, (event) => {
-    console.log('EventShot', event);
+    // console.log('EventShot', event);
   });
 });
 // Create the Socket IO server on
 // the top of http server
 const io = socketio(server);
-function socketInit(server) {
+function socketInit(server, showSentLuaCode) {
   // 监听connect事件;
   io.on('connection', (socket) => {
     // this callback will be executed for all the socket connections.
@@ -85,7 +85,9 @@ function socketInit(server) {
     socket.removeAllListeners(); //一定要先移除原来的事件，否则会有重复的监听器
     // console.log(socket.id, '有连接');
     socket.on('debuggerLua', async (data) => {
-      console.log(data);
+      if (showSentLuaCode) {
+        console.log(data);
+      }
       let res = null;
       switch (data.type) {
         case 'api_loadstring':

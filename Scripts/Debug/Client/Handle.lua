@@ -38,6 +38,7 @@ function Client.handleDebug(request)
     id = request.id,
     type = request.type,
     payload = {
+      luacode = request.payload.content,
       status = status,
       result = result
     }

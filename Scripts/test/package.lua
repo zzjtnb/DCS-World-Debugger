@@ -65,7 +65,7 @@ Formeat(tab)
 -- local net = require('netview')
 -- net.start()
 
-function value2string(val)
+local function value2string(val)
   local t = type(val)
   if t == 'number' or t == 'boolean' then
     return tostring(val)
@@ -82,7 +82,7 @@ function value2string(val)
   end
 end
 
-function value2code(val)
+local function value2code(val)
   return 'return ' .. value2string(val)
 end
 

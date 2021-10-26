@@ -1,11 +1,7 @@
 LoadLua = LoadLua or {}
 LoadLua.do_step = false
-
 LoadLua.callbacks = LoadLua.callbacks or {}
 
-if DCS and DCS.isServer() then
-  LoadLua.isServer = DCS.isServer()
-end
 --------------------------------    定义Debugger的callbacks  --------------------------------
 -- this is where the netview is initiated
 -- 这是启动 net view 的地方
@@ -93,15 +89,10 @@ end
 
 function LoadLua.callbacks.onSimulationStop()
   local code = [[Tools.net.udp_send_msg({type = 'ServerStatus', payload = {msg = '游戏界面已停止'}})]]
-
   Tools.a_do_script(code)
   net.log('API CONTROL SERVER TERMINATED')
 end
 
-if LoadLua.isServer then
-  --设置用户callbacs,使用上面定义的功能映射DCS事件处理程序
-  DCS.setUserCallbacks(LoadLua.callbacks)
-  Tools.net.log('[Debug]-->当前环境为Server环境')
-else
-  Tools.net.log('[Debug]-->当前环境为Mission环境')
-end
+--设置用户callbacs,使用上面定义的功能映射DCS事件处理程序
+DCS.setUserCallbacks(LoadLua.callbacks)
+net.log('Hooks UserCallbacks 加载完成')
