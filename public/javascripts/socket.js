@@ -20,7 +20,7 @@ function sendLua(type, displayMsg) {
   if (luaValue) {
     let luaStr = {
       type: type,
-      content: luaValue,
+      content: luaValue.replace(/\n/g, ' '),
     };
     if (displayMsg) {
       console.log(luaValue);
@@ -44,10 +44,16 @@ function clearLua() {
   }
 }
 function interee(data) {
+  console.log(data);
   let element = document.querySelector('.status');
   let statusValue = document.querySelector('.statusValue');
   data.payload.result = formatJSONIndnt(data.payload.result) || '执行成功';
-  document.querySelector('#dcsValue').innerHTML = data.payload.result;
+
+  if (!data.payload.status) {
+    data.payload.luacode = data.payload.luacode.replace(/\n/g, '\\n');
+    data.payload.result = `执行语句:${data.payload.luacode}\n错误原因:${data.payload.result}`;
+  }
+  document.querySelector('#dcsValue').innerHTML = `${data.payload.result}`;
   document.querySelectorAll('pre code').forEach((el) => {
     hljs.highlightElement(el);
   });

@@ -1,21 +1,21 @@
 net.dostring_in('server', 'trigger.action.outText("加载成功-->server", 5, false)')
-net.log(net.lua2json(net.get_all_clients()))
+net.log(net.lua2json(net))
 -- local status, tacview = pcall(require, 'JSON')
 
 -- local JSON = require('JSON')
 -- local JSON = loadfile('Scripts/JSON.lua')()
--- local keys = {}
--- for k, v in pairs(_G) do
---   keys[#keys + 1] = k
--- end
--- local res = JSON:encode(keys)
--- net.log(res)
--- return res
-
-dofile('F:/Office/GitHub/DCS_World_Debugger/test/mist_4_4_90.lua')
-do
-  mist.debug.dump_G('_G_Dump_V1.lua')
+local JSON = dofile('Scripts/JSON.lua')
+local keys = {}
+for k, v in pairs(_G) do
+  keys[#keys + 1] = k
 end
+local res = JSON:encode(keys)
+net.log(res)
+
+-- dofile('F:/Office/GitHub/DCS_World_Debugger/test/mist_4_4_90.lua')
+-- do
+--   mist.debug.dump_G('_G_Dump_V1.lua')
+-- end
 
 -- table MissionCommands .addCommand( string name , table/nil path , function functionToRun , any anyArgument )
 -- local displayRequests = missionCommands.addSubMenu('显示请求')

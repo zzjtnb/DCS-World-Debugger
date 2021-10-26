@@ -18,8 +18,8 @@ world.addEventHandler(Mission.eventHandler)
 env.info('Mission EventHandler 加载完成')
 
 DebugLua = {}
-DebugLua.path = lfs.writedir() .. 'Scripts\\debug.lua'
-DebugLua.customPath = 'C:\\Users\\Administrator\\Desktop\\DCS\\debug.lua'
+DebugLua.path = 'F:\\Office\\GitHub\\DCS_World_Debugger\\test\\test.lua'
+DebugLua.customPath = lfs.writedir() .. 'Scripts\\debug.lua'
 function DebugLua.Load(arg)
   if arg then
     DebugLua.path = arg

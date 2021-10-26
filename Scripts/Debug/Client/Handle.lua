@@ -38,11 +38,13 @@ function Client.handleDebug(request)
     id = request.id,
     type = request.type,
     payload = {
-      luacode = request.payload.content,
       status = status,
       result = result
     }
   }
+  if not status then
+    response.payload.luacode = request.payload.content
+  end
   Tools.net.udp_send_msg(response)
   -- Client.udpSend(response)
 end
