@@ -9,13 +9,21 @@ Tools.date = os.date('%Y-%m-%d %H:%M:%S')
 -- local fun_str = 'local keys = {} for k, v in pairs(_G) do  keys[#keys + 1] = k end return keys'
 -- local status, retval = Tools.dostring_api_env(fun_str)
 Tools.dostring_api_env = function(code)
-  local func, err = loadstring(code)
-  if func then
-    return func(), true
-  else
-    return err, false
-  end
+  local status, retval =
+    pcall(
+    function(code)
+      local func, err = loadstring(code)
+      if func then
+        return func(), true
+      else
+        return err, false
+      end
+    end,
+    code
+  )
+  return retval, status
 end
+
 Tools.a_do_script = function(code)
   code = [[a_do_script("]] .. code .. [[")]]
   local result, status = net.dostring_in('mission', code) -- res is a string

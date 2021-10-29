@@ -16,34 +16,3 @@ end
 
 world.addEventHandler(Mission.eventHandler)
 env.info('Mission EventHandler 加载完成')
-
-DebugLua = {}
-DebugLua.path = 'F:\\Office\\GitHub\\DCS_World_Debugger\\test\\test.lua'
-DebugLua.customPath = lfs.writedir() .. 'Scripts\\debug.lua'
-function DebugLua.Load(arg)
-  if arg then
-    DebugLua.path = arg
-  end
-  local status, error =
-    pcall(
-    function()
-      dofile(DebugLua.path)
-    end
-  )
-  if (not status) then
-    trigger.action.outText('脚本加载错误->%s' .. tostring(error), 10)
-  else
-    trigger.action.outText('脚本加载成功-->' .. tostring(DebugLua.path), 10)
-  end
-end
-DebugLua.loadScript = missionCommands.addSubMenu('加载脚本')
-missionCommands.addCommand('默认脚本', DebugLua.loadScript, DebugLua.Load)
-missionCommands.addCommand('自定义脚本', DebugLua.loadScript, DebugLua.Load, DebugLua.customPath)
-missionCommands.addCommand(
-  '说明',
-  DebugLua.loadScript,
-  function()
-    trigger.action.outText('默认脚本位于:\n' .. tostring(DebugLua.path), 15)
-    trigger.action.outText('自定义脚本位于:\n' .. tostring(DebugLua.customPath), 15)
-  end
-)
