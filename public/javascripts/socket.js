@@ -20,7 +20,7 @@ function sendLua(type, displayMsg) {
   if (luaValue) {
     let luaStr = {
       type: type,
-      content: luaValue.replace(/\n/g, ' '),
+      content: luaValue,
     };
     if (displayMsg) {
       console.log(luaValue);
