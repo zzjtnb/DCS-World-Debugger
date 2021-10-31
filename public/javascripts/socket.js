@@ -44,7 +44,6 @@ function clearLua() {
   }
 }
 function interee(data) {
-  console.log(data);
   let element = document.querySelector('.status');
   let statusValue = document.querySelector('.statusValue');
   data.payload.result = formatJSONIndnt(data.payload.result) || '执行成功';

@@ -29,21 +29,21 @@ Tools.a_do_script = function(code)
   local result, status = net.dostring_in('mission', code) -- res is a string
   if not status then
     local response = {type = 'ServerStatus', payload = {status = status, result = result}}
-    Tools.net.udp_send_msg(response)
+    Tools.net.tcp_send_msg(response)
   end
 end
 
 Tools.net.sendData = function(response, displayMsg)
-  if Client and Client.udpSend then
-    net.log('sendDataTo -->' .. Client.host .. ':' .. Client.clientPort)
-    if displayMsg then
-      net.log('sendData -->' .. response)
-    end
-    Client.udpSend(response)
-  else
-    net.log('服务器没启动->' .. response)
-    net.log(Client)
+  if TCP and TCP.client == nil then
+    TCP.creat_client()
   end
+  local ip, port = TCP.client:getsockname()
+  -- local ip, port = TCP.server:getsockname()
+  net.log('sendDataTo -->' .. tostring(ip) .. ':' .. tostring(port))
+  if displayMsg then
+    net.log('sendData -->' .. response)
+  end
+  TCP.send(response)
 end
 Tools.net.sendJSON = function(response, displayMsg)
   if type(response) == 'table' then
@@ -53,26 +53,14 @@ Tools.net.sendJSON = function(response, displayMsg)
   end
 end
 
----发送消息到UDP服务端
----@param response table 消息数据
----@param displayMsg boolean 是否打印 默认(false)不显示
-Tools.net.udp_send_msg = function(response, displayMsg)
+---发送消息到TCP服务端
+Tools.net.tcp_send_msg = function(response, displayMsg)
   response.executionTime = response.executionTime or {}
   response.executionTime = Tools.MergeTables(response.executionTime, Tools.getTimeStamp())
   Tools.net.sendJSON(response, displayMsg)
 end
 
-Tools.net.server_send_msg = function(data)
-  data.executionTime = Tools.net.getTimeStamp()
-  data = net.lua2json(data)
-  net.log('process_request --> ' .. data)
-  if Tools.server_client then
-    local bytes, status, lastbyte = Tools.server_client:send(data .. '\r\n')
-  -- net.log(bytes, status, lastbyte)
-  end
-end
-
-function Tools.net.log(message)
+Tools.net.log = function(message)
   if type(message) ~= 'table' then
     net.log(Tools.date .. ' [Tools] => ' .. message)
   else

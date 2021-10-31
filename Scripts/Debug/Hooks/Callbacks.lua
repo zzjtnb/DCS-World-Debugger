@@ -12,7 +12,7 @@ function LoadLua.callbacks.onNetConnect(localPlayerID)
   net.log('启动DCS API CONTROL服务器')
   local ip, port = LoadLua.server:getsockname()
   local msg = string.format('DCS API Server started on at %s:%s', ip, port)
-  local code = [[ Tools.net.udp_send_msg({type = 'ServerStatus', payload =]] .. net.lua2json({msg = msg}) .. [[ })]]
+  local code = [[ Tools.net.tcp_send_msg({type = 'ServerStatus', payload =]] .. net.lua2json({msg = msg}) .. [[ })]]
   Tools.a_do_script(code)
 
   --[[
@@ -40,7 +40,7 @@ end
 function LoadLua.callbacks.onNetDisconnect(reason_msg, err_code)
   net.log('onNetDisconnect-->网络已断开连接')
   local msg = string.format('DCS API Server stoped')
-  local code = [[ Tools.net.udp_send_msg({type = 'ServerStatus', payload =]] .. net.lua2json({msg = msg, reason_msg = reason_msg, err_code = err_code}) .. [[ })]]
+  local code = [[ Tools.net.tcp_send_msg({type = 'ServerStatus', payload =]] .. net.lua2json({msg = msg, reason_msg = reason_msg, err_code = err_code}) .. [[ })]]
   Tools.a_do_script(code)
 
   -- onSimulationFrame can't start step()
@@ -48,17 +48,17 @@ function LoadLua.callbacks.onNetDisconnect(reason_msg, err_code)
   LoadLua.do_step = false
 end
 function LoadLua.callbacks.onMissionLoadBegin()
-  local code = [[Tools.net.udp_send_msg({type = 'ServerStatus', payload = {msg = '开始加载任务...'}})]]
+  local code = [[Tools.net.tcp_send_msg({type = 'ServerStatus', payload = {msg = '开始加载任务...'}})]]
   Tools.a_do_script(code)
 end
 function LoadLua.callbacks.onMissionLoadEnd()
   LoadLua.mission_start_time = DCS.getRealTime() --需要防止CTD引起的C Lua的API上net.pause和net.resume
-  local code = [[Tools.net.udp_send_msg({type = 'ServerStatus', payload = {msg = '任务加载结束...'}})]]
+  local code = [[Tools.net.tcp_send_msg({type = 'ServerStatus', payload = {msg = '任务加载结束...'}})]]
   Tools.a_do_script(code)
 end
 function LoadLua.callbacks.onSimulationStart()
   if DCS.getRealTime() > 0 then
-    local code = [[Tools.net.udp_send_msg({type = 'ServerStatus', payload = {msg = '游戏界面开始运行,可以开始调试Lua脚本'}})]]
+    local code = [[Tools.net.tcp_send_msg({type = 'ServerStatus', payload = {msg = '游戏界面开始运行,可以开始调试Lua脚本'}})]]
     Tools.a_do_script(code)
   end
 end
@@ -89,7 +89,7 @@ function LoadLua.callbacks.onPlayerTrySendChat(playerID, msg, all)
 end
 
 function LoadLua.callbacks.onSimulationStop()
-  local code = [[Tools.net.udp_send_msg({type = 'ServerStatus', payload = {msg = '游戏界面已停止'}})]]
+  local code = [[Tools.net.tcp_send_msg({type = 'ServerStatus', payload = {msg = '游戏界面已停止'}})]]
   Tools.a_do_script(code)
   net.log('API CONTROL SERVER TERMINATED')
 end

@@ -6,20 +6,20 @@ const { isMesssage } = require('./types/message_types');
 const { mutate, mutationNames } = require('./store/mutation');
 
 const networkOnError = async (err) => {
-  const store = getStore();
-  const [server, networkSend] = await initNetwork(
-    store.config.ownPort,
-    store.config.distantPort,
-    networkOnError,
-    networkOnMessage,
-  );
-  mutate(mutationNames.SET_SERVER, { server });
-  mutate(mutationNames.SET_NETWORK_SEND, { networkSend });
+  // const store = getStore();
+  // const [server, networkSend] = await initNetwork(
+  //   store.config.ownPort,
+  //   store.config.distantPort,
+  //   networkOnError,
+  //   networkOnMessage,
+  // );
+  // mutate(mutationNames.SET_SERVER, { server });
+  // mutate(mutationNames.SET_NETWORK_SEND, { networkSend });
+  console.log(err);
   Logger.error('NODE server successfuly loaded after crashing');
 };
 
-const networkOnMessage = (msg, rinfo) => {
-  const data = JSON.parse(msg.toString());
+const networkOnMessage = (data, rinfo) => {
   if (data.type == 'ServerStatus') {
     return Logger.log(JSON.stringify(data.payload.msg));
   }

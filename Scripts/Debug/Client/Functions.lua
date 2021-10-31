@@ -1,8 +1,8 @@
--- Client FUNCTIONS --
+-- TCP FUNCTIONS --
 
-Client = Client or {}
+TCP = TCP or {}
 
-function Client.functions.getGroups(args)
+function TCP.functions.getGroups(args)
   local groups = {}
   local coalitionGroups = coalition.getGroups(args.coalitionId, args.groupCategory)
   for groupId, group in pairs(coalitionGroups) do
@@ -22,7 +22,7 @@ function Client.functions.getGroups(args)
   return groups
 end
 
-function Client.functions.getUnits(args)
+function TCP.functions.getUnits(args)
   local units = {}
   local group = Group.getByName(args.groupName)
   if not group:isExist() then
