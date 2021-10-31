@@ -1,8 +1,8 @@
 --
-Client = Client or {}
+TCP = TCP or {}
 
-function Client.handleFunction(request)
-  local result = Client.functions[request.payload.functionName](request.payload.args)
+function TCP.handleFunction(request)
+  local result = TCP.functions[request.payload.functionName](request.payload.args)
   if type(result) ~= 'table' then
     result = {}
   end
@@ -12,11 +12,11 @@ function Client.handleFunction(request)
     date = os.date('%Y-%m-%d %H:%M:%S'),
     payload = result
   }
-  -- Client.udpSend(response)
-  Tools.net.udp_send_msg(response)
+  -- TCP.udpSend(response)
+  Tools.net.tcp_send_msg(response)
 end
 
-function Client.handleDebug(request)
+function TCP.handleDebug(request)
   local result, status = nil, nil
   if request.type == 'api_loadstring' then
     result, status = Tools.dostring_api_env(request.payload.content)
@@ -45,19 +45,19 @@ function Client.handleDebug(request)
   if not status then
     response.payload.luacode = request.payload.content
   end
-  Tools.net.udp_send_msg(response)
-  -- Client.udpSend(response)
+  Tools.net.tcp_send_msg(response)
+  -- TCP.udpSend(response)
 end
 
-function Client.handle(request)
+function TCP.handle(request)
   if not request.id or not request.type or not request.payload then
     Tools.env.err('Received a unvalid request' .. request)
     return
   end
   if request.type == 'function' then
-    Client.handleFunction(request)
+    TCP.handleFunction(request)
   end
   if request.type == 'api_loadstring' or request.type == 'net_dostring' then
-    Client.handleDebug(request)
+    TCP.handleDebug(request)
   end
 end

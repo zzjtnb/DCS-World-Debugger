@@ -24,7 +24,7 @@ exports.sendMessage = (message) => {
     return;
   }
 
-  networkSend(JSON.stringify(message));
+  networkSend(JSON.stringify(message) + '\r\n');
   enqueue(message, getStore().sentMessages, (sentMessages) =>
     mutate(mutationNames.SET_SENT_MESSAGES, { sentMessages }),
   );
@@ -66,11 +66,3 @@ const messageHandlers = {
 exports.handleMessage = (message) => {
   messageHandlers[message.type](message);
 };
-
-// setInterval(() => {
-//   handleQueue(
-//     getStore().sentMessages,
-//     (sentMessages) => mutate(mutationNames.SET_SENT_MESSAGES, { sentMessages }),
-//     _this.sendMessage,
-//   );
-// }, 2000);
