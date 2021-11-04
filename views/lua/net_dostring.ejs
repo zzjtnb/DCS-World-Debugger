@@ -111,7 +111,7 @@
         textarea = `local JSON = require('JSON')\nlocal res = {}\nres.name = {}\nres.id = {}\nfor i, tb in pairs(world.getAirbases()) do\nres.id[i] = Object.getName(tb)\nres.name[i] = tb:getName()\nend\nreturn JSON:encode(res)`
         break;
       case 'mission':
-        textarea = `trigger.action.outText('加载成功-- > mission', 10 , false)`
+        textarea = `trigger.action.outText('加载成功(mission)', 10 , false)`
         break;
       case 'net':
         textarea = `local keys = {}\n for k, v in pairs(_G) do\nkeys[#keys + 1] = k\n end\n return keys\n`

@@ -1,4 +1,4 @@
-net.dostring_in('server', 'trigger.action.outText("加载成功-->server", 5, false)')
+net.dostring_in('server', 'trigger.action.outText("加载成功(server)", 5, false)')
 -- local status, tacview = pcall(require, 'JSON')
 -- local JSON = require('JSON')
 -- local JSON = loadfile('Scripts/JSON.lua')()
@@ -74,7 +74,7 @@ getZone('red_tanks')
 -- table MissionCommands .addCommand( string name , table/nil path , function functionToRun , any anyArgument )
 -- local displayRequests = missionCommands.addSubMenu('显示请求')
 -- function displayMsg(flyby)
---   trigger.action.outText('加载成功-->server' .. net.lua2json(flyby), 10, false)
+--   trigger.action.outText('加载成功(server)' .. net.lua2json(flyby), 10, false)
 -- end
 
 -- local negativeReply = missionCommands.addCommand('测试', displayRequests, displayMsg, {flyby = false})
