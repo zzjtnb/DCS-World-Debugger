@@ -69,9 +69,11 @@ function LoadLua.callbacks.onPlayerTrySendChat(playerID, msg, all)
     local status, error =
       pcall(
       function()
-        -- local path = lfs.writedir() .. 'Scripts/Test/Main.lua'
-        local path = 'F:\\Office\\GitHub\\DCS_World_Debugger\\test\\test.lua'
-        if val[2] then
+        -- local path = 'F:\\Office\\GitHub\\DCS_World_Debugger\\test\\test.lua'
+        local path = lfs.writedir() .. 'Scripts/Test/Main.lua'
+        if not val[2] then
+          net.send_chat_to('请输入文件路径,默认执行Scripts/Debug/Test/Main.lua', playerID)
+        else
           path = val[2]
         end
         dofile(path)
