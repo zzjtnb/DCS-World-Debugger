@@ -1,20 +1,15 @@
-const { Logger } = require('../utils/logo4');
-const { initNetwork } = require('./network');
-const { getStore } = require('./store/store');
-const { handleMessage } = require('./message');
-const { isMesssage } = require('./types/message_types');
-const { mutate, mutationNames } = require('./store/mutation');
+const {Logger} = require('../utils/logo4');
+const {initNetwork} = require('./network');
+const {getStore} = require('./store/store');
+const {handleMessage} = require('./message');
+const {isMesssage} = require('./types/message_types');
+const {mutate, mutationNames} = require('./store/mutation');
 
 const networkOnError = async (err) => {
-  // const store = getStore();
-  // const [server, networkSend] = await initNetwork(
-  //   store.config.ownPort,
-  //   store.config.distantPort,
-  //   networkOnError,
-  //   networkOnMessage,
-  // );
-  // mutate(mutationNames.SET_SERVER, { server });
-  // mutate(mutationNames.SET_NETWORK_SEND, { networkSend });
+  const store = getStore();
+  const [server, networkSend] = await initNetwork(store.config.ownPort, store.config.distantPort, networkOnError, networkOnMessage);
+  mutate(mutationNames.SET_SERVER, {server});
+  mutate(mutationNames.SET_NETWORK_SEND, {networkSend});
   console.log(err);
   Logger.error('NODE server successfuly loaded after crashing');
 };
@@ -40,13 +35,8 @@ exports.initNode = async (ownPort, distantPort) => {
     distantPort: distantPort || initialStateStore.config.distantPort,
   });
   const store = getStore();
-  const [server, networkSend] = await initNetwork(
-    store.config.ownPort,
-    store.config.distantPort,
-    networkOnError,
-    networkOnMessage,
-  );
-  mutate(mutationNames.SET_SERVER, { server });
-  mutate(mutationNames.SET_NETWORK_SEND, { networkSend });
+  const [server, networkSend] = await initNetwork(store.config.ownPort, store.config.distantPort, networkOnError, networkOnMessage);
+  mutate(mutationNames.SET_SERVER, {server});
+  mutate(mutationNames.SET_NETWORK_SEND, {networkSend});
   Logger.log(`NODE server successfuly loaded on port ${store.config.ownPort}`);
 };

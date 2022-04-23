@@ -1,8 +1,7 @@
 local status, error =
   pcall(
   function()
-    dofile(lfs.writedir() .. 'Scripts/Debug/Hooks/Main.lua')
-    dofile(lfs.writedir() .. 'Scripts/Debug/LoadMissionScript/Main.lua')
+    dofile(lfs.writedir() .. 'Scripts/Debug/Init.lua')
   end
 )
 if (not status) then

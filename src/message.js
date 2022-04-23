@@ -1,10 +1,10 @@
 const _this = this;
-const { v4 } = require('uuid');
-const { getStore } = require('./store/store');
-const { enqueue, removeFromQueue, handleQueue } = require('./queue');
-const { mutate, mutationNames } = require('./store/mutation');
-const { storeCallback, executeCallback } = require('./dispatch');
-const { handleEvent } = require('./dcs/event');
+const {v4} = require('uuid');
+const {getStore} = require('./store/store');
+const {enqueue, removeFromQueue, handleQueue} = require('./queue');
+const {mutate, mutationNames} = require('./store/mutation');
+const {storeCallback, executeCallback} = require('./dispatch');
+const {handleEvent} = require('./dcs/event');
 
 /** @internal */
 exports.createMessage = (type, payload, callback) => {
@@ -25,17 +25,13 @@ exports.sendMessage = (message) => {
   }
 
   networkSend(JSON.stringify(message) + '\r\n');
-  enqueue(message, getStore().sentMessages, (sentMessages) =>
-    mutate(mutationNames.SET_SENT_MESSAGES, { sentMessages }),
-  );
+  enqueue(message, getStore().sentMessages, (sentMessages) => mutate(mutationNames.SET_SENT_MESSAGES, {sentMessages}));
   // console.log('Sent', message);
 };
 
 const handleReceived = (message) => {
   // console.log('Received', message);
-  const queuedMessage = removeFromQueue(message, getStore().sentMessages, (sentMessages) =>
-    mutate(mutationNames.SET_SENT_MESSAGES, { sentMessages }),
-  );
+  const queuedMessage = removeFromQueue(message, getStore().sentMessages, (sentMessages) => mutate(mutationNames.SET_SENT_MESSAGES, {sentMessages}));
   if (!queuedMessage) {
     return;
   }

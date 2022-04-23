@@ -1,6 +1,6 @@
-const { v4 } = require('uuid');
-const { getStore } = require('./store/store');
-const { mutate, mutationNames } = require('./store/mutation');
+const {v4} = require('uuid');
+const {getStore} = require('./store/store');
+const {mutate, mutationNames} = require('./store/mutation');
 /** @internal */
 exports.executeCallback = (callbackId, args) => {
   if (!callbackId) {
@@ -14,7 +14,7 @@ exports.executeCallback = (callbackId, args) => {
   }
   callbacks.delete(callbackId);
   callback(args || {});
-  mutate(mutationNames.SET_CALLBACKS, { callbacks });
+  mutate(mutationNames.SET_CALLBACKS, {callbacks});
 };
 
 /** @internal */
@@ -25,6 +25,6 @@ exports.storeCallback = (callback) => {
   const callbackId = v4().toString();
   const callbacks = getStore().callbacks;
   callbacks.set(callbackId, callback);
-  mutate(mutationNames.SET_CALLBACKS, { callbacks });
+  mutate(mutationNames.SET_CALLBACKS, {callbacks});
   return callbackId;
 };

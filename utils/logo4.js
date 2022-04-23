@@ -73,9 +73,7 @@ log4js.addLayout('App', (logConfig) => {
         levelOutput = chalk.grey(levelOutput);
         break;
     }
-    return `${chalk.green(typeOutput)}${dateOutput}       ${chalk.yellow(
-      moduleOutput,
-    )}${levelOutput}${positionOutput}\n${chalk.green(messageList[1])}\n`;
+    return `${chalk.green(typeOutput)}${dateOutput}       ${chalk.yellow(moduleOutput)}${levelOutput}${positionOutput}\n${chalk.green(messageList[1])}\n`;
   };
 });
 log4js.configure(log4jsConfig.default);

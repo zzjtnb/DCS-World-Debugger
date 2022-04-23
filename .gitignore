@@ -1,6 +1,7 @@
 .vscode
 # Logs
 logs/
+.history
 # Dependency directories
 node_modules/
 models/README.md

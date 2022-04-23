@@ -1,5 +1,5 @@
 const _this = this;
-const { sendMessage, createMessage } = require('../message');
+const {sendMessage, createMessage} = require('../message');
 
 /**
  * Allows to retrieve informations about groups from a coalition
@@ -17,7 +17,7 @@ exports.getGroups = (coalitionId, groupCategory) => {
  * Allows to retrieve informations about units from a group
  * @param groupName The name of the group you want to retrieve the units from
  */
-exports.getUnits = (groupName) => _this.executeFunction('getUnits', { groupName });
+exports.getUnits = (groupName) => _this.executeFunction('getUnits', {groupName});
 
 /**
  * Allows to execute any function in the lua `node.function` table

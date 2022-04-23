@@ -67,6 +67,7 @@ function TCP.receive(args, time)
     local request, err = TCP.accept_client:receive()
 
     if not err then
+      net.log('TCP.receive: ' .. request)
       local success, decodedRequest =
         pcall(
         function()

@@ -1,7 +1,6 @@
-var _this = this;
 // import { Socket } from 'dgram';
 // import { store } from './store';
-const { store } = require('./store');
+const {store} = require('./store');
 // import { NetworkSend } from '../types/network_types';
 // import { Mutate } from '../types/store_types';
 // import { Message } from '../types/message_types';
@@ -21,19 +20,19 @@ const mutationNames = {
 };
 
 const mutations = {
-  [mutationNames.SET_CONFIG]: ({ ownPort, distantPort }) => (store.config = { ownPort, distantPort }),
-  [mutationNames.SET_SERVER]: ({ server }) => (store.server = server),
-  [mutationNames.SET_NETWORK_SEND]: ({ networkSend }) => (store.networkSend = networkSend),
-  [mutationNames.SET_SENT_MESSAGES]: ({ sentMessages }) => {
+  [mutationNames.SET_CONFIG]: ({ownPort, distantPort}) => (store.config = {ownPort, distantPort}),
+  [mutationNames.SET_SERVER]: ({server}) => (store.server = server),
+  [mutationNames.SET_NETWORK_SEND]: ({networkSend}) => (store.networkSend = networkSend),
+  [mutationNames.SET_SENT_MESSAGES]: ({sentMessages}) => {
     store.sentMessages = sentMessages;
   },
-  [mutationNames.SET_RECEIVED_MESSAGES]: ({ receivedMessages }) => {
+  [mutationNames.SET_RECEIVED_MESSAGES]: ({receivedMessages}) => {
     store.receivedMessages = receivedMessages;
   },
-  [mutationNames.SET_CALLBACKS]: ({ callbacks }) => {
+  [mutationNames.SET_CALLBACKS]: ({callbacks}) => {
     store.callbacks = callbacks;
   },
-  [mutationNames.SET_EVENT_HANDLERS]: ({ eventHandlers }) => {
+  [mutationNames.SET_EVENT_HANDLERS]: ({eventHandlers}) => {
     store.eventHandlers = eventHandlers;
   },
 };

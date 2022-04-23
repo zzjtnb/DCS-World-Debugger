@@ -13,11 +13,5 @@ exports.isMessageType = (input) =>
   _this.isMessageTypeApiLoadstring(input);
 
 exports.isMesssage = (data) => {
-  return (
-    typeof data === 'object' &&
-    data !== null &&
-    typeof data.id === 'string' &&
-    _this.isMessageType(data.type) &&
-    typeof data.payload === 'object'
-  );
+  return typeof data === 'object' && data !== null && typeof data.id === 'string' && _this.isMessageType(data.type) && typeof data.payload === 'object';
 };

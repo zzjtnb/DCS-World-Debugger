@@ -16,7 +16,7 @@ dofile('Scripts/ScriptingSystem.lua')
 
 -----------------------------------任务环境脚本-----------------------------------
 
-dofile(lfs.writedir() .. 'Scripts/Debug/Mission/Main.lua')
+dofile(lfs.writedir() .. 'Scripts/Debug/Mission/Init.lua')
 
 -----------------------------------清理任务脚本环境-----------------------------------
 

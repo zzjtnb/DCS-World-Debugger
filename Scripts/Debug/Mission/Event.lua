@@ -19,7 +19,8 @@ env.info('Mission EventHandler 加载完成')
 
 -- 加载调试脚本
 DebugLua = {}
-DebugLua.path = 'F:\\Office\\GitHub\\DCS_World_Debugger\\test\\test.lua'
+-- DebugLua.path = 'F:\\Office\\GitHub\\DCS_World_Debugger\\test\\test.lua'
+DebugLua.path = lfs.writedir() .. 'Scripts/Test/Main.lua'
 function DebugLua.Load(arg)
   local status, error =
     pcall(

@@ -65,4 +65,4 @@ else
   LoadMissionScript.error('无法打开 ' .. currentPath .. '用于读取,原因: ' .. tostring(err))
 end
 
-LoadMissionScript.info(lfs.writedir() .. 'Scripts/Debug/LoadMissionScript/Main.lua加载完成.')
+LoadMissionScript.info(lfs.writedir() .. 'Scripts/Debug/LoadMissionScript/Init.lua加载完成.')

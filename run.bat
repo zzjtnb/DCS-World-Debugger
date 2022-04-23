@@ -1,5 +1,5 @@
-@ECHO off 
-SETLOCAL EnableDelayedExpansion 
+@ECHO off
+SETLOCAL EnableDelayedExpansion
 TITLE DCS World Luaµ÷ÊÔÆ÷
 COLOR 0a
 CLS

@@ -1,6 +1,6 @@
-const { v4 } = require('uuid');
-const { getStore } = require('../store/store');
-const { mutate, mutationNames } = require('../store/mutation');
+const {v4} = require('uuid');
+const {getStore} = require('../store/store');
+const {mutate, mutationNames} = require('../store/mutation');
 
 exports.EVENTS = {
   EventBaseCaptured: 10,
@@ -64,7 +64,7 @@ exports.addEventHandler = (id, handler) => {
     eventHandlers[id] = new Map();
   }
   eventHandlers[id].set(handlerId, handler);
-  mutate(mutationNames.SET_EVENT_HANDLERS, { eventHandlers });
+  mutate(mutationNames.SET_EVENT_HANDLERS, {eventHandlers});
   return handlerId;
 };
 

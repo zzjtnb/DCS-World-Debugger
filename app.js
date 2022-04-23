@@ -1,13 +1,5 @@
-const {
-  initNode,
-  getGroups,
-  EVENTS,
-  COALITIONS,
-  addEventHandler,
-  api_loadstring,
-  net_dostring,
-} = require('./src/index');
-const { Logger } = require('./utils/logo4');
+const {initNode, getGroups, EVENTS, COALITIONS, addEventHandler, api_loadstring, net_dostring} = require('./src/index');
+const {Logger} = require('./utils/logo4');
 require('module-alias/register');
 const socketio = require('socket.io');
 const express = require('express');
@@ -20,7 +12,7 @@ app.set('view engine', 'ejs');
 
 // app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static(path.join(__dirname, 'public')));

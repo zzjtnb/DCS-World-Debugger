@@ -1,16 +1,15 @@
 @ECHO off
 ::SETLOCAL EnableDelayedExpansion
-TITLE  DCS World管理工具
+TITLE  DCS_Server管理工具
 COLOR 0a
 CLS
 set sweverPath="E:\Eagle Dynamics\DCS World OpenBeta\bin\DCS.exe"
-set title=Digital Combat Simulator
-set dir_path=DCS.openbeta
-set parameter= --webgui -w %dir_path%
-REM set parameter= --server --norender --webgui -w %dir_path%
+set title=DCS_Server
+REM set parameter= --webgui -w %title%
+set parameter= --server --norender --webgui -w %title%
 :MENU
 ECHO.
-ECHO.=====DCS World管理工具=====
+ECHO.=====DCS_Server管理工具=====
 ECHO.
 ECHO.  1  检查运行状态
 ECHO.
@@ -24,7 +23,7 @@ ECHO.  5  自动重启
 ECHO.
 ECHO.  0  退出
 ECHO.
-ECHO.=====DCS World管理工具=====
+ECHO.=====DCS_Server管理工具=====
 ECHO.
 set /p  ID=请输入选择项目的序号：
 ECHO.
@@ -38,10 +37,10 @@ IF  %errorlevel%==0  ECHO 输入有误,请重新输入
 GOTO MENU
 
 :checkDCS
-ECHO 正在检查DCS World运行状况
+ECHO 正在检查DCS_Server运行状况
 TASKLIST /FI "WINDOWTITLE eq %title%" 2>NUL | find /I /N "DCS.exe">NUL
 IF  %errorlevel%==0 (
-  ECHO DCS World已在运行
+  ECHO DCS_Server已在运行
   GOTO MENU
 )  ELSE (
   ECHO DCS未运行
@@ -51,7 +50,7 @@ IF  %errorlevel%==0 (
 :startDCS
 TASKLIST /FI "WINDOWTITLE eq %title%" 2>NUL | find /I /N "DCS.exe">NUL
 IF  %errorlevel%==0 (
-  ECHO DCS World已在运行
+  ECHO DCS_Server已在运行
   GOTO MENU
 )  ELSE (
   ECHO 正在启动请稍等...
@@ -62,14 +61,14 @@ IF  %errorlevel%==0 (
 
 :closeDCS
 TASKKILL /F /FI "WINDOWTITLE eq %title%"
-ECHO DCS World已结束
+ECHO DCS_Server已结束
 GOTO MENU
 
 :restartDCS
 TASKKILL /F /FI "WINDOWTITLE eq %title%"
 ECHO 正在重启请稍等...
 START "" %sweverPath%%parameter%
-ECHO DCS World已重启
+ECHO DCS_Server已重启
 GOTO MENU
 
 :autoRestart

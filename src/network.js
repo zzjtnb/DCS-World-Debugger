@@ -9,9 +9,24 @@ exports.initNetwork = (ownPort, distantPort, networkOnError, networkOnMessage) =
       new Promise((resolveSend, rejectSend) => {
         oldMessage = JSON.parse(message);
         //创建TCP客户端
-        const client = net.createConnection({ host: '127.0.0.1', port: distantPort });
+        const client = net.createConnection({host: '127.0.0.1', port: distantPort});
+        client.setTimeout(3000, () => {
+          networkOnMessage({
+            id: oldMessage.id,
+            type: oldMessage.type,
+            executionTime: {os: dayjs().format('YYYY-MM-DD HH:mm:ss')},
+            payload: {status: false, result: `发送消息失败 --> 连接超时`, luacode: oldMessage.payload.content},
+          });
+          rejectSend(`发送消息失败 --> 连接超时`);
+        });
         client.write(message, (err) => {
           if (err) {
+            networkOnMessage({
+              id: oldMessage.id,
+              type: oldMessage.type,
+              executionTime: {os: dayjs().format('YYYY-MM-DD HH:mm:ss')},
+              payload: {status: false, result: `发送消息失败 --> ${error}`, luacode: oldMessage.payload.content},
+            });
             rejectSend(`发送消息失败 --> ${error}`);
           }
           resolveSend();
@@ -20,8 +35,8 @@ exports.initNetwork = (ownPort, distantPort, networkOnError, networkOnMessage) =
           networkOnMessage({
             id: oldMessage.id,
             type: oldMessage.type,
-            executionTime: { os: dayjs().format('YYYY-MM-DD HH:mm:ss') },
-            payload: { status: false, result: `连接DCS World失败 --> ${error}`, luacode: oldMessage.payload.content },
+            executionTime: {os: dayjs().format('YYYY-MM-DD HH:mm:ss')},
+            payload: {status: false, result: `连接DCS World失败 --> ${error}`, luacode: oldMessage.payload.content},
           });
         });
       });
@@ -47,7 +62,7 @@ exports.initNetwork = (ownPort, distantPort, networkOnError, networkOnMessage) =
             networkOnMessage({
               id: oldMessage.id,
               type: oldMessage.type,
-              executionTime: { os: dayjs().format('YYYY-MM-DD HH:mm:ss') },
+              executionTime: {os: dayjs().format('YYYY-MM-DD HH:mm:ss')},
               payload: {
                 status: false,
                 result: `接收到错误的结果 --> ${error}`,

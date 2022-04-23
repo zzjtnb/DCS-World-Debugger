@@ -28,7 +28,7 @@ getLua = (file) => {
       fs.mkdirsSync(filePath);
       console.log('创建文件夹完成!');
 
-      const zip = new StreamZip({ file: item, storeEntries: true });
+      const zip = new StreamZip({file: item, storeEntries: true});
       zip.on('ready', () => {
         console.log('已读条目: ' + zip.entriesCount);
         // for (const entry of Object.values(zip.entries())) {

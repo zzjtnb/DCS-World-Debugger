@@ -12,9 +12,9 @@ TCP.isDev = false
 TCP.socket = require('socket')
 
 dofile(lfs.writedir() .. 'Scripts/Debug/Tools/utils.lua')
-dofile(lfs.writedir() .. 'Scripts/Debug/Client/TCP.lua')
-dofile(lfs.writedir() .. 'Scripts/Debug/Client/Handle.lua')
-dofile(lfs.writedir() .. 'Scripts/Debug/Client/Functions.lua')
+dofile(lfs.writedir() .. 'Scripts/Debug/Mission/Server/TCP.lua')
+dofile(lfs.writedir() .. 'Scripts/Debug/Mission/Server/Handle.lua')
+dofile(lfs.writedir() .. 'Scripts/Debug/Mission/Server/Functions.lua')
 
 Tools.setDevEnv(TCP.isDev)
 TCP.step()
