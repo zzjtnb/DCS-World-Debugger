@@ -18,6 +18,10 @@ const networkOnMessage = (data, rinfo) => {
   if (data.type == 'ServerStatus') {
     return Logger.log(JSON.stringify(data.payload.msg));
   }
+  if (data.type == 'ServerData') {
+    console.log(data);
+    return;
+  }
   if (!isMesssage(data)) {
     return Logger.error(`ERROR: received invalid message from ${rinfo.address}:${rinfo.port}`, data);
   }

@@ -3,19 +3,19 @@
 LoadMissionScript = LoadMissionScript or {}
 LoadMissionScript.error = function(msg)
   msg = tostring(msg)
-  local newMsg = '加载任务脚本 ERROR: ' .. msg
+  local newMsg = 'ERROR: 加载任务脚本 ' .. msg
   net.log(newMsg)
 end
 
 LoadMissionScript.warning = function(msg)
   msg = tostring(msg)
-  local newMsg = '加载任务脚本 WARNING: ' .. msg
+  local newMsg = 'WARNING: 加载任务脚本 ' .. msg
   net.log(newMsg)
 end
 
 LoadMissionScript.info = function(msg)
   msg = tostring(msg)
-  local newMsg = '加载任务脚本 INFO: ' .. msg
+  local newMsg = 'INFO: 加载任务脚本 ' .. msg
   net.log(newMsg)
 end
 LoadMissionScript.info('初始化:正在加载...')

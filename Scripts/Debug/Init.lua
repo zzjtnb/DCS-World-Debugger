@@ -6,7 +6,7 @@ local status, error =
   end
 )
 if (not status) then
-  net.log(string.format('ERROR: Debug 加载出错:%s', error))
+  Tools.net.err(string.format('Debug 加载出错:%s', error))
 else
-  net.log('INFO: Debug 加载完成')
+  Tools.net.info('Debug 加载完成')
 end

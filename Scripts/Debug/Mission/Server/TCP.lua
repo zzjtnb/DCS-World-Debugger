@@ -1,4 +1,4 @@
-TCP = TCP or {}
+-- TCP --
 
 function TCP.creat_client()
   TCP.client = TCP.socket.try(TCP.socket.connect(TCP.host, TCP.distantPort)) -- connect to the listener socket
@@ -20,7 +20,7 @@ function TCP.send(payload)
   if type(payload) == 'table' then
     payload = net.lua2json(payload)
   end
-  -- net.log(net.lua2json({sent = payload}))
+  -- Tools.net.info(net.lua2json({sent = payload}))
   if (payload) then
     local MAX_PAYLOAD_SIZE = 8192
     payload = TCP.slice(payload, MAX_PAYLOAD_SIZE)
@@ -67,7 +67,7 @@ function TCP.receive(args, time)
     local request, err = TCP.accept_client:receive()
 
     if not err then
-      net.log('TCP.receive: ' .. request)
+      Tools.net.info('TCP.receive: ' .. request)
       local success, decodedRequest =
         pcall(
         function()

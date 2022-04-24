@@ -1,5 +1,4 @@
---
-TCP = TCP or {}
+-- TCP HANDLEFUNCTION --
 
 function TCP.handleFunction(request)
   local result = TCP.functions[request.payload.functionName](request.payload.args)

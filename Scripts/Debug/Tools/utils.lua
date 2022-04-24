@@ -4,6 +4,20 @@ Tools.env = Tools.env or {}
 Tools.date = os.date('%Y-%m-%d %H:%M:%S')
 
 ------------------------------------------- Tools.net -------------------------------------------
+Tools.net.info = function(message)
+  if type(message) ~= 'table' then
+    net.log('INFO: ' .. Tools.date .. ' [Tools] => ' .. message)
+  else
+    net.log('INFO: ' .. Tools.date .. ' [Tools] Table => ', net.lua2json(message))
+  end
+end
+Tools.net.err = function(message)
+  if type(message) ~= 'table' then
+    net.log('ERROR: ' .. Tools.date .. ' [Tools] => ' .. message)
+  else
+    net.log('ERROR: ' .. Tools.date .. ' [Tools] Table => ', net.lua2json(message))
+  end
+end
 
 -- 执行脚本
 -- local fun_str = 'local keys = {} for k, v in pairs(_G) do  keys[#keys + 1] = k end return keys'
@@ -27,21 +41,35 @@ end
 Tools.a_do_script = function(code)
   code = [[a_do_script("]] .. code .. [[")]]
   local result, status = net.dostring_in('mission', code) -- res is a string
+  Tools.net.info('执行代码:' .. code)
   if not status then
-    local response = {type = 'ServerStatus', payload = {status = status, result = result}}
+    Tools.net.err('执行错误:', result, status)
+  end
+end
+
+Tools.dostring_in = function(code)
+  code = [[a_do_script("]] .. code .. [[")]]
+  local result, status = net.dostring_in('mission', code) -- res is a string
+  if not status then
+    local response = {type = 'a_do_script', payload = {status = status, result = result}}
     Tools.net.tcp_send_msg(response)
   end
 end
 
 Tools.net.sendData = function(response, displayMsg)
-  if TCP and TCP.client == nil then
+  if not TCP then
+    Tools.net.err('sendData -->发送失败,TCP服务端未启动')
+    Tools.net.info(response)
+    return
+  end
+  if TCP.client == nil then
     TCP.creat_client()
   end
   local ip, port = TCP.client:getsockname()
   -- local ip, port = TCP.server:getsockname()
-  net.log('sendDataTo -->' .. tostring(ip) .. ':' .. tostring(port))
+  Tools.net.info('sendDataTo -->' .. tostring(ip) .. ':' .. tostring(port))
   if displayMsg then
-    net.log('sendData -->' .. response)
+    Tools.net.info('sendData -->' .. response)
   end
   TCP.send(response)
 end
@@ -60,12 +88,21 @@ Tools.net.tcp_send_msg = function(response, displayMsg)
   Tools.net.sendJSON(response, displayMsg)
 end
 
-Tools.net.log = function(message)
-  if type(message) ~= 'table' then
-    net.log(Tools.date .. ' [Tools] => ' .. message)
-  else
-    net.log(Tools.date .. ' [Tools] Table => ' .. net.lua2json(message))
-  end
+---发送消息到TCP服务端
+---@param msg table 消息数据
+---@param displayMsg any 是否打印
+Tools.net.client_send_msg = function(msg, displayMsg)
+  msg.executionTime = msg.executionTime or {}
+  msg.executionTime = Tools.MergeTables(msg.executionTime, Tools.net.getTimeStamp())
+  Tools.net.sendJSON(msg, displayMsg)
+end
+Tools.net.getTimeStamp = function()
+  local _TempData = {
+    os = os.date('%Y-%m-%d %H:%M:%S'),
+    real = DCS.getRealTime(),
+    model = DCS.getModelTime()
+  }
+  return _TempData
 end
 
 ------------------------------------------- Tools JSON -------------------------------------------
@@ -116,10 +153,10 @@ end
 
 function Tools.env.err(message)
   if type(message) ~= 'table' then
-    env.error(Tools.date .. ' [Tools] ERROR => ' .. message)
+    env.error(Tools.date .. ' [Tools] => ' .. message)
     return
   end
-  env.error(Tools.date .. ' [Tools] ERROR Table => ' .. Tools.encode(message))
+  env.error(Tools.date .. ' [Tools]Table => ' .. Tools.encode(message))
 end
 ------------------------------------------- Tools JSON -------------------------------------------
 
@@ -158,10 +195,10 @@ Tools.attrdir = function(rootpath)
       --如果是是目录，就递归调用，否则就写入文件
       if attr.mode ~= 'directory' then
         -- local postfix = Tools.getExtension(entry)
-        -- net.log(filename .. '\t' .. attr.mode .. '\t' .. postfix)
+        -- Tools.net.info(filename .. '\t' .. attr.mode .. '\t' .. postfix)
         Tools.attrdir(path)
       else
-        net.log(path)
+        Tools.net.info(path)
       end
     end
   end
@@ -251,12 +288,12 @@ Tools.split_by_space = function(str)
   return arr
 end
 
--- Lua类型转字符串
+-- Lua类型转字符串包裹key
 --@usage 处理前:{first = 'red', 'blue', third = 'green', 'yellow'}
 --@usage 处理后:{[1]="blue",[2]="yellow",["first"]="red",["third"]="green"}
 ---@param val string 需要处理的 "boolean"|"function"|"nil"|"number"|"string"
 ---@return string 处理后的字符串
-function Tools.value2string(val)
+function Tools.table2tring_pack(val)
   local t = type(val)
   if t == 'number' or t == 'boolean' then
     return tostring(val)
@@ -264,7 +301,7 @@ function Tools.value2string(val)
     local str = ''
     local k, v
     for k, v in pairs(val) do
-      str = str .. '[' .. Tools.value2string(k) .. ']=' .. Tools.value2string(v) .. ','
+      str = str .. '[' .. Tools.table2tring_pack(k) .. ']=' .. Tools.table2tring_pack(v) .. ','
     end
     str = string.sub(str, 0, #str - 1)
     return '{' .. str .. '}'
@@ -273,15 +310,12 @@ function Tools.value2string(val)
   end
 end
 
-function Tools.value2code(val)
-  return 'return ' .. Tools.value2string(val)
-end
--- Lua类型转JSON字符串
+-- Lua类型转字符串不包裹key
 --@usage 处理前:{first = 'red', 'blue', third = 'green', 'yellow'}
---@usage 处理后:{[1]:"blue",[2]:"yellow",["first"]:"red",["third"]="green"}
+--@usage 处理后:{1="blue",2="yellow",first="red",third="green"}
 ---@param val string 需要处理的 "boolean"|"function"|"nil"|"number"|"string"
 ---@return string 处理后的字符串
-function Tools.value2json(val)
+function Tools.table2tring(val)
   local t = type(val)
   if t == 'number' or t == 'boolean' then
     return tostring(val)
@@ -289,7 +323,32 @@ function Tools.value2json(val)
     local str = ''
     local k, v
     for k, v in pairs(val) do
-      str = str .. '[' .. Tools.value2json(k) .. ']:' .. Tools.value2json(v) .. ','
+      str = str .. k .. '=' .. Tools.table2tring(v) .. ','
+    end
+    str = string.sub(str, 0, #str - 1)
+    return '{' .. str .. '}'
+  else
+    return string.format('%q', tostring(val))
+  end
+end
+function Tools.table2code(val)
+  return 'return ' .. Tools.table2tring(val)
+end
+
+-- Lua类型转JSON字符串
+--@usage 处理前:{first = 'red', 'blue', third = 'green', 'yellow'}
+--@usage 处理后:{[1]:"blue",[2]:"yellow",["first"]:"red",["third"]="green"}
+---@param val string 需要处理的 "boolean"|"function"|"nil"|"number"|"string"
+---@return string 处理后的字符串
+function Tools.table2json(val)
+  local t = type(val)
+  if t == 'number' or t == 'boolean' then
+    return tostring(val)
+  elseif t == 'table' then
+    local str = ''
+    local k, v
+    for k, v in pairs(val) do
+      str = str .. '[' .. Tools.table2json(k) .. ']:' .. Tools.table2json(v) .. ','
     end
     str = string.sub(str, 0, #str - 1)
     return '{' .. str .. '}'
@@ -300,5 +359,5 @@ end
 
 -- local color = {first = 'red', 'blue', third = 'green', 'yellow'}
 -- local color = Tools.split_by_space(' hello world ')
--- local res = Tools.value2string(color)
+-- local res = Tools.table2tring(color)
 -- print(res)

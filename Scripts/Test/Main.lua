@@ -6,6 +6,19 @@ net.dostring_in('server', 'trigger.action.outText("加载成功(server)", 5, fal
 -- net.log(net.lua2json(_G))
 net.log('-------------调试结束-----------------')
 
+-- net.dostring_in('mission', 'missionCommands.removeItem({[1] = "加载脚本"})')
+
+-- local result = {type = 'ServerData', event = 'aa', data = {a = 1, b = 2, c = 3}, executionTime = {dcs_current_frame_delay = 10}}
+-- Tools.net.tcp_send_msg({type = 'ServerData', event = 'aa', data = {a = 1, b = 2, c = 3}, executionTime = {dcs_current_frame_delay = 10}})
+
+-- Tools.net.tcp_send_msg({ executionTime = {dcs_current_frame_delay = 18416.500000001},type = 'ServerData',event = 'LogChat',data = {datetime = '2022-04-24 21:27:59', player = '服里最帅的人', ucid = '438dcc14ab7e0354d0c7a8da5d058c43', msg = 'debug', missionhash = '【NP2.0 PVP动态战役】古达乌塔vs库塔伊西V10.0.8@3.0.0@20220424_212300', all = -1}})
+
+-- Tools.net.tcp_send_msg({type = 'ServerStatus', payload = {msg = '游戏界面开始运行,可以开始调试Lua脚本'}})
+
+-- a_do_script("Tools.net.tcp_send_msg({type = 'ServerStatus', payload = {msg = '游戏界面开始运行,可以开始调试Lua脚本'}})")
+
+-- Tools.net.tcp_send_msg({"executionTime":{"dcs_current_frame_delay":14218.599999992},"type":"ServerData","event":"LogChat","data":{"datetime":"2022-04-24 19:58:02","player":"服里最帅的人","ucid":"438dcc14ab7e0354d0c7a8da5d058c43","msg":"dsf","missionhash":"【NP2.0 PVP动态战役】古达乌塔vs库塔伊西V10.0.8@3.0.0@20220424_195634","all":-1}})
+
 -- local loadScriptPath = lfs.writedir() .. 'Scripts/Debug/Test'
 -- Tools.attrdir(loadScriptPath)
 

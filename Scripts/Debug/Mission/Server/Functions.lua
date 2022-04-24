@@ -1,14 +1,12 @@
 -- TCP FUNCTIONS --
 
-TCP = TCP or {}
-
 function TCP.functions.getGroups(args)
   local groups = {}
   local coalitionGroups = coalition.getGroups(args.coalitionId, args.groupCategory)
   for groupId, group in pairs(coalitionGroups) do
     local groupInfo = {}
     if not group:isExist() then
-      Tools.net.log({'Group does not exist: ', group})
+      Tools.net.info({'Group does not exist: ', group})
       return
     end
     groupInfo.id = groupId
@@ -26,7 +24,7 @@ function TCP.functions.getUnits(args)
   local units = {}
   local group = Group.getByName(args.groupName)
   if not group:isExist() then
-    Tools.net.log({'Group does not exist: ', group})
+    Tools.net.info({'Group does not exist: ', group})
     return
   end
   local units = {}
