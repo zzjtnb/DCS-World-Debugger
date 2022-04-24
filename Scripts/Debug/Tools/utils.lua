@@ -1,6 +1,6 @@
 Tools = Tools or {}
-Tools.net = {}
-Tools.env = {}
+Tools.net = Tools.net or {}
+Tools.env = Tools.env or {}
 Tools.date = os.date('%Y-%m-%d %H:%M:%S')
 
 ------------------------------------------- Tools.net -------------------------------------------

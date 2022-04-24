@@ -1,5 +1,5 @@
 Mission = Mission or {}
-Mission.eventHandler = {}
+Mission.eventHandler = Mission.eventHandler or {}
 
 function Mission.eventHandler.onEvent(handler, event)
   local status, error =

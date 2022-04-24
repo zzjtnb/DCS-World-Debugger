@@ -5,7 +5,7 @@ local status, error =
   end
 )
 if (not status) then
-  net.log(string.format('Hooks 加载出错:%s', error))
+  net.log(string.format('ERROR: Hooks 加载出错:%s', error))
 else
-  net.log('Hooks 加载完成')
+  net.log('INFO: debug Hooks 加载完成')
 end
