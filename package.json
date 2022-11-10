@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.3",
-    "chalk": "^4.1.2",
+    "chalk": "^5.0.0",
     "cross-env": "^7.0.3",
     "dayjs": "^1.10.7",
     "ejs": "^3.1.6",
