@@ -38,6 +38,6 @@
   },
   "devDependencies": {
     "postcss": "^8.3.11",
-    "postcss-cli": "^9.0.1"
+    "postcss-cli": "^10.0.0"
   }
 }
