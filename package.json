@@ -34,7 +34,7 @@
     "socket.io": "^4.3.1",
     "stacktrace-js": "^2.0.2",
     "tailwindcss": "^2.2.17",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "postcss": "^8.3.11",
