@@ -1,6 +1,6 @@
 # This is a DCS World Lua script debugger based on Node.js
 
-![](./packages/client/public/images/preview1.png)
+![](./packages/client/public/images/preview.png)
 ## Frist
 
 move DCS/Scripts folder: (depending on the DCS World version you have installed..)
