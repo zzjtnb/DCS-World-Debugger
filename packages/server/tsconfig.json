@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "newLine": "lf",
+    "outDir": "dist",
+    "strict": true,
+    "skipLibCheck": true,
+    "declaration": true, // 是否生成声明文件
+    "declarationDir": "dist/type", // 声明文件打包的位置
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@types",
+      "./types"
+    ]
+  }
+}

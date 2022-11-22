@@ -1,0 +1,7 @@
+xpcall(function()
+  dofile(lfs.writedir() .. 'Scripts/Debug/Tools/utils.lua')
+  dofile(lfs.writedir() .. 'Scripts/Debug/Callbacks/LoadLua.lua')
+end, function(err)
+  local info = debug.traceback()
+  net.log('Debug Callbacks 加载出错:', err, info)
+end)

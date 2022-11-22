@@ -1,29 +1,32 @@
 # This is a DCS World Lua script debugger based on Node.js
 
-# Frist
+## Frist
 
-move Scripet folder: (depending on the DCS World version you have installed..)
-* `c:\Users\{Your username}\Saved Games\DCS.openbeta\`
-* `c:\Users\{Your username}\Saved Games\DCS\`
+move DCS/Scripts folder: (depending on the DCS World version you have installed..)
+
+* `%USERPROFILE%/Saved Games/DCS.openbeta/`
+* `%USERPROFILE%/Saved Games/DCS/`
+
 or if you have both, choose one or both DCS versions to install script;
 
-# Second step
+## Second step
 
 **Install nodejs**
 [Node.js下载链接](https://nodejs.org/zh-cn/)|[Node.js Download link](https://nodejs.org/en/)
 
 _Skip if already installed Nodejs_
 
-# third step
+## third step
 
 double-click run.bat or cmd into the current directory execute the following command
 
 ```bash
-npm install
-npm run dev
+npm  -g i pnpm
+pnpm i
+pnpm dev
 ```
 
-# fourth step
+## fourth step
 
 Run Your DCS World Server
 

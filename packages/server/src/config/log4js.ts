@@ -1,0 +1,108 @@
+import path from 'path'
+const baseLogPath = path.resolve('logs') // 日志要写入哪个目录
+
+const log4jsConfig = {
+  appenders: {
+    out: {
+      type: 'stdout',
+      layout: {
+        type: 'App',
+      },
+    },
+    access: {
+      type: 'dateFile',
+      filename: `${baseLogPath}/http/access/access.log`,
+      alwaysIncludePattern: true,
+      pattern: 'yyyyMMdd',
+      daysToKeep: 60,
+      numBackups: 3,
+      category: 'http',
+      keepFileExt: true,
+    },
+    access_error: {
+      type: 'dateFile',
+      filename: `${baseLogPath}/error/access/error.log`,
+      alwaysIncludePattern: true,
+      pattern: 'yyyyMMdd',
+      daysToKeep: 60,
+      numBackups: 3,
+      category: 'http',
+      keepFileExt: true,
+    },
+    response: {
+      type: 'dateFile',
+      filename: `${baseLogPath}/http/response/response.log`,
+      alwaysIncludePattern: true,
+      pattern: 'yyyyMMdd',
+      daysToKeep: 60,
+      numBackups: 3,
+      category: 'http',
+      keepFileExt: true,
+    },
+    response_error: {
+      type: 'dateFile',
+      filename: `${baseLogPath}/error/response/response.log`,
+      alwaysIncludePattern: true,
+      pattern: 'yyyyMMdd',
+      daysToKeep: 60,
+      numBackups: 3,
+      category: 'http',
+      keepFileExt: true,
+    },
+    app: {
+      type: 'dateFile',
+      filename: `${baseLogPath}/app/app.log`,
+      alwaysIncludePattern: true,
+      layout: {
+        type: 'pattern',
+        pattern: '["%d"] [%p] %c("pid":"%z") - %m ',
+      },
+      pattern: 'yyyyMMdd',
+      daysToKeep: 60,
+      maxLogSize: 10485760,
+      numBackups: 3,
+      keepFileExt: true,
+    },
+    sqlFile: {
+      type: 'dateFile',
+      filename: `${baseLogPath}/sql/sql.log`,
+      alwaysIncludePattern: true,
+      pattern: 'yyyyMMdd',
+      daysToKeep: 60,
+      numBackups: 3,
+      keepFileExt: true,
+    },
+    errorFile: {
+      type: 'dateFile',
+      filename: `${baseLogPath}/error/system/error.log`,
+      alwaysIncludePattern: true,
+      layout: {
+        type: 'pattern',
+        pattern: '{"date":"%d","level":"%p","category":"%c","host":"%h","pid":"%z","data":\'%m\'}',
+      },
+      pattern: 'yyyyMMdd',
+      daysToKeep: 60,
+      maxLogSize: 10485760,
+      numBackups: 3,
+      keepFileExt: true,
+    },
+    errors: {
+      type: 'logLevelFilter',
+      level: 'ERROR',
+      appender: 'errorFile',
+    },
+  },
+  categories: {
+    default: { appenders: ['out'], level: 'trace' },
+    access: { appenders: ['access'], level: 'DEBUG' },
+    response: { appenders: ['response'], level: 'DEBUG' },
+    access_error: { appenders: ['access_error'], level: 'error' },
+    response_error: { appenders: ['response_error'], level: 'error' },
+    error: { appenders: ['errorFile'], level: 'error' },
+    app: { appenders: ['app', 'out'], level: 'info' },
+    // sql: { appenders: ['sqlFile'], level: 'DEBUG' },
+  },
+  pm2: true,
+  pm2InstanceVar: 'INSTANCE_ID',
+}
+export default log4jsConfig

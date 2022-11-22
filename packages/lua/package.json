@@ -1,0 +1,19 @@
+{
+  "name": "lua",
+  "version": "0.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "keywords": [],
+  "main": "src/main.ts",
+  "scripts": {
+    "dev": "tstl --watch"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+
+    "typescript-to-lua": "^1.11.0"
+  }
+}

@@ -1,0 +1,7 @@
+@import "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;700&display=swap";
+
+/* layer: default */
+
+.font-mono {
+  font-family: "Fira Code", monospace;
+}
