@@ -7,7 +7,7 @@
   "keywords": [],
   "main": "src/main.ts",
   "scripts": {
-    "dev": "tstl --watch"
+    "tstl": "tstl --watch"
   },
   "dependencies": {
 
