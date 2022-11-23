@@ -1,3 +1,5 @@
+_G['DEBUG_DEV'] = true
+
 local status, error = pcall(function()
   dofile(lfs.writedir() .. 'Scripts/Debug/Init.lua')
 end)

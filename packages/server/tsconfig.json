@@ -11,12 +11,11 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
     "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
+    "types": [
+      "node"
+    ],
     "typeRoots": [
       "node_modules/@types",
       "./types"

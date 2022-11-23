@@ -19,8 +19,20 @@ LoadMissionScript.info = function(msg)
 end
 LoadMissionScript.info('初始化:正在加载...')
 
+LoadMissionScript.getPath = function()
+  local filePath = lfs.writedir() .. 'Scripts/Debug/LoadMissionScript/'
+  if (_G['DEBUG_DEV']) then
+    filePath = filePath .. 'MissionScripting.lua'
+  else
+    filePath = filePath .. 'Original Files/MissionScripting.lua'
+  end
+  return filePath
+
+end
+
+local writePath = LoadMissionScript.getPath()
+
 local currentPath = lfs.currentdir() .. 'Scripts/MissionScripting.lua'
-local writePath = lfs.writedir() .. 'Scripts/Debug/LoadMissionScript/MissionScripting.lua'
 
 -- 加载任务环境脚本
 local curMSf, err = io.open(currentPath, 'r')
