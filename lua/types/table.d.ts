@@ -3,7 +3,7 @@ declare namespace table {
   /**
    * @noSelf
    */
-  export function insert(table: object, item: any): number;
+  export function insert(table: object, item: any): number
 }
 // main.ts
 // table.insert({}, 1);

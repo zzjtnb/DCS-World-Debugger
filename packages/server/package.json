@@ -7,8 +7,7 @@
   "keywords": [],
   "main": "src/app.ts",
   "scripts": {
-    "dev": "nodemon --exec ts-node --files src/app.ts",
-    "tstl": "tstl --watch"
+    "dev": "nodemon --exec ts-node --files src/app.ts"
   },
   "dependencies": {
     "chalk": "4.1.2",

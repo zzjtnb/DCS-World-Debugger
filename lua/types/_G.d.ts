@@ -7,7 +7,7 @@
  * A global variable (not a function) that holds a string containing the
  * current interpreter version.
  */
-declare const _VERSION: number;
+declare const _VERSION: number
 
 /**
  * Receives any number of arguments, and prints their values to stdout, using the
@@ -16,4 +16,4 @@ declare const _VERSION: number;
  * debugging. For formatted output, use string.format.
  * @param args Arguments to print
  */
-declare function print(...args: any[]): void;
+declare function print(...args: any[]): void

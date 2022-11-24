@@ -13,6 +13,7 @@ import presetWebFonts from '@unocss/preset-web-fonts'
 // http://localhost:3000/__unocss
 // https://tailwindcomponents.com
 // https://icones.js.org
+// https://fontawesome.com
 export default defineConfig({
   shortcuts: [],
   presets: [

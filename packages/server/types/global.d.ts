@@ -1,1 +1,1 @@
-type anyObj={ [key: string]: any }
+interface anyObj { [key: string]: any }

@@ -9,11 +9,8 @@
   "scripts": {
     "tstl": "tstl --watch"
   },
-  "dependencies": {
-
-  },
+  "dependencies": {},
   "devDependencies": {
-
     "typescript-to-lua": "^1.11.0"
   }
 }

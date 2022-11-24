@@ -15,6 +15,6 @@ interface Message {
   id: string
   type: MessageType
   payload: { [key: string]: any }
-  sent: number,
+  sent: number
   callbackId: string | undefined
 }

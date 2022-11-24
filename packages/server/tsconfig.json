@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
+    "moduleResolution": "node",
     "newLine": "lf",
     "outDir": "dist",
     "strict": true,
@@ -9,16 +10,22 @@
     "declaration": true, // 是否生成声明文件
     "declarationDir": "dist/type", // 声明文件打包的位置
     "esModuleInterop": true,
+    // 允许对不包含默认导出的模块使用默认导入.这个选项不会影响生成的代码,只会影响类型检查
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
+    "allowJs": false,
     "baseUrl": ".",
+    "typeRoots": [
+      "types",
+      "node_modules/@types"
+    ],
     "types": [
       "node"
-    ],
-    "typeRoots": [
-      "node_modules/@types",
-      "./types"
     ]
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "types/**/*.d.ts"
+  ]
 }
