@@ -1,6 +1,7 @@
 # This is a DCS World Lua script debugger based on Node.js
 
 ![](./packages/client/public/images/preview.png)
+
 ## Frist
 
 move DCS/Scripts folder: (depending on the DCS World version you have installed..)
@@ -36,3 +37,9 @@ Run Your DCS World Server
 Finally the browser open [http://localhost:3000](http://localhost:3000) start enjoying
 
 [DCS_World_Debugger Github Address](https://github.com/zzjtnb/DCS_World_Debugger)
+
+```bash
+netstat -ano|findstr "6666"
+# TCP    127.0.0.1:6666         0.0.0.0:0              LISTENING       8404
+taskkill -PID 8404 -F
+```

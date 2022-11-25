@@ -2,7 +2,6 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
-  const NIcon: typeof import('naive-ui')['NIcon']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const alertType: typeof import('../src/hooks/lua')['alertType']
   const computed: typeof import('vue')['computed']

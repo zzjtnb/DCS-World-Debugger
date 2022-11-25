@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 该文件在commit的时候触发
+
+#修复sourcetree提交代码husky报
+# PATH=$PATH:/usr/local/bin:/usr/local/sbin
+
+# pnpm lint
+
+# 根据 lintstagedrc.js 配置格式化并提交代码
+pnpm lint:lint-staged
+
+# 终止命令，用来测试钩子
+# exit 1 #++

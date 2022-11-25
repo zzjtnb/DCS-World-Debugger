@@ -3,8 +3,8 @@ module.exports = {
   // 需要忽略的文件
   ignoreFiles: [''],
   rules: {
-    "no-empty-source":null,
-    "selector-pseudo-class-no-unknown":null,
-    "selector-class-pattern":null
+    'no-empty-source': null,
+    'selector-pseudo-class-no-unknown': null,
+    'selector-class-pattern': null,
   },
 }
