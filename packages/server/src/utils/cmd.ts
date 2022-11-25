@@ -19,4 +19,4 @@ export const killPort = (port: number) => {
     })
   })
 }
-// killPort(6666)
+// killPort(3000)

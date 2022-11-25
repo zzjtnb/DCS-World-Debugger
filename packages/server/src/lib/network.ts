@@ -184,6 +184,7 @@ export const initNetwork = (
         if (err.code === 'EADDRINUSE') {
           Logger.log(`${ownPort}端口正被使用,请重启服务`)
           killPort(ownPort)
+          killPort(3000)
           // 关闭服务
           server.close()
         }
