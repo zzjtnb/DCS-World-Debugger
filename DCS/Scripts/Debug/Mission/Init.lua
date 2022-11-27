@@ -1,5 +1,5 @@
 xpcall(function()
-  dofile(lfs.writedir() .. 'Scripts/Debug/Server/Init.lua')
+  dofile(lfs.writedir() .. 'Scripts/Debug/Socket/Init.lua')
   dofile(lfs.writedir() .. 'Scripts/Debug/Mission/Event.lua')
 end, function(err)
   local info = debug.traceback()

@@ -1,6 +1,10 @@
 import { socketInit } from './utils/socket'
 import { EVENTS, addEventHandler, initNode } from './lib'
 
+/**
+ * from https://github.com/Ked57/NIOD-core
+ * I transformed it into a TCP communication protocol
+ */
 initNode().then(async () => {
   // Log information on all the groups in the blue coalition
   // console.log(await getGroups(COALITIONS.BLUE));

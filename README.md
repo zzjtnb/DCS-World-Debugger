@@ -36,7 +36,12 @@ Run Your DCS World Server
 
 Finally the browser open [http://localhost:3000](http://localhost:3000) start enjoying
 
-[DCS_World_Debugger Github Address](https://github.com/zzjtnb/DCS_World_Debugger)
+## Notice
+It will automatically replace `Scripts/MissionScripting.lua` in the game installation directory.
+Setting `_G['DEBUG_RESET'] = false` under `DCS/Scripts/Hooks/debug.lua` will revert to the default.
+If the nodejs service is not running or to clear the debug, set `_G['DEBUG_RESET'] = true`.
+
+[DCS-World-Debugger Github Address](https://github.com/zzjtnb/DCS-World-Debugger)
 
 ```bash
 netstat -ano|findstr "6666"

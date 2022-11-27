@@ -9,14 +9,12 @@ import IconsResolver from 'unplugin-icons/resolver'
 // 自动导入
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 import viteCompression from 'vite-plugin-compression'
 import legacy from '@vitejs/plugin-legacy'
 
 import Inspect from 'vite-plugin-inspect'
-
 import UnoCSS from 'unocss/vite'
 
 // https://vitejs.dev/config/
@@ -54,8 +52,8 @@ export default defineConfig({
       defaultClass: '',
     }),
     AutoImport({
+      vueTemplate: true,
       resolvers: [
-        NaiveUiResolver(),
         IconsResolver(),
       ],
       imports: [
@@ -64,6 +62,15 @@ export default defineConfig({
         'vue-router',
         'pinia',
         {
+          'naive-ui': [
+            'useDialog',
+            'useMessage',
+            'useNotification',
+            'useLoadingBar',
+            'darkTheme',
+            'NIcon',
+
+          ],
           '@vueuse/core': [
             // named imports
             'useVModel', // import { useVModel } from '@vueuse/core',

@@ -4,7 +4,7 @@
 
 <template>
   <n-layout :native-scrollbar="false">
-    <n-layout-header px-20 mb-2>
+    <n-layout-header>
       <Header />
     </n-layout-header>
     <n-layout-content>

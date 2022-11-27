@@ -42,12 +42,19 @@ function LoadLua.callbacks.onNetDisconnect(reason_msg, err_code)
   LoadLua.dostring_in(data)
 end
 
+-- --- world.addEventHandler尚未执行
 -- --- TCP服务尚未运行
 -- function LoadLua.callbacks.onMissionLoadBegin()
 --   local data = '开始加载任务...'
---   dostring(data)
+--   if _G['DEBUG_DEV'] then
+--     local code = "DEBUG_DEV=true"
+--     -- result is a string
+--     local result, status = net.dostring_in('mission', code)
+--     net.log(data, result, status)
+--   end
 -- end
 
+-- --- world.addEventHandler已经执行
 -- function LoadLua.callbacks.onMissionLoadEnd()
 --   -- 需要防止CTD引起的C Lua的API上net.pause和net.resume
 --   LoadLua.mission_start_time = DCS.getRealTime()

@@ -1,6 +1,7 @@
 import IconFaHome from '~icons/fa6-solid/house-chimney'
 import IconFaCode from '~icons/fa6-solid/code'
 import IconFaDebug from '~icons/fa6-solid/bug'
+import IconFaFile from '~icons/fa6-solid/file'
 import Layout from '@/layout/Index.vue'
 
 const routes = [
@@ -27,6 +28,12 @@ const routes = [
         name: 'loadstring',
         meta: { title: 'loadstring', icon: IconFaDebug },
         component: () => import('@/views/lua/Debug.vue'),
+      },
+      {
+        path: '/mission',
+        name: 'mission',
+        meta: { title: 'mission', icon: IconFaFile },
+        component: () => import('@/views/Mission.vue'),
       },
     ],
   },

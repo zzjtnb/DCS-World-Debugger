@@ -11,7 +11,9 @@
     // "strictNullChecks":false,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "typeRoots": [
       "node_modules/@types",
@@ -19,8 +21,8 @@
     ],
     "types": [
       "node",
-      "vite/client"
-
+      "vite/client",
+      "naive-ui/volar"
     ]
   },
   "references": [

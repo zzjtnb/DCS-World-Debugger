@@ -10,6 +10,8 @@ package.path = package.path .. path .. '/Scripts/?/?.lua'
 package.path = package.path .. path .. '/Scripts/?/init.lua'
 
 package.path = package.path .. path .. '/Config/?.lua'
+package.path = package.path .. path .. '/LuaSerializer/?.lua'
+package.path = package.path .. path .. '/MissionEditor/modules/?.lua'
 
 package.path = package.path .. path .. '/LuaSocket/?.lua'
 -- -- 二.package.cpath 这个路径被 [require] 在 C 加载器中做搜索时用到。

@@ -7,16 +7,23 @@ local socket = require('socket')
 TCP = TCP or {}
 
 function TCP.creat_client()
-  -- connect to the listener socket
-  TCP.client = socket.try(socket.connect(TCP.host, TCP.distantPort))
-  -- 设置超时
-  TCP.client:settimeout(0)
-
-  TCP.client:setoption('keepalive', true)
-  TCP.client:setoption('reuseaddr', true)
-  -- set immediate transmission mode
-  TCP.client:setoption('tcp-nodelay', true)
-
+  local status, error = pcall(function()
+    -- connect to the listener socket
+    TCP.client = socket.try(socket.connect(TCP.host, TCP.distantPort))
+  end)
+  --[[
+    -- false	table: 0000025C17FA8AD0	nil	哈哈哈
+    net.log(status, error, TCP.client, '哈哈哈')
+  ]]
+  if status then
+    -- 设置超时
+    TCP.client:settimeout(0)
+    TCP.client:setoption('keepalive', true)
+    TCP.client:setoption('reuseaddr', true)
+    -- set immediate transmission mode
+    TCP.client:setoption('tcp-nodelay', true)
+  end
+  return status, error
 end
 
 function TCP.creat_server()
@@ -50,12 +57,18 @@ end
 ---@param payload string
 function TCP.send(payload)
   if not TCP then
-    return net.log('sendData -->发送失败,TCP服务端未启动', payload)
+    return net.log('sendData -->发送失败,Lua TCP尚未加载', payload)
   end
-  TCP.creat_client()
+  local status = TCP.creat_client()
+  if not status then
+    Tools.net.error("sendData -->连接服务器失败")
+    return
+  end
   -- find out which port the OS chose for us
   local ip, port = TCP.client:getsockname()
-  net.log('sendDataTo -->' .. tostring(ip) .. ':' .. tostring(port))
+  if TCP.isDev then
+    net.log('sendDataTo -->' .. tostring(ip) .. ':' .. tostring(port))
+  end
   payload = Tools.value2string(payload)
   if (payload) then
     payload = Tools.stringSlice2Table(payload, TCP.MAX_PAYLOAD_SIZE)

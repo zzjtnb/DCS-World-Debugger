@@ -54,7 +54,7 @@ list.forEach((item) => {
 </script>
 
 <template>
-  <n-menu mode="horizontal" :options="menuOptions" />
+  <n-menu mode="horizontal" :options="menuOptions" px-20 mb-2 />
 </template>
 
 <style lang="scss" scoped>

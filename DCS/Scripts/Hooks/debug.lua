@@ -1,4 +1,5 @@
-_G['DEBUG_DEV'] = true
+-- 是否重置MissionScripting.lua
+_G['DEBUG_RESET'] = false
 
 local status, error = pcall(function()
   dofile(lfs.writedir() .. 'Scripts/Debug/Init.lua')

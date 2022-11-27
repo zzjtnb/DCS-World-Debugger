@@ -21,13 +21,13 @@ LoadMissionScript.info('初始化:正在加载...')
 
 LoadMissionScript.getPath = function()
   local filePath = lfs.writedir() .. 'Scripts/Debug/LoadMissionScript/'
-  if (_G['DEBUG_DEV']) then
-    filePath = filePath .. 'MissionScripting.lua'
-  else
+  if (_G['DEBUG_RESET']) then
     filePath = filePath .. 'Original Files/MissionScripting.lua'
+
+  else
+    filePath = filePath .. 'MissionScripting.lua'
   end
   return filePath
-
 end
 
 local writePath = LoadMissionScript.getPath()
