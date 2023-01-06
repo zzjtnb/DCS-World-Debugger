@@ -6,10 +6,12 @@ import dayjs from 'dayjs'
 import { Logger } from '../utils/logo4'
 import { killPort } from '../utils/cmd'
 
-const host = '127.0.0.1'
+// const isDev = true
+const isDev = process.env.isDev || false
 
+const host = '127.0.0.1'
 // 取消超时时间的设置
-const dataTimeoutSec = 0 * 1000
+const dataTimeoutSec = 0
 
 let debugInfo: Message = {
   id: '',
@@ -28,11 +30,9 @@ let debugInfo: Message = {
 export const initNetwork = (
   ownPort: number,
   distantPort: number,
-
   networkOnMessage: NetworkOnMessage,
 ): Promise<[Server, NetworkSend]> =>
   new Promise((resolve, reject) => {
-    const isDev = process.env.isDev || false
     const networkSend: NetworkSend = (msg: string): Promise<void> =>
       new Promise(() => {
         const rinfo = { address: host, port: distantPort, family: 'IPv4' }
@@ -93,7 +93,7 @@ export const initNetwork = (
       const server = createServer()
       // -------------------------------- net.Server 属性 --------------------------------
       // 最大连接数字,设置此属性以在服务器的连接计数变高时拒绝连接,默认NaN
-      // server.maxConnections = 2
+      server.maxConnections = 10
       server.setMaxListeners(10)
       // -------------------------------- net.Server 方法 --------------------------------
       server.listen(ownPort, host, () => {
@@ -104,7 +104,6 @@ export const initNetwork = (
       // -------------------------------- net.Server 事件 --------------------------------
       // 建立新连接时触发
       server.on('connection', (socket: Socket) => {
-        let receive = ''
         const address = socket.address() as AddressInfo
         if (isDev) {
           console.log('TCP Server: DCS 客户端连接成功')
@@ -112,26 +111,34 @@ export const initNetwork = (
         }
         server.getConnections((_error, count) => {
           if (_error) return false
-          // console.log('最大连接数量%d,当前连接数量%d', server.maxConnections, count)
-          if (isDev)Logger.log(`TCP Server: 当前服务器的连接数:${count}`)
+          // console.log('TCP Server: 最大连接数量%d,当前连接数量%d', server.maxConnections, count)
+          if (isDev)Logger.log(`TCP Server: 最大连接数量${server.maxConnections},当前连接数量${count}`)
         })
         // -------------------------------- socket 属性 --------------------------------
+        /**
+         * 设置即时传输模式
+         */
         socket.setTimeout(dataTimeoutSec)
         socket.setEncoding('utf8')
-        // 当服务器和客户端建立连接后,当一方主机突然断电、重启、系统崩溃等意外情况时,
-        // 将来不及向另一方发送FIN包,这样另一方将永远处于连接状态。
-        // 可以使用setKeepAlive方法来解决这一个问题
-        // socket.setKeepAlive([enaable],[initialDelay]);
-        // enable 是否启用嗅探,为true时会不但向对方发送探测包,没有响应则认为对方已经关闭连接,自己则关闭连接
-        // initialDelay 多久发送一次探测包,单位是毫秒
+        /**
+         * 当服务器和客户端建立连接后,当一方主机突然断电、重启、系统崩溃等意外情况时,
+         * 将来不及向另一方发送FIN包,这样另一方将永远处于连接状态。
+         * 可以使用setKeepAlive方法来解决这一个问题
+         * socket.setKeepAlive([enaable],[initialDelay]);
+         * enable 是否启用嗅探,为true时会不但向对方发送探测包,没有响应则认为对方已经关闭连接,自己则关闭连接
+         * initialDelay 多久发送一次探测包,单位是毫秒
+         */
         socket.setKeepAlive(true)
-        // 解决 TCP 粘包问题
-        // 设置即时传输模式
-        // 将此选项设置为true 会禁用 Nagle 的连接算法
+
+        /**
+         * 解决 TCP 粘包问题
+         * 将此选项设置为true 会禁用 Nagle 的连接算法
+         */
         socket.setNoDelay(true)
 
         // -------------------------------- socket 事件 --------------------------------
         // socket.on('data', networkOnMessage)
+        let receive = ''
         socket.on('data', (buffer) => {
         // 我们可以从流中读取数据
         // console.log('服务器接收到 :', buffer.toString())
@@ -141,17 +148,20 @@ export const initNetwork = (
           if (receive.endsWith('qiut\r\n')) {
             receive = receive.replace('qiut\r\n', '')
             try {
-              debugInfo = JSON.parse(receive)
+              // console.log(receive)
+              const data = JSON.parse(receive)
+              if (data.payload)
+                debugInfo = data
             }
             catch (error) {
-              console.log(receive)
               debugInfo.payload.result = `TCP Server: 接收到错误的结果 --> ${error}`
               debugInfo.payload.connect = receive
+              receive = ''
             }
             networkOnMessage(debugInfo, address)
-            receive = ''
+
             // 也可以向流中写入数据
-            const flag = socket.write('quit\r\n')
+            // const flag = socket.write('quit\r\n')
             // console.log('TCP Server 给客户端发送信息状态', flag)
           /**
            * 调用end方法lua tcp 客户端接收到的结果就是status=timeout
@@ -160,23 +170,27 @@ export const initNetwork = (
           }
         })
         socket.on('end', () => {
-          console.log('TCP Server: 客户端已经关闭')
+          if (isDev)
+            console.log('TCP Server: 客户端已经关闭')
           socket.destroy()
         })
         // 连接超时后,并不会断开,需手动调用 end() 或 destroy() 来断开连接
         socket.on('timeout', () => {
-          console.log('TCP Server: 客户端连接超时')
+          if (isDev)
+            console.log('TCP Server: 客户端连接超时')
           socket.destroy()
         })
         socket.on('error', (_err: anyObj) => {
-        // console.log('与客户端通信过程中发生了错误，错误编码为%s', _err.code)
-        // 错误编码为ECONNRESET
+          if (isDev)
+            console.log('与客户端通信过程中发生了错误，错误编码为%s', _err.code)
+          // 错误编码为ECONNRESET
           socket.destroy()
         })
       })
       // 当连接数达到server.maxConnections阈值时,服务器将丢弃新连接并'drop'改为发出事件
       server.on('drop', (data) => {
-        console.log('TCP Server drop:', data)
+        if (isDev)
+          console.log('TCP Server drop:', data)
       })
       // 发生错误时触发
       server.on('error', (err: anyObj) => {

@@ -2,6 +2,7 @@ export const luaValue = ref('return net.get_player_list()')
 
 export const received: anyObj = ref()
 export const showLoading = ref(false)
+export const autoFill = ref(true)
 export function sendLua(flag: Boolean, model?: string) {
   const luaData: { [key: string]: any } = {
     type: flag ? 'dostring_in' : 'loadstring',
@@ -72,11 +73,14 @@ return JSON:encode(res)`,
     },
   },
   mission: {
-    code: 'trigger.action.outText(\'加载成功(mission)\', 10 , false)',
-    describe: `-- 当前运行的任务(holds current mission)
+    code: 'a_do_script("trigger.action.outText(\'加载成功(mission)\', 10 , false)")',
+    describe: `--当前运行的任务(holds current mission)
 --无法使用DCS.*()
 --可以使用env.*()|net.*()
-trigger.action.outText('加载成功(mission)', 10 , false)
+--code1
+a_do_script("trigger.action.outText('加载成功(mission)', 10 , false)")
+--code2
+return '哈哈'
 `,
     link: {
       title: 'Mission Scripting Foundation Documentation',

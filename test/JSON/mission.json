@@ -1,0 +1,938 @@
+{
+  "requiredModules": {},
+  "date": {
+    "Day": 1,
+    "Year": 2023,
+    "Month": 1
+  },
+  "maxDictId": 5,
+  "start_time": 33000,
+  "pictureFileNameN": {},
+  "theatre": "Caucasus",
+  "failures": {},
+  "currentKey": 1154,
+  "weather": {
+    "atmosphere_type": 0,
+    "wind": {
+      "at8000": {
+        "speed": 0,
+        "dir": 0
+      },
+      "at2000": {
+        "speed": 0,
+        "dir": 0
+      },
+      "atGround": {
+        "speed": 0,
+        "dir": 0
+      }
+    },
+    "enable_fog": false,
+    "dust_density": 0,
+    "halo": {
+      "preset": "auto"
+    },
+    "enable_dust": false,
+    "season": {
+      "temperature": 10.39999961853
+    },
+    "type_weather": 0,
+    "qnh": 760,
+    "cyclones": {},
+    "name": "Winter, clean sky",
+    "fog": {
+      "thickness": 0,
+      "visibility": 0
+    },
+    "groundTurbulence": 0,
+    "modifiedTime": false,
+    "visibility": {
+      "distance": 80000
+    },
+    "clouds": {
+      "thickness": 200,
+      "density": 0,
+      "preset": "Preset10",
+      "base": 3000,
+      "iprecptns": 0
+    }
+  },
+  "result": {
+    "total": 0,
+    "offline": {
+      "conditions": {},
+      "actions": {},
+      "func": {}
+    },
+    "blue": {
+      "conditions": {},
+      "actions": {},
+      "func": {}
+    },
+    "red": {
+      "conditions": {},
+      "actions": {},
+      "func": {}
+    }
+  },
+  "groundControl": {
+    "passwords": {
+      "artillery_commander": {},
+      "instructor": {},
+      "forward_observer": {},
+      "observer": {}
+    },
+    "isPilotControlVehicles": true,
+    "roles": {
+      "artillery_commander": {
+        "blue": 0,
+        "neutrals": 0,
+        "red": 0
+      },
+      "instructor": {
+        "blue": 1,
+        "neutrals": 0,
+        "red": 0
+      },
+      "forward_observer": {
+        "blue": 0,
+        "neutrals": 0,
+        "red": 0
+      },
+      "observer": {
+        "blue": 0,
+        "neutrals": 0,
+        "red": 0
+      }
+    }
+  },
+  "map": {
+    "centerY": 298719.29479888,
+    "zoom": 489866.25742926,
+    "centerX": -645.2645413897
+  },
+  "coalitions": {
+    "neutrals": [
+      7,
+      17,
+      22,
+      23,
+      25,
+      29,
+      30,
+      31,
+      32,
+      33,
+      35,
+      36,
+      39,
+      41,
+      42,
+      44,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90
+    ],
+    "blue": [
+      1,
+      11,
+      4,
+      6,
+      16,
+      13,
+      15,
+      9,
+      8,
+      12,
+      2,
+      3,
+      5,
+      10,
+      20,
+      21,
+      40,
+      26,
+      45,
+      28,
+      46,
+      80
+    ],
+    "red": [
+      0,
+      18,
+      19,
+      37,
+      24,
+      27,
+      43,
+      47,
+      34,
+      38,
+      81
+    ]
+  },
+  "descriptionText": "DictKey_descriptionText_1",
+  "pictureFileNameR": {},
+  "triggers": {
+    "zones": {}
+  },
+  "version": 22,
+  "goals": {},
+  "coalition": {
+    "neutrals": {
+      "bullseye": {
+        "y": 0,
+        "x": 0
+      },
+      "nav_points": {},
+      "name": "neutrals",
+      "country": {}
+    },
+    "blue": {
+      "bullseye": {
+        "y": 462084.09339429,
+        "x": -161948.64233143
+      },
+      "nav_points": {},
+      "name": "blue",
+      "country": [
+        {
+          "id": 2,
+          "vehicle": {
+            "group": [
+              {
+                "visible": false,
+                "taskSelected": true,
+                "route": {
+                  "spans": {},
+                  "points": [
+                    {
+                      "alt": 279,
+                      "type": "Turning Point",
+                      "ETA": 0,
+                      "alt_type": "BARO",
+                      "y": 258595.41360872,
+                      "formation_template": "",
+                      "speed_locked": true,
+                      "ETA_locked": true,
+                      "speed": 0,
+                      "action": "On Road",
+                      "task": {
+                        "id": "ComboTask",
+                        "params": {
+                          "tasks": [
+                            {
+                              "number": 1,
+                              "auto": true,
+                              "id": "WrappedAction",
+                              "enabled": true,
+                              "params": {
+                                "action": {
+                                  "id": "EPLRS",
+                                  "params": {
+                                    "value": true,
+                                    "groupId": 2
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "x": -8985.9295026769
+                    }
+                  ]
+                },
+                "groupId": 3,
+                "tasks": {},
+                "hidden": false,
+                "units": [
+                  {
+                    "type": "M-1 Abrams",
+                    "unitId": 12,
+                    "skill": "Average",
+                    "y": 258595.41360872,
+                    "coldAtStart": false,
+                    "name": "M1A2-1-1",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -8985.9295026769
+                  },
+                  {
+                    "type": "M-1 Abrams",
+                    "unitId": 22,
+                    "skill": "Average",
+                    "y": 258584.9612662,
+                    "coldAtStart": false,
+                    "name": "M1A2-1",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -9014.0458905768
+                  },
+                  {
+                    "type": "M-1 Abrams",
+                    "unitId": 23,
+                    "skill": "Average",
+                    "y": 258573.54139073,
+                    "coldAtStart": false,
+                    "name": "M1A2-2",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -9041.7523216925
+                  },
+                  {
+                    "type": "M-1 Abrams",
+                    "unitId": 24,
+                    "skill": "Average",
+                    "y": 258561.46362995,
+                    "coldAtStart": false,
+                    "name": "M1A2-3",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -9069.1972416009
+                  },
+                  {
+                    "type": "M-1 Abrams",
+                    "unitId": 25,
+                    "skill": "Average",
+                    "y": 258548.90466649,
+                    "coldAtStart": false,
+                    "name": "M1A2-4",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -9096.4325714335
+                  },
+                  {
+                    "type": "M-1 Abrams",
+                    "unitId": 26,
+                    "skill": "Average",
+                    "y": 258535.97064732,
+                    "coldAtStart": false,
+                    "name": "M1A2-5",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -9123.495377729
+                  },
+                  {
+                    "type": "M-1 Abrams",
+                    "unitId": 27,
+                    "skill": "Average",
+                    "y": 258522.74489705,
+                    "coldAtStart": false,
+                    "name": "M1A2-6",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -9150.4191491128
+                  },
+                  {
+                    "type": "M-1 Abrams",
+                    "unitId": 28,
+                    "skill": "Average",
+                    "y": 258509.31468522,
+                    "coldAtStart": false,
+                    "name": "M1A2-7",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -9177.2435218777
+                  },
+                  {
+                    "type": "M-1 Abrams",
+                    "unitId": 29,
+                    "skill": "Average",
+                    "y": 258495.84332374,
+                    "coldAtStart": false,
+                    "name": "M1A2-8",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -9204.0488500124
+                  },
+                  {
+                    "type": "M-1 Abrams",
+                    "unitId": 30,
+                    "skill": "Average",
+                    "y": 258482.5345976,
+                    "coldAtStart": false,
+                    "name": "M1A2-9",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -9230.9335412965
+                  }
+                ],
+                "y": 258595.41360872,
+                "uncontrollable": false,
+                "name": "M1A2",
+                "start_time": 0,
+                "task": "无任务",
+                "x": -8985.9295026769
+              }
+            ]
+          },
+          "name": "USA",
+          "plane": {
+            "group": [
+              {
+                "frequency": 124,
+                "modulation": 0,
+                "groupId": 4,
+                "tasks": {},
+                "route": {
+                  "points": [
+                    {
+                      "alt": 2000,
+                      "type": "Turning Point",
+                      "action": "Turning Point",
+                      "alt_type": "BARO",
+                      "y": 318173.98330821,
+                      "x": -10372.608796056,
+                      "speed_locked": true,
+                      "formation_template": "",
+                      "speed": 219.44444444444,
+                      "ETA_locked": true,
+                      "task": {
+                        "id": "ComboTask",
+                        "params": {
+                          "tasks": [
+                            {
+                              "number": 1,
+                              "key": "CAP",
+                              "id": "EngageTargets",
+                              "enabled": true,
+                              "auto": true,
+                              "params": {
+                                "targetTypes": [
+                                  "Air"
+                                ],
+                                "priority": 0
+                              }
+                            },
+                            {
+                              "number": 2,
+                              "auto": true,
+                              "id": "WrappedAction",
+                              "enabled": true,
+                              "params": {
+                                "action": {
+                                  "id": "Option",
+                                  "params": {
+                                    "value": true,
+                                    "name": 17
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "number": 3,
+                              "auto": true,
+                              "id": "WrappedAction",
+                              "enabled": true,
+                              "params": {
+                                "action": {
+                                  "id": "Option",
+                                  "params": {
+                                    "value": 4,
+                                    "name": 18
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "number": 4,
+                              "auto": true,
+                              "id": "WrappedAction",
+                              "enabled": true,
+                              "params": {
+                                "action": {
+                                  "id": "Option",
+                                  "params": {
+                                    "value": true,
+                                    "name": 19
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "number": 5,
+                              "auto": true,
+                              "id": "WrappedAction",
+                              "enabled": true,
+                              "params": {
+                                "action": {
+                                  "id": "Option",
+                                  "params": {
+                                    "targetTypes": {},
+                                    "noTargetTypes": [
+                                      "Fighters",
+                                      "Multirole fighters",
+                                      "Bombers",
+                                      "Helicopters",
+                                      "UAVs",
+                                      "Infantry",
+                                      "Fortifications",
+                                      "Tanks",
+                                      "IFV",
+                                      "APC",
+                                      "Artillery",
+                                      "Unarmed vehicles",
+                                      "AAA",
+                                      "SR SAM",
+                                      "MR SAM",
+                                      "LR SAM",
+                                      "Aircraft Carriers",
+                                      "Cruisers",
+                                      "Destroyers",
+                                      "Frigates",
+                                      "Corvettes",
+                                      "Light armed ships",
+                                      "Unarmed ships",
+                                      "Submarines",
+                                      "Cruise missiles",
+                                      "Antiship Missiles",
+                                      "AA Missiles",
+                                      "AG Missiles",
+                                      "SA Missiles"
+                                    ],
+                                    "name": 21,
+                                    "value": "none;"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "number": 6,
+                              "auto": true,
+                              "id": "WrappedAction",
+                              "enabled": true,
+                              "params": {
+                                "action": {
+                                  "id": "EPLRS",
+                                  "params": {
+                                    "value": true,
+                                    "groupId": 1
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "ETA": 0
+                    },
+                    {
+                      "alt": 2000,
+                      "type": "Turning Point",
+                      "action": "Turning Point",
+                      "alt_type": "BARO",
+                      "y": 294940.32652728,
+                      "x": -6593.6405244593,
+                      "speed_locked": true,
+                      "formation_template": "",
+                      "speed": 219.44444444444,
+                      "ETA_locked": false,
+                      "task": {
+                        "id": "ComboTask",
+                        "params": {
+                          "tasks": [
+                            {
+                              "number": 1,
+                              "auto": false,
+                              "id": "Orbit",
+                              "enabled": true,
+                              "params": {
+                                "altitude": 2000,
+                                "pattern": "Circle",
+                                "speed": 138.88888888889
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "ETA": 107.26622143913
+                    }
+                  ]
+                },
+                "hidden": false,
+                "units": [
+                  {
+                    "alt": 2000,
+                    "type": "F-15C",
+                    "alt_type": "BARO",
+                    "psi": 1.4095576978801,
+                    "livery_id": "12th Fighter SQN (AK)",
+                    "skill": "High",
+                    "onboard_num": "010",
+                    "y": 318173.98330821,
+                    "x": -10372.608796056,
+                    "name": "F15C-1-1-1",
+                    "payload": {
+                      "pylons": {},
+                      "fuel": "6103",
+                      "flare": 60,
+                      "chaff": 120,
+                      "gun": 100
+                    },
+                    "speed": 219.44444444444,
+                    "callsign": [
+                      1,
+                      1,
+                      1
+                    ],
+                    "heading": -1.4095576978801,
+                    "unitId": 31
+                  }
+                ],
+                "y": 318173.98330821,
+                "radioSet": false,
+                "name": "F15C-1",
+                "communication": true,
+                "x": -10372.608796056,
+                "start_time": 0,
+                "task": "CAP",
+                "uncontrolled": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "red": {
+      "bullseye": {
+        "y": 462812.96420571,
+        "x": -161948.64233143
+      },
+      "nav_points": {},
+      "name": "red",
+      "country": [
+        {
+          "id": 27,
+          "vehicle": {
+            "group": [
+              {
+                "visible": false,
+                "taskSelected": true,
+                "route": {
+                  "spans": {},
+                  "points": [
+                    {
+                      "alt": 87,
+                      "type": "Turning Point",
+                      "ETA": 0,
+                      "alt_type": "BARO",
+                      "y": 249584.46914796,
+                      "formation_template": "",
+                      "speed_locked": true,
+                      "ETA_locked": true,
+                      "speed": 0,
+                      "action": "On Road",
+                      "task": {
+                        "id": "ComboTask",
+                        "params": {
+                          "tasks": [
+                            {
+                              "number": 1,
+                              "auto": true,
+                              "id": "WrappedAction",
+                              "enabled": true,
+                              "params": {
+                                "action": {
+                                  "id": "EPLRS",
+                                  "params": {
+                                    "value": true,
+                                    "groupId": 1
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "x": -6649.1551311843
+                    }
+                  ]
+                },
+                "groupId": 2,
+                "tasks": {},
+                "hidden": false,
+                "units": [
+                  {
+                    "type": "ZTZ96B",
+                    "unitId": 2,
+                    "skill": "Average",
+                    "y": 249584.46914796,
+                    "coldAtStart": false,
+                    "name": "96-B-1-1",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -6649.1551311843
+                  },
+                  {
+                    "type": "ZTZ96B",
+                    "unitId": 3,
+                    "skill": "Average",
+                    "y": 249561.25048604,
+                    "coldAtStart": false,
+                    "name": "96-B-1",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -6668.1523346362
+                  },
+                  {
+                    "type": "ZTZ96B",
+                    "unitId": 4,
+                    "skill": "Average",
+                    "y": 249538.02938166,
+                    "coldAtStart": false,
+                    "name": "96-B-2",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -6687.1465520878
+                  },
+                  {
+                    "type": "ZTZ96B",
+                    "unitId": 5,
+                    "skill": "Average",
+                    "y": 249514.80827811,
+                    "coldAtStart": false,
+                    "name": "96-B-3",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -6706.1407709355
+                  },
+                  {
+                    "type": "ZTZ96B",
+                    "unitId": 6,
+                    "skill": "Average",
+                    "y": 249491.58717459,
+                    "coldAtStart": false,
+                    "name": "96-B-4",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -6725.1349898296
+                  },
+                  {
+                    "type": "ZTZ96B",
+                    "unitId": 7,
+                    "skill": "Average",
+                    "y": 249468.36607107,
+                    "coldAtStart": false,
+                    "name": "96-B-5",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -6744.1292087273
+                  },
+                  {
+                    "type": "ZTZ96B",
+                    "unitId": 8,
+                    "skill": "Average",
+                    "y": 249445.14496756,
+                    "coldAtStart": false,
+                    "name": "96-B-6",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -6763.1234276251
+                  },
+                  {
+                    "type": "ZTZ96B",
+                    "unitId": 9,
+                    "skill": "Average",
+                    "y": 249421.92386404,
+                    "coldAtStart": false,
+                    "name": "96-B-7",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -6782.1176465229
+                  },
+                  {
+                    "type": "ZTZ96B",
+                    "unitId": 10,
+                    "skill": "Average",
+                    "y": 249398.70276053,
+                    "coldAtStart": false,
+                    "name": "96-B-8",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -6801.1118654206
+                  },
+                  {
+                    "type": "ZTZ96B",
+                    "unitId": 11,
+                    "skill": "Average",
+                    "y": 249375.48165701,
+                    "coldAtStart": false,
+                    "name": "96-B-9",
+                    "playerCanDrive": true,
+                    "heading": 0,
+                    "x": -6820.1060843184
+                  }
+                ],
+                "y": 249584.46914796,
+                "uncontrollable": false,
+                "name": "96-B",
+                "start_time": 0,
+                "task": "无任务",
+                "x": -6649.1551311843
+              }
+            ]
+          },
+          "name": "China",
+          "plane": {
+            "group": [
+              {
+                "modulation": 0,
+                "tasks": {},
+                "radioSet": false,
+                "task": "Nothing",
+                "uncontrolled": false,
+                "taskSelected": true,
+                "route": {
+                  "points": [
+                    {
+                      "alt": 43,
+                      "type": "TakeOff",
+                      "action": "From Runway",
+                      "alt_type": "BARO",
+                      "speed_locked": true,
+                      "y": 243128.820313,
+                      "x": -5412.409668,
+                      "airdromeId": 12,
+                      "formation_template": "",
+                      "speed": 138.88888888889,
+                      "ETA_locked": true,
+                      "task": {
+                        "id": "ComboTask",
+                        "params": {
+                          "tasks": {}
+                        }
+                      },
+                      "ETA": 0
+                    }
+                  ]
+                },
+                "groupId": 1,
+                "hidden": false,
+                "units": [
+                  {
+                    "alt": 43,
+                    "type": "J-11A",
+                    "hardpoint_racks": true,
+                    "alt_type": "BARO",
+                    "psi": 0,
+                    "livery_id": "plaaf 2nd ad (parade)",
+                    "skill": "Client",
+                    "onboard_num": "010",
+                    "y": 243128.820313,
+                    "x": -5412.409668,
+                    "name": "J11-1-1",
+                    "payload": {
+                      "pylons": [
+                        {
+                          "CLSID": "{RKL609_L}"
+                        },
+                        {
+                          "CLSID": "{FBC29BFE-3D24-4C64-B81D-941239D12249}"
+                        },
+                        {
+                          "CLSID": "B-8M1 - 20 S-8OFP2"
+                        },
+                        {
+                          "CLSID": "{B4C01D60-A8A3-4237-BD72-CA7655BC0FE9}"
+                        },
+                        {
+                          "CLSID": "{B4C01D60-A8A3-4237-BD72-CA7655BC0FE9}"
+                        },
+                        {
+                          "CLSID": "{B4C01D60-A8A3-4237-BD72-CA7655BC0FE9}"
+                        },
+                        {
+                          "CLSID": "{B4C01D60-A8A3-4237-BD72-CA7655BC0FE9}"
+                        },
+                        {
+                          "CLSID": "B-8M1 - 20 S-8OFP2"
+                        },
+                        {
+                          "CLSID": "{FBC29BFE-3D24-4C64-B81D-941239D12249}"
+                        },
+                        {
+                          "CLSID": "{RKL609_R}"
+                        }
+                      ],
+                      "fuel": 9400,
+                      "flare": 96,
+                      "chaff": 96,
+                      "gun": 100
+                    },
+                    "speed": 138.88888888889,
+                    "callsign": 102,
+                    "heading": 0,
+                    "unitId": 1
+                  }
+                ],
+                "y": 243128.820313,
+                "x": -5412.409668,
+                "name": "J11",
+                "communication": true,
+                "start_time": 0,
+                "uncontrollable": false,
+                "frequency": 127.5
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "pictureFileNameB": {},
+  "sortie": "DictKey_sortie_5",
+  "descriptionBlueTask": "DictKey_descriptionBlueTask_3",
+  "descriptionNeutralsTask": "DictKey_descriptionNeutralsTask_4",
+  "descriptionRedTask": "DictKey_descriptionRedTask_2",
+  "trigrules": {},
+  "forcedOptions": {},
+  "trig": {
+    "custom": {},
+    "customStartup": {},
+    "events": {},
+    "func": {},
+    "flag": {},
+    "conditions": {},
+    "actions": {},
+    "funcStartup": {}
+  }
+}

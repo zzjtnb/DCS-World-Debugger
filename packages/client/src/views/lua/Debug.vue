@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {
-  alertType, luaValue, netLua,
-  received, resultJSON, sendLua, showLoading,
+  alertType, autoFill, luaValue,
+  netLua, received, resultJSON, sendLua, showLoading,
 } from '../../hooks/lua'
 
 const code = `local keys = {}
@@ -22,6 +22,17 @@ const isNet = computed(() => {
   return falg
 })
 
+function handleUpdateChecked(value: boolean) {
+  if (value) { luaValue.value = `a_do_script("${luaValue.value}")` }
+  else {
+    const regex = /"(.*?)"/
+    const match = luaValue.value.match(regex)
+    if (match?.length)
+      luaValue.value = match[1]
+  }
+
+  codemirror.value.upState(luaValue.value)
+}
 function updateLua(value) {
   received.value = {}
   luaValue.value = netLua[value].code
@@ -58,6 +69,7 @@ function clearLua() {
           {{ model }}
         </n-gradient-text>
       </p>
+
       <n-radio-group v-model:value="model" size="large" @update:value="updateLua">
         <n-radio-button
           v-for="(item, key) in netLua" :key="key" :value="key"
@@ -65,6 +77,11 @@ function clearLua() {
           {{ key }}
         </n-radio-button>
       </n-radio-group>
+      <p v-if="model === 'mission'">
+        <n-checkbox v-model:checked="autoFill" size="large" @update:checked="handleUpdateChecked">
+          <span>自动添加 <n-gradient-text type="success">a_do_script()</n-gradient-text></span>
+        </n-checkbox>
+      </p>
     </div>
     <div px-2>
       <n-descriptions label-placement="top" bordered :column="Object.keys(netLua).length" my-4>

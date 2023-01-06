@@ -51,7 +51,7 @@ const handleDebug = (message: Message) => {
 }
 const handleServerStatus = (message: Message) => {
   const result = message.payload.result
-  Logger.log(result.msg ?? result)
+  Logger.log(result.msg ?? JSON.stringify(result))
 }
 
 const handleReceived = (message: Message) => {
