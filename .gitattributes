@@ -1,3 +1,4 @@
-# Auto detect text files and perform LF normalization
-*.css linguist-language=JavaScript
-*.ejs linguist-language=JavaScript
+# Set the default behavior, in case people don't have core.autocrlf set.
+
+
+*.bat eol=crlf

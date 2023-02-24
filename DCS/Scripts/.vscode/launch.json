@@ -1,0 +1,33 @@
+{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "LuaHelper-Debug",
+      "request": "launch",
+      "name": "测试-DebugFile",
+      "description": "独立文件调试模式",
+      "luaPath": "",
+      "packagePath": [],
+      "luaFileExtension": "",
+      "connectionPort": 56789,
+      "stopOnEntry": true,
+      "useCHook": true
+    },
+    {
+      "type": "LuaHelper-Debug",
+      "request": "launch",
+      "name": "DCS World-Attach",
+      "description": "通用模式,通常调试项目请选择此模式",
+      "cwd": "${workspaceFolder}",
+      "luaFileExtension": "",
+      "connectionPort": 56789,
+      "stopOnEntry": true,
+      "useCHook": true,
+      "autoPathMode": true,
+      "distinguishSameNameFile": true
+    },
+  ]
+}

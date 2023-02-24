@@ -1,24 +1,30 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "DCS World ",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --trace-warnings app.js "
-  },
-  "keywords": [
-    "DCS",
-    "World"
-  ],
-  "author": "zzjtnb",
+  "name": "node-dcs",
+  "version": "0.0.0",
+  "description": "",
+  "author": "",
   "license": "MIT",
-  "dependencies": {
-    "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "highlight.js": "^10.3.2",
-    "log4js": "^6.3.0",
-    "nodemon": "^2.0.6",
-    "socket.io": "^2.3.0"
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "clear": "rimraf 'packages/*/{node_modules}' && rimraf node_modules",
+    "dev": "pnpm -r dev",
+    "preinstall": "node .husky/preinstall.js",
+    "prepare": "husky install",
+    "lint:eslint": "eslint \"**/**/*.{js,ts,cjs,vue,html,md}\" --fix",
+    "lint:stylelint": "stylelint --fix \"**/**/*.(css|scss|vue|html)\" ",
+    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
+    "lint": "pnpm lint:eslint && pnpm lint:stylelint"
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0",
+    "eslint-config-zzjtnb": "^0.0.3",
+    "eslint-define-config": "^1.12.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
+    "npm-run-all": "^4.1.5",
+    "stylelint": "^14.15.0",
+    "stylelint-config-zzjtnb": "^0.0.1",
+    "typescript": "~4.8.4"
   }
 }
