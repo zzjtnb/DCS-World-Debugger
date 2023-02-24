@@ -17,7 +17,6 @@ import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 // import legacy from '@vitejs/plugin-legacy'
-
 // import Inspect from 'vite-plugin-inspect'
 
 // https://vitejs.dev/config/
@@ -38,10 +37,7 @@ export default defineConfig({
     host: '0.0.0.0',
   },
   plugins: [
-
-    vue({
-
-    }),
+    vue({}),
     vueJsx(),
     VueDevTools(),
     UnoCSS('unocss.config.ts'),
@@ -64,6 +60,7 @@ export default defineConfig({
       vueTemplate: true,
       imports: [
         'vue',
+        'vue-i18n',
         'vue-router',
         'pinia',
         {

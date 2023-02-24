@@ -38,7 +38,7 @@ function updateLua() {
   <div text-center container mx-auto my-4>
     <p text-8 fw-900 mt--2 mb-2>
       <n-gradient-text type="info">
-        当前运行环境:
+        {{ $t('debug.state') }}:
       </n-gradient-text>
       <n-gradient-text type="warning">
         {{ luaStore.state }}
@@ -52,7 +52,7 @@ function updateLua() {
 
     <div v-if="luaStore.state === 'mission'">
       <n-checkbox v-model:checked="autoFill" size="large" my-2 @update:checked="handleUpdateChecked">
-        <span>自动添加 <b>a_do_script()</b>
+        <span>{{ $t('debug.auto') }} <b>a_do_script()</b>
         </span>
       </n-checkbox>
       <!-- <n-button strong secondary type="warning">

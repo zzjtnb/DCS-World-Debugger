@@ -2,9 +2,10 @@
 import type { UploadFileInfo } from 'naive-ui/es/upload'
 import JSZip from 'jszip'
 
-const codemirror = ref()
-const codemirror_json = ref()
-const luacode = ref('')
+const message = useMessage()
+const luaStore = useLuaStore()
+luaStore.resetCode()
+
 const mizData = ref('{}')
 const fileList = ref<UploadFileInfo[]>([])
 const mizFile = ref<UploadFileInfo>({
@@ -14,19 +15,15 @@ const mizFile = ref<UploadFileInfo>({
 })
 
 async function readFile(file: UploadFileInfo) {
-  // const state = new Map<String, any>()
   if (!file.file)
     return
   const zip = new JSZip()
   // 解压Zip压缩包，参数默认是二进制
   const zipData = await zip.loadAsync(file.file)
   mizData.value = JSON.stringify(zipData.files, null, 2)
-  // codemirror_json.value.upState(mizData.value)
-  luacode.value = await (zipData.file('mission') as JSZip.JSZipObject).async('string')
-  codemirror.value.upState(luacode.value)
+  luaStore.code = await (zipData.file('mission') as JSZip.JSZipObject).async('string')
 }
 
-const message = useMessage()
 function handleUploadChange(data: { fileList: UploadFileInfo[] }) {
   if (!data.fileList.length)
     return
@@ -87,18 +84,12 @@ function downloadText(text: string, filename = '') {
           {{ mizFile.name }}
         </n-text>
       </n-text>
-      <n-button strong secondary type="primary" ml-4 @click="downloadText(luacode, `${mizFile.name.replace('.miz', '.lua')}`)">
+      <n-button strong secondary type="primary" ml-4 @click="downloadText(luaStore.code, `${mizFile.name.replace('.miz', '.lua')}`)">
         下载Lua
       </n-button>
     </n-p>
   </n-card>
   <div mx-4 my-2>
-    <n-scrollbar max-h-2000px>
-      <CodeMirror ref="codemirror" v-model="luacode" type="lua" />
-    </n-scrollbar>
-
-    <!-- <n-scrollbar style="max-height: 2000px;">
-        <CodeMirror ref="codemirror_json" v-model="mizData" type="json" />
-      </n-scrollbar> -->
+    <CodeMirror />
   </div>
 </template>

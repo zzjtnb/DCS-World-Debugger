@@ -17,10 +17,12 @@ import 'uno.css'
 
 // 将pinia实例传递给app实例,在此之后使用useStore钩子会自动注入pinia实例,否则需要在useStore中手动注入
 import pinia from '@/stores'
+import i18n from '@/plugins/i18n'
 
 const app = createApp(App)
 
 app.use(pinia)
+app.use(i18n)
 app.use(router)
 
 app.mount('#app')

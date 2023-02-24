@@ -15,7 +15,7 @@ const routes = [
       {
         path: '/',
         name: 'home',
-        meta: { title: '首页', icon: Fa6SolidHouseChimney },
+        meta: { title: 'home', icon: Fa6SolidHouseChimney },
         component: () => import('@/views/Home.vue'),
       },
       {

@@ -4,12 +4,10 @@ import { net } from '@/utils/model'
 
 <template>
   <div text-center container mx-auto>
-    <h1>DCS World Lua调试工具</h1>
+    <h1>{{ $t('home.title') }}</h1>
   </div>
   <n-alert type="info">
-    Script/Hooks目录下的脚本在服务器启动时加载,并将用于所有任务.<br>
-    执行 DCS.isServer() 或 DCS.isMultiplayer() 检查在mission(任务)中不起作用.<br>
-    另外,trigger.action.outText() 在Hooks中不起作用,仅在任务中起作用.<br>
+    <div v-html="$t('home.info')" />
   </n-alert>
 
   <n-descriptions label-placement="top" bordered :column="Object.keys(net).length" my-4>

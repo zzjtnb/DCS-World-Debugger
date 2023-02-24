@@ -78,6 +78,7 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useDialog: typeof import('naive-ui')['useDialog']
+  const useI18n: typeof import('vue-i18n')['useI18n']
   const useLink: typeof import('vue-router')['useLink']
   const useLoadingBar: typeof import('naive-ui')['useLoadingBar']
   const useLuaStore: typeof import('../../src/stores/modules/lua')['useLuaStore']
@@ -178,6 +179,7 @@ declare module 'vue' {
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useDialog: UnwrapRef<typeof import('naive-ui')['useDialog']>
+    readonly useI18n: UnwrapRef<typeof import('vue-i18n')['useI18n']>
     readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
     readonly useLoadingBar: UnwrapRef<typeof import('naive-ui')['useLoadingBar']>
     readonly useLuaStore: UnwrapRef<typeof import('../../src/stores/modules/lua')['useLuaStore']>
@@ -271,6 +273,7 @@ declare module '@vue/runtime-core' {
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useDialog: UnwrapRef<typeof import('naive-ui')['useDialog']>
+    readonly useI18n: UnwrapRef<typeof import('vue-i18n')['useI18n']>
     readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
     readonly useLoadingBar: UnwrapRef<typeof import('naive-ui')['useLoadingBar']>
     readonly useLuaStore: UnwrapRef<typeof import('../../src/stores/modules/lua')['useLuaStore']>

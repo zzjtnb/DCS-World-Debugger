@@ -21,20 +21,20 @@ function handleCopy() {
     <RouterView />
     <n-spin :show="luaStore.loading">
       <div class="code" my-4>
-        <CodeMirror v-model="luaStore.code" />
+        <CodeMirror />
       </div>
     </n-spin>
 
     <n-space justify="center" container mx-auto my-4>
       <n-button type="error" text-4 fw-900 :disabled="luaStore.loading" @click="luaStore.resetCode()">
-        清空
+        {{ $t('debug.clear') }}
       </n-button>
       <n-button type="primary" text-4 fw-900 :disabled="luaStore.loading" @click="sendMessage(route.name as lua.runType)">
-        发送
+        {{ $t('debug.send') }}
       </n-button>
     </n-space>
 
-    <n-alert title="执行状态" :type="luaStore.alertType" :bordered="false" my-4>
+    <n-alert :title="$t('debug.status')" :type="luaStore.alertType" :bordered="false" my-4>
       <span v-if="luaStore.received.type === 'message'">{{ luaStore.received.data }}</span>
     </n-alert>
 
@@ -47,7 +47,7 @@ function handleCopy() {
             </template>
           </n-button>
         </template>
-        清除
+        {{ $t('debug.clear') }}
       </n-tooltip>
       <n-tooltip trigger="hover">
         <template #trigger>
@@ -57,7 +57,7 @@ function handleCopy() {
             </template>
           </n-button>
         </template>
-        复制
+        {{ $t('debug.copy') }}
       </n-tooltip>
     </n-space>
     <n-card mb-36>

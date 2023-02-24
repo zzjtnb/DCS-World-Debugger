@@ -1,16 +1,12 @@
 <script lang="ts" setup>
 import type { Component } from 'vue'
 import type { MenuOption } from 'naive-ui/es/menu'
-import { type RouteMeta, type RouteRecordRaw, RouterLink } from 'vue-router'
+import { type RouteRecordRaw, RouterLink } from 'vue-router'
+import { setI18nLanguage } from '@/plugins/i18n'
 
-// locale
-
+const { t, te } = useI18n()
 const menuStore = useMenuStore()
 
-const localeLabelMap: Record<LocaleType, string> = {
-  'zh-CN': 'English',
-  'en-US': '中文',
-}
 function handleLocaleUpdate() {
   if (menuStore.locale === 'zh-CN') {
     menuStore.locale = 'en-US'
@@ -18,22 +14,8 @@ function handleLocaleUpdate() {
   else {
     menuStore.locale = 'zh-CN'
   }
+  setI18nLanguage(menuStore.locale)
 }
-const locales: Record<LocaleType, { dark: string, light: string }> = {
-  'zh-CN': {
-    dark: '深色',
-    light: '浅色',
-  },
-  'en-US': {
-    dark: 'Dark',
-    light: 'Light',
-  },
-}
-// theme
-const themeLabelMap = computed(() => ({
-  dark: locales[menuStore.locale].dark,
-  light: locales[menuStore.locale].light,
-}))
 function handleThemeUpdate() {
   menuStore.theme === 'dark' ? menuStore.theme = 'light' : menuStore.theme = 'dark'
 }
@@ -42,22 +24,6 @@ const route = useRoute()
 const activeKey = ref<string | null>(route.path)
 const router = useRouter()
 
-function renderIcon(icon: Component) {
-  return () => h(NIcon, null, { default: () => h(icon) })
-}
-function renderLabel(path: string, meta: RouteMeta | undefined) {
-  if (!meta)
-    return () => ''
-  return () => h(
-    RouterLink,
-    {
-      to: {
-        path,
-      },
-    },
-    { default: () => meta.title },
-  )
-}
 // 扁平化路由数据，移除根路径的 children 并将其提升到同一级
 function flattenRoutes(routes: RouteRecordRaw[]): RouteRecordRaw[] {
   const result: RouteRecordRaw[] = []
@@ -74,15 +40,29 @@ function flattenRoutes(routes: RouteRecordRaw[]): RouteRecordRaw[] {
 
   return result
 }
-
+function renderIcon(icon: Component) {
+  return () => h(NIcon, null, { default: () => h(icon) })
+}
+function renderLabel(label: unknown, path: string) {
+  if (!label)
+    return () => ''
+  return () => h(
+    RouterLink,
+    {
+      to: {
+        path,
+      },
+    },
+    { default: () => te(`menu.${label}`) ? t(`menu.${label}`) : label },
+  )
+}
 // 将路由转换为菜单项
 function generateMenuData(routes: RouteRecordRaw[], parentPath = ''): MenuOption[] {
   return routes.map((route) => {
     const fullPath = parentPath + (route.path.startsWith('/') ? route.path : `/${route.path}`)
     const menuOption: MenuOption = {
       key: route.path,
-      label: route.children ? route.meta?.title as string : renderLabel(fullPath, route.meta),
-      // label: route.meta?.title as string,
+      label: renderLabel(route.meta?.title, route.children ? '' : fullPath),
       icon: renderIcon(route.meta?.icon as Component),
       children: route.children ? generateMenuData(route.children, fullPath) : undefined,
     }
@@ -102,12 +82,13 @@ const menuOptions = generateMenuData(flatRoutes)
     <n-menu v-model:value="activeKey" accordion mode="horizontal" :options="menuOptions" />
     <div flex items-center hidden />
     <nav flex items-center justify-end>
-      <n-button size="small" quaternary class="nav-picker" @click="handleLocaleUpdate">
+      <n-button size="small" quaternary class="nav-picker mx-4" @click="handleLocaleUpdate">
         <div class="i-fa6-solid:language w-32px h-32px" />
-        {{ localeLabelMap[menuStore.locale] }}
+        {{ $t(`menu.${menuStore.locale}`) }}
       </n-button>
       <n-button size="small" quaternary class="nav-picker" @click="handleThemeUpdate">
-        {{ themeLabelMap[menuStore.theme] }}
+        {{ menuStore.theme === 'dark' ? '🌙' : '☀️' }}
+        {{ $t(`menu.${menuStore.theme}`) }}
       </n-button>
       <!-- <p>
         <span>Icon</span>
