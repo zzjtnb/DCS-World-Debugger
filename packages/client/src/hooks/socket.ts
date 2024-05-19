@@ -9,6 +9,12 @@ const socket = io('ws://localhost:4000', {
 
 socket.on('connect_error', (_err) => {
   console.log(`connect_error due to ${_err.message}`)
+  luaStore.loading = false
+  luaStore.received = {
+    type: 'message',
+    status: false,
+    data: '连接 NodeJs 服务器失败,请检查 NodeJs 服务器是否启动',
+  }
   socket.close()
 })
 
@@ -17,7 +23,7 @@ socket.on('disconnect', (reason) => {
 })
 // 发送消息
 export function sendMessage(type: lua.runType) {
-  if (!luaStore.code.trim()) {
+  if (!luaStore.codemirror.code.trim()) {
     luaStore.received = {
       type: 'message',
       status: false,
@@ -29,7 +35,7 @@ export function sendMessage(type: lua.runType) {
     type: 'debug',
     payload: {
       type: type || 'loadstring',
-      content: luaStore.code.trim().replace(/--.*|\n/g, ' '),
+      content: luaStore.codemirror.code.trim().replace(/--.*|\n/g, ' '),
     },
   }
   if (type === 'dostring_in') {

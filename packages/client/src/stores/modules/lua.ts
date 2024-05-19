@@ -4,26 +4,38 @@ export const useLuaStore = defineStore({
   id: 'lua',
   state: (): lua.state => ({
     state: 'gui',
-    code: '',
-    view: null,
     loading: false,
+    codemirror: {
+      show: true,
+      code: '',
+      view: null,
+      disabled: false,
+      indentWithTab: true,
+      tabSize: 2,
+      autofocus: true,
+      language: 'lua',
+      theme: 'oneDark',
+      style: {
+        fontFamily: 'font-mono',
+        fontSize: '16px',
+        height: 'auto',
+      },
+    },
     received: {
       type: 'message',
       status: true,
-      message: '',
       data: '',
     },
 
   }),
   actions: {
     resetCode() {
-      this.code = ''
+      this.codemirror.code = ''
     },
     resetReceived() {
       this.received = {
         type: 'message',
         status: true,
-        message: '',
         data: '',
       }
     },
@@ -36,6 +48,8 @@ export const useLuaStore = defineStore({
       return status ? 'success' : 'error'
     },
     getReceived: ({ received }): string => {
+      if (received.type === 'message')
+        return ''
       let code = received.data
       if (!code)
         return ''
@@ -51,5 +65,4 @@ export const useLuaStore = defineStore({
       return code
     },
   },
-
 })

@@ -149,3 +149,35 @@ return JSON:encode(res)
     },
   },
 }
+
+export const _G = `function deepdump(tbl, depth)
+  local result = {}
+  local checklist = {}
+  local max_depth = depth or math.huge
+  local function _deepdump(t, current_depth, output, check)
+    if current_depth > max_depth then
+      output["... (达到最大深度)"] = nil
+      return
+    end
+    check[t] = output
+    for k, v in pairs(t) do
+      local v_type = type(v)
+      if v_type == "table" then
+        if not check[v] then
+          output[k] = "table"
+          check[v] = true
+        end
+      elseif v_type == "function" or v_type == "userdata" then
+        output[k] = v_type
+      else
+        output[k] = v
+      end
+    end
+  end
+  if type(tbl) ~= "table" then
+    return { ["错误"] = "输入的不是一个表格" }
+  end
+  _deepdump(tbl, 1, result, checklist) -- 传递checklist
+  return result
+end
+`

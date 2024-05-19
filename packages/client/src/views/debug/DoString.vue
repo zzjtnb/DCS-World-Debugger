@@ -2,28 +2,27 @@
 import { net } from '@/utils/model'
 
 const luaStore = useLuaStore()
-const route = useRoute()
 const autoFill = ref(true)
 
-luaStore.code = net[luaStore.state].code
+luaStore.codemirror.code = net[luaStore.state].code
 
 function handleUpdateChecked(value: boolean) {
   const regex = /a_do_script\(\[\[((?:.|\n)*?)\]\]\)/
-  const match = luaStore.code.match(regex)
+  const match = luaStore.codemirror.code.match(regex)
   if (value) {
     if (match)
       return
-    luaStore.code = `a_do_script([[${luaStore.code}]])`
+    luaStore.codemirror.code = `a_do_script([[${luaStore.codemirror.code}]])`
   }
   else {
     if (!match)
       return
     const extractedText = match[1]
-    luaStore.code = extractedText
+    luaStore.codemirror.code = extractedText
   }
 }
 function updateLua() {
-  luaStore.code = net[luaStore.state].code
+  luaStore.codemirror.code = net[luaStore.state].code
   luaStore.resetReceived()
 }
 </script>

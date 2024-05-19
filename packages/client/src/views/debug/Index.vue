@@ -3,6 +3,8 @@ const luaStore = useLuaStore()
 const route = useRoute()
 luaStore.resetReceived()
 
+luaStore.codemirror.show = route.name !== 'global'
+
 const message = useMessage()
 const { copy, isSupported } = useClipboard()
 
@@ -25,7 +27,7 @@ function handleCopy() {
       </div>
     </n-spin>
 
-    <n-space justify="center" container mx-auto my-4>
+    <n-space v-show="luaStore.codemirror.show" justify="center" container mx-auto my-4>
       <n-button type="error" text-4 fw-900 :disabled="luaStore.loading" @click="luaStore.resetCode()">
         {{ $t('debug.clear') }}
       </n-button>

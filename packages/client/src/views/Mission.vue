@@ -21,7 +21,7 @@ async function readFile(file: UploadFileInfo) {
   // 解压Zip压缩包，参数默认是二进制
   const zipData = await zip.loadAsync(file.file)
   mizData.value = JSON.stringify(zipData.files, null, 2)
-  luaStore.code = await (zipData.file('mission') as JSZip.JSZipObject).async('string')
+  luaStore.codemirror.code = await (zipData.file('mission') as JSZip.JSZipObject).async('string')
 }
 
 function handleUploadChange(data: { fileList: UploadFileInfo[] }) {
@@ -84,7 +84,7 @@ function downloadText(text: string, filename = '') {
           {{ mizFile.name }}
         </n-text>
       </n-text>
-      <n-button strong secondary type="primary" ml-4 @click="downloadText(luaStore.code, `${mizFile.name.replace('.miz', '.lua')}`)">
+      <n-button strong secondary type="primary" ml-4 @click="downloadText(luaStore.codemirror.code, `${mizFile.name.replace('.miz', '.lua')}`)">
         下载Lua
       </n-button>
     </n-p>

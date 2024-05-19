@@ -64,9 +64,9 @@ export function socketInit() {
 // 发送 debug 消息的函数
 function handleDebugError(socket: Socket<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, any>, error: any) {
   socket.emit('debug', {
+    type: 'message',
     status: false,
-    data: error,
-    message: '连接DCS World 服务器失败,请检查DCS World 服务器是否启动',
+    data: '连接DCS World 服务器失败,请检查DCS World 服务器是否启动',
   })
 }
 

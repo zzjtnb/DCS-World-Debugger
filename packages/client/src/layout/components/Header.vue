@@ -16,8 +16,10 @@ function handleLocaleUpdate() {
   }
   setI18nLanguage(menuStore.locale)
 }
+const luaStore = useLuaStore()
 function handleThemeUpdate() {
   menuStore.theme === 'dark' ? menuStore.theme = 'light' : menuStore.theme = 'dark'
+  menuStore.theme === 'dark' ? luaStore.codemirror.theme = 'oneDark' : luaStore.codemirror.theme = 'default'
 }
 
 const route = useRoute()

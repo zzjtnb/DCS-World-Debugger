@@ -11,9 +11,9 @@ export default {
   },
   home: {
     title: 'DCS World Lua调试工具',
-    info: `Script/Hooks目录下的脚本在服务器启动时加载,并将用于所有任务.<br>
-    执行 DCS.isServer() 或 DCS.isMultiplayer() 检查在mission(任务)中不起作用.<br>
-    另外,trigger.action.outText() 在Hooks中不起作用,仅在任务中起作用.<br>`,
+    info: `Script/Hooks目录下的脚本在服务器启动时加载,并将用于所有任务.\n
+    执行 DCS.isServer() 或 DCS.isMultiplayer() 检查在mission(任务)中不起作用.\n
+    另外,trigger.action.outText() 在Hooks中不起作用,仅在任务中起作用.\n`,
   },
   debug: {
     send: '发送',
@@ -22,5 +22,14 @@ export default {
     status: '执行状态',
     state: '当前运行环境',
     auto: '自动添加',
+  },
+  toolbar: {
+    language: '语言',
+    theme: '主题',
+    disabled: '禁用编辑',
+    indentWithTab: 'Tab 缩进',
+    tabSize: 'Tab 宽度',
+    autofocus: '自动获取焦点',
+    height: '高度',
   },
 }

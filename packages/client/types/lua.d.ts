@@ -6,13 +6,26 @@ namespace lua {
 
   export interface state {
     state: lua.net['state']
-    code: string
-    view: EditorView
     loading: boolean
+    codemirror: {
+      show: boolean
+      code: string
+      view: EditorView
+      disabled: boolean
+      indentWithTab: boolean
+      tabSize: number
+      autofocus: boolean
+      language: string
+      theme: string
+      style: {
+        fontFamily: string
+        fontSize: string
+        height: string
+      }
+    }
     received: {
       type: 'debug' | 'message'
       status: boolean
-      message?: string
       data: Record<string, any> | string
     }
   }

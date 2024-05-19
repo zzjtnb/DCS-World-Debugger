@@ -6,7 +6,7 @@ return coalition
 return country
 `
 
-luaStore.code = `local res = {}
+luaStore.codemirror.code = `local res = {}
 for k, v in pairs(_G) do
   -- res[k] = v
   res[k] = type(v)

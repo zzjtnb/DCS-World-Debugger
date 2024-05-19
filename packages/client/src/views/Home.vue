@@ -7,7 +7,9 @@ import { net } from '@/utils/model'
     <h1>{{ $t('home.title') }}</h1>
   </div>
   <n-alert type="info">
-    <div v-html="$t('home.info')" />
+    <p v-for="(item, key) in $t('home.info').split('\n')" :key="key">
+      {{ item }}
+    </p>
   </n-alert>
 
   <n-descriptions label-placement="top" bordered :column="Object.keys(net).length" my-4>

@@ -12,9 +12,9 @@ export default {
   home: {
     title: 'DCS World Lua Debugger',
     info: `
-    Script/Hooks folder in the server will be loaded and used for all tasks.<br>
-    Execute DCS.isServer() or DCS.isMultiplayer() check in mission (task) will not take effect.<br>
-    Also, trigger.action.outText() in Hooks will not take effect, only in mission (task) take effect.<br>`,
+    Script/Hooks folder in the server will be loaded and used for all tasks.\n
+    Execute DCS.isServer() or DCS.isMultiplayer() check in mission (task) will not take effect.\n
+    Also, trigger.action.outText() in Hooks will not take effect, only in mission (task) take effect.`,
   },
   debug: {
     send: 'Send',
@@ -23,5 +23,14 @@ export default {
     status: 'Execution Status',
     state: 'Current Environment',
     auto: 'Auto Add',
+  },
+  toolbar: {
+    language: 'Language',
+    theme: 'Theme',
+    disabled: 'Disable Edit',
+    indentWithTab: 'Tab Indent',
+    tabSize: 'Tab Size',
+    autofocus: 'Auto Focus',
+    height: 'Height',
   },
 }
