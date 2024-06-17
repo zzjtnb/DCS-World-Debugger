@@ -18,6 +18,10 @@ function utils.isempty(val)
   return val == nil or val == ''
 end
 
+-- this is used for "net.dostring_in()" Lua API
+-- serialization
+---@usage val={code = 200,msg = 'Hello World'} 返回{code:200,msg:"Hello World",}
+---@param val string|boolean|table
 function utils.value2json(val)
   local t = type(val)
   if t == "number" or t == "boolean" then
@@ -25,7 +29,7 @@ function utils.value2json(val)
   elseif t == "table" then
     local result = {}
     for k, v in pairs(val) do
-      base.table.insert(result, base.string.format("[%s]:%s", utils.value2string(k), utils.value2string(v)))
+      base.table.insert(result, base.string.format("%s:%s", utils.value2string(k), utils.value2string(v)))
     end
     return '{' .. base.table.concat(result, ',') .. '}'
   else

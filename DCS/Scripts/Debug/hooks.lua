@@ -50,9 +50,6 @@ function hooks.handler.debug(request)
   request.data = result
   request.date = Time.current()
   request.payload = nil
-  if status and not result then
-    request.data = '执行成功'
-  end
   return request, true
 end
 

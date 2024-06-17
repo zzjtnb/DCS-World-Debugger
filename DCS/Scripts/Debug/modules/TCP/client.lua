@@ -90,8 +90,8 @@ function NetClient:receive()
     -- self.log:error("接收消息: " .. err)
     if err == "closed" then
       self:close()
-      return false, err
     end
+    return false, err
   end
   -- self.log:error("收到回复: " .. response)
   return true, response

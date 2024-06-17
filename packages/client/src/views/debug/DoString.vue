@@ -2,7 +2,7 @@
 import { net } from '@/utils/model'
 
 const luaStore = useLuaStore()
-const autoFill = ref(true)
+const autoFill = ref(false)
 
 function handleUpdateChecked(value: boolean) {
   const regex = /a_do_script\(\[\[((?:.|\n)*?)\]\]\)/

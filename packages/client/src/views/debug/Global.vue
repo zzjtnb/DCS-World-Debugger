@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { NButton, NCode, type TreeOption } from 'naive-ui'
-import { deepdump, net } from '@/utils/model'
+import { deepdump, net, value2json } from '@/utils/model'
 
 const states = ['lua', ...Object.keys(net)]
 const luaStore = useLuaStore()
@@ -106,6 +106,9 @@ function handleLoad(node: TreeOption) {
         case 'export':
           endCode = 'local JSON = loadfile(\'Scripts/JSON.lua\')()\nreturn JSON:encode(res)'
           break
+        case 'mission':
+          endCode = `${value2json}\nreturn value2json(res)`
+          break
       }
 
       luaStore.codemirror.code = `${deepdump}\nlocal res = deepdump(${tbl}, 1)\n${endCode}`
@@ -185,7 +188,6 @@ function handleLoad(node: TreeOption) {
       :pattern="pattern"
       :data="treeData"
       :on-load="handleLoad"
-
       :render-label="renderLabel"
       :render-switcher-icon="renderSwitcherIcon"
     />
