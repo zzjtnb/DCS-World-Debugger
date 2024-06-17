@@ -22,10 +22,13 @@ declare global {
   interface ImportMetaEnv extends ViteEnv {
     __: unknown
   }
+  interface anyObj { [key: string]: any }
 
   declare function parseInt(s: string | number, radix?: number): number
 
   declare function parseFloat(string: string | number): number
 
 }
-interface anyObj { [key: string]: any }
+interface IModuleType {
+  default: Array<RouteRecordRaw> | RouteRecordRaw
+}

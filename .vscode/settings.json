@@ -86,8 +86,10 @@
     "pinia",
     "tsbuildinfo",
     "tsnd",
+    "typescripttolua",
     "unocss",
     "unplugin",
+    "unref",
     "vueuse",
     "zzjtnb"
   ],

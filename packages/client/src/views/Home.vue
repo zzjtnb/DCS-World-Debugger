@@ -3,8 +3,16 @@ import { net } from '@/utils/model'
 </script>
 
 <template>
-  <div text-center container mx-auto>
-    <h1>{{ $t('home.title') }}</h1>
+  <div text-center container mx-auto mb-4>
+    <n-gradient-text
+      :size="28" fw-900 :gradient="{
+        deg: 160,
+        from: '#0093E9 0%',
+        to: '#80D0C7 100%',
+      }"
+    >
+      {{ $t('home.title') }}
+    </n-gradient-text>
   </div>
   <n-alert type="info">
     <p v-for="(item, key) in $t('home.info').split('\n')" :key="key">

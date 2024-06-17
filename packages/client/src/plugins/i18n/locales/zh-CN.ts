@@ -4,6 +4,7 @@ export default {
     'debug': '调试',
     'mission': '任务',
     'test': '测试',
+    'link': '相关链接',
     'zh-CN': '简体中文',
     'en-US': 'English',
     'dark': '暗黑',

@@ -4,6 +4,7 @@ export default {
     'debug': 'Debug',
     'mission': 'Mission',
     'test': 'Test',
+    'link': 'Link',
     'zh-CN': 'Chinese',
     'en-US': 'English',
     'dark': 'Dark',

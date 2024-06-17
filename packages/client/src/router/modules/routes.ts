@@ -3,7 +3,6 @@ import Fa6SolidBug from '~icons/fa6-solid/bug'
 import Fa6SolidCode from '~icons/fa6-solid/code'
 import Fa6SolidLaptopCode from '~icons/fa6-solid/laptop-code'
 import Fa6SolidFile from '~icons/fa6-solid/file'
-import Fa6SolidFolderOpen from '~icons/fa6-solid/folder-open'
 import Fa6SolidGlobe from '~icons/fa6-solid/globe'
 import Layout from '@/layout/Index.vue'
 
@@ -53,12 +52,12 @@ const routes = [
       },
     ],
   },
-  {
-    path: '/test',
-    name: 'test',
-    meta: { title: 'test', icon: Fa6SolidFolderOpen },
-    component: () => import('@/views/Test.vue'),
-  },
+  // {
+  //   path: '/test',
+  //   name: 'test',
+  //   meta: { title: 'test', icon: Fa6SolidFolderOpen },
+  //   component: () => import('@/views/Test.vue'),
+  // },
 ]
 
 export default routes

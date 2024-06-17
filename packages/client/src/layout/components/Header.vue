@@ -43,6 +43,8 @@ function flattenRoutes(routes: RouteRecordRaw[]): RouteRecordRaw[] {
   return result
 }
 function renderIcon(icon: Component) {
+  if (!icon)
+    return () => ''
   return () => h(NIcon, null, { default: () => h(icon) })
 }
 function renderLabel(label: unknown, path: string) {
@@ -84,12 +86,17 @@ const menuOptions = generateMenuData(flatRoutes)
     <n-menu v-model:value="activeKey" accordion mode="horizontal" :options="menuOptions" />
     <div flex items-center hidden />
     <nav flex items-center justify-end>
-      <n-button size="small" quaternary class="nav-picker mx-4" @click="handleLocaleUpdate">
-        <div class="i-fa6-solid:language w-32px h-32px" />
+      <n-button quaternary type="info" @click="handleLocaleUpdate">
+        <template #icon>
+          <div class="i-fa6-solid:globe " />
+        </template>
         {{ $t(`menu.${menuStore.locale}`) }}
       </n-button>
-      <n-button size="small" quaternary class="nav-picker" @click="handleThemeUpdate">
-        {{ menuStore.theme === 'dark' ? '🌙' : '☀️' }}
+      <n-button mx-4 quaternary type="primary" @click="handleThemeUpdate">
+        <template #icon>
+          <div v-if="menuStore.theme === 'light'" class="i-fa6-solid:sun " />
+          <div v-else class="i-fa6-solid:moon " />
+        </template>
         {{ $t(`menu.${menuStore.theme}`) }}
       </n-button>
       <!-- <p>
