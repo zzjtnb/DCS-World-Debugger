@@ -29,7 +29,7 @@ function utils.value2json(val)
   elseif t == "table" then
     local result = {}
     for k, v in pairs(val) do
-      base.table.insert(result, base.string.format("%s:%s", utils.value2string(k), utils.value2string(v)))
+      base.table.insert(result, base.string.format("%s:%s", utils.value2json(k), utils.value2json(v)))
     end
     return '{' .. base.table.concat(result, ',') .. '}'
   else

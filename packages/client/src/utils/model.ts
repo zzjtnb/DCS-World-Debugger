@@ -37,7 +37,7 @@ export const value2json = `local function value2json(val)
   elseif t == "table" then
     local result = {}
     for k, v in pairs(val) do
-      table.insert(result, string.format("%s:%s", value2string(k), value2string(v)))
+      table.insert(result, string.format("%s:%s", value2json(k), value2json(v)))
     end
     return '{' .. table.concat(result, ',') .. '}'
   else
