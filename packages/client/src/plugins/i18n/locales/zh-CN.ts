@@ -32,4 +32,15 @@ export default {
     autofocus: '自动获取焦点',
     height: '高度',
   },
+  placeholder: {
+    search: '搜索',
+    code: '请输入脚本代码',
+  },
+  mission: {
+    upload: '点击或者拖动文件到该区域来上传',
+    support: '支持以.zip或者.miz结尾的任务文件',
+    desc: '用于获取miz文件当中的lua',
+    name: '当前任务名称',
+    download: '下载Lua',
+  },
 }

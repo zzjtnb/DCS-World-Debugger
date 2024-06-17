@@ -6,13 +6,11 @@ const layoutScrollbarProps = {
 </script>
 
 <template>
-  <n-layout
-    :native-scrollbar="false" :scrollbar-props="layoutScrollbarProps" h-full
-  >
+  <n-layout :native-scrollbar="false" :scrollbar-props="layoutScrollbarProps" h-full>
     <n-layout-header>
       <Header />
     </n-layout-header>
-    <n-layout-content mx-6 mt-6>
+    <n-layout-content mx-6>
       <Main />
     </n-layout-content>
     <n-back-top :right="100" />

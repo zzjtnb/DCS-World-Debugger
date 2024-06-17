@@ -33,4 +33,15 @@ export default {
     autofocus: 'Auto Focus',
     height: 'Height',
   },
+  placeholder: {
+    search: 'Search',
+    code: 'Enter script code',
+  },
+  mission: {
+    upload: 'Click or drag file to this area to upload',
+    support: 'Support .zip or .miz file',
+    desc: 'Used to get lua from miz file',
+    name: 'Current mission name',
+    download: 'Download Lua',
+  },
 }

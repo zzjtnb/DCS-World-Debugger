@@ -6,6 +6,7 @@
   "license": "MIT",
   "keywords": [],
   "scripts": {
+    "type-check": "pnpm -r type-check",
     "dev": "pnpm -r dev",
     "preinstall": "node .husky/preinstall.js",
     "prepare": "husky",

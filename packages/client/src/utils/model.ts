@@ -124,7 +124,7 @@ return string.format('t = %.2f, name = %s, t, name)
     },
   },
   config: {
-    code: `local JSON = loadfile('Scripts/JSON.lua')()
+    code: `local JSON = require('JSON')
 local res = {}
 for k, v in pairs(_G) do
   -- table.insert(res, k)
@@ -150,7 +150,7 @@ return JSON:encode(res)
   },
 }
 
-export const _G = `function deepdump(tbl, depth)
+export const deepdump = `function deepdump(tbl, depth)
   local result = {}
   local checklist = {}
   local max_depth = depth or math.huge

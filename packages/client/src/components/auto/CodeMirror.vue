@@ -43,7 +43,7 @@ const height = ([{ label: 'auto', value: 'auto' }, { label: '200px', value: '200
 </script>
 
 <template>
-  <div v-show="luaStore.codemirror.show">
+  <div class="codemirror">
     <ul class="toolbar">
       <li>
         <p class="title">
@@ -88,17 +88,18 @@ const height = ([{ label: 'auto', value: 'auto' }, { label: '200px', value: '200
         <n-select v-model:value="luaStore.codemirror.style.height" :options="height" size="small" />
       </li>
     </ul>
-    <Codemirror
-      v-model="luaStore.codemirror.code"
-      placeholder="Code goes here..."
-      :style="luaStore.codemirror.style"
-      :disabled="luaStore.codemirror.disabled"
-      :autofocus="luaStore.codemirror.autofocus"
-      :indent-with-tab="luaStore.codemirror.indentWithTab"
-      :tab-size="luaStore.codemirror.tabSize"
-      :extensions="extensions"
-      @ready="handleReady"
-    />
+    <n-scrollbar :style="luaStore.codemirror.style">
+      <Codemirror
+        v-model="luaStore.codemirror.code"
+        :placeholder="$t('placeholder.code')"
+        :disabled="luaStore.codemirror.disabled"
+        :autofocus="luaStore.codemirror.autofocus"
+        :indent-with-tab="luaStore.codemirror.indentWithTab"
+        :tab-size="luaStore.codemirror.tabSize"
+        :extensions="extensions"
+        @ready="handleReady"
+      />
+    </n-scrollbar>
   </div>
 </template>
 

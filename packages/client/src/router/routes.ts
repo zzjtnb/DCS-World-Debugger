@@ -49,7 +49,7 @@ const routes = [
         path: '/mission',
         name: 'mission',
         meta: { title: 'mission', icon: Fa6SolidFile },
-        component: () => import('@/views/Mission.vue'),
+        component: () => import('@/views/mission/Index.vue'),
       },
     ],
   },

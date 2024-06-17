@@ -5,8 +5,11 @@ export const useLuaStore = defineStore({
   state: (): lua.state => ({
     state: 'gui',
     loading: false,
+    show: {
+      received: true,
+      codemirror: true,
+    },
     codemirror: {
-      show: true,
       code: '',
       view: null,
       disabled: false,
@@ -35,9 +38,10 @@ export const useLuaStore = defineStore({
     resetReceived() {
       this.received = {
         type: 'message',
-        status: true,
+        status: undefined,
         data: '',
       }
+      this.loading = false
     },
   },
   getters: {

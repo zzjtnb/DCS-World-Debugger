@@ -22,33 +22,37 @@ socket.on('disconnect', (reason) => {
   console.log(`disconnect due to ${reason}`)
 })
 // 发送消息
-export function sendMessage(type: lua.runType) {
-  if (!luaStore.codemirror.code.trim()) {
-    luaStore.received = {
-      type: 'message',
-      status: false,
-      data: '代码不能为空',
+export function sendMessage(type: lua.runType): Promise<lua.received> {
+  return new Promise((resolve, reject) => {
+    if (!luaStore.codemirror.code.trim()) {
+      luaStore.received = {
+        type: 'message',
+        status: false,
+        data: '代码不能为空',
+      }
+      return
     }
-    return
-  }
-  const request: lua.request = {
-    type: 'debug',
-    payload: {
-      type: type || 'loadstring',
-      content: luaStore.codemirror.code.trim().replace(/--.*|\n/g, ' '),
-    },
-  }
-  if (type === 'dostring_in') {
-    request.payload.state = luaStore.state
-  }
-  luaStore.loading = true
-  luaStore.resetReceived()
+    const request: lua.request = {
+      type: 'debug',
+      payload: {
+        type: type || 'loadstring',
+        content: luaStore.codemirror.code.trim().replace(/--.*|\n/g, ' '),
+      },
+    }
+    if (type === 'dostring_in') {
+      request.payload.state = luaStore.state
+    }
+    luaStore.loading = true
+    luaStore.resetReceived()
 
-  if (!socket.connected)
-    socket.open()
-  socket.emit('debug', request)
+    if (!socket.connected)
+      socket.open()
+    // console.log(request.payload.content)
+    socket.emit('debug', request)
+    socket.on('debug', (data) => {
+      luaStore.loading = false
+      luaStore.received = data
+      resolve(data)
+    })
+  })
 }
-socket.on('debug', (data) => {
-  luaStore.loading = false
-  luaStore.received = data
-})

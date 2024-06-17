@@ -5,7 +5,7 @@ import JSZip from 'jszip'
 const message = useMessage()
 const luaStore = useLuaStore()
 luaStore.resetCode()
-
+luaStore.codemirror.disabled = true
 const mizData = ref('{}')
 const fileList = ref<UploadFileInfo[]>([])
 const mizFile = ref<UploadFileInfo>({
@@ -64,28 +64,28 @@ function downloadText(text: string, filename = '') {
         </n-icon>
       </div>
       <n-text style="font-size: 16px;">
-        点击或者拖动文件到该区域来上传
+        {{ $t('mission.upload') }}
       </n-text>
       <n-p depth="3" style="margin: 8px 0 0;">
-        支持以.zip或者.miz结尾的任务文件
+        {{ $t('mission.support') }}
       </n-p>
     </n-upload-dragger>
   </n-upload>
   <n-card v-if="mizFile.name" text-center>
     <n-p>
       <n-text strong>
-        用于获取miz文件当中的lua
+        {{ $t('mission.desc') }}
       </n-text>
     </n-p>
     <n-p>
       <n-text>
-        <span>当前任务名称: </span>
+        <span>{{ $t('mission.name') }}: </span>
         <n-text type="info">
           {{ mizFile.name }}
         </n-text>
       </n-text>
       <n-button strong secondary type="primary" ml-4 @click="downloadText(luaStore.codemirror.code, `${mizFile.name.replace('.miz', '.lua')}`)">
-        下载Lua
+        {{ $t('mission.download') }}
       </n-button>
     </n-p>
   </n-card>

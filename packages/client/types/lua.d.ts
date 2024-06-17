@@ -1,14 +1,22 @@
 namespace lua {
   export type runType = 'dostring_in' | 'loadstring'
   export interface net {
-    state: 'gui' | 'server' | 'mission' | 'net' | 'export' | 'config'
+    state: 'gui' | 'server' | 'mission' | 'net' | 'export' | 'config' | 'lua'
   }
-
+  export interface received {
+    type: 'debug' | 'message'
+    status: boolean | undefined
+    // data: Record<string, any> | string
+    data: string
+  }
   export interface state {
     state: lua.net['state']
     loading: boolean
+    show: {
+      received: boolean
+      codemirror: boolean
+    }
     codemirror: {
-      show: boolean
       code: string
       view: EditorView
       disabled: boolean
@@ -23,11 +31,7 @@ namespace lua {
         height: string
       }
     }
-    received: {
-      type: 'debug' | 'message'
-      status: boolean
-      data: Record<string, any> | string
-    }
+    received: lua.received
   }
 
   export interface request {

@@ -19,9 +19,12 @@ where pnpm >nul 2>nul
 IF %errorlevel% equ 1 (
   ECHO pnpm is not installed.
   CALL npm i -g pnpm
+  CALL pnpm install
+  GOTO START
+) ELSE (
+  CALL pnpm install
+  GOTO START
 )
-CALL pnpm install
-GOTO START
 
 :RUN
 CALL pnpm dev
