@@ -9,8 +9,8 @@
     </n-layout-header>
     <n-layout-content embedded content-style="padding: 10px 20px;" class="content-scroll" :native-scrollbar="false">
       <Main />
+      <n-back-top :right="100" />
     </n-layout-content>
-    <n-back-top :right="100" />
   </n-layout>
 </template>
 

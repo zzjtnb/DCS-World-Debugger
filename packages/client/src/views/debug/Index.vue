@@ -6,6 +6,7 @@ const route = useRoute()
 if (['loadstring', 'dostring_in'].includes(route.name as string)) {
   luaStore.show.received = true
   luaStore.show.codemirror = true
+  luaStore.codemirror.disabled = false
 }
 else {
   luaStore.show.received = false
