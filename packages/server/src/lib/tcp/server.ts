@@ -12,7 +12,6 @@ class SocketServer extends EventEmitter {
   private port: number
   private host: string
   private isLog: boolean
-  private maxConnections: number
   private clients: Set<Socket>
   private receivedData: string
 
@@ -21,8 +20,10 @@ class SocketServer extends EventEmitter {
     this.port = port
     this.host = host
     this.isLog = isLog
-    this.maxConnections = 10
-    this.server = createServer((socket) => {
+    this.server = createServer({
+      allowHalfOpen: false,
+      pauseOnConnect: false,
+    }, (socket) => {
       this.handleConnection(socket)
     })
     this.clients = new Set()
@@ -30,6 +31,8 @@ class SocketServer extends EventEmitter {
   }
 
   private log(message: string, ...args: any): void {
+    if (!this.isLog)
+      return
     console.log(`[Socket Server] ${message}`, ...args)
   }
 
@@ -55,13 +58,16 @@ class SocketServer extends EventEmitter {
   }
 
   private handleConnection(socket: Socket): void {
-    if (this.isLog) {
-      this.log(`客户端 ${socket.remoteAddress}:${socket.remotePort} 已连接.`)
-      this.server.getConnections((_error, count) => {
-        this.log(`最大连接数量${this.maxConnections},当前连接数量${count}`)
-      })
+    if (this.clients.size + 1 >= this.server.maxConnections) {
+      const oldestSocket = this.clients.values().next().value
+      this.log(`连接数已达到最大限制，关闭最早的连接 ${oldestSocket.remoteAddress}:${oldestSocket.remotePort}`)
+      this.closeSocket(oldestSocket)
     }
 
+    this.log(`客户端 ${socket.remoteAddress}:${socket.remotePort} 已连接.`)
+    this.server.getConnections((_error, count) => {
+      this.log(`最大连接数量${this.server.maxConnections},当前连接数量${count}`)
+    })
     this.clients.add(socket)
     // 设置数据的编码格式为 'utf8'
     socket.setEncoding('utf8')
@@ -100,19 +106,19 @@ class SocketServer extends EventEmitter {
     })
   }
 
-  public start() {
+  public start(): Promise<AddressInfo> {
     return new Promise((resolve, reject) => {
+      // 在服务器上设置最大监听器数量,以避免内存泄漏警告.默认NaN
+      // this.server.setMaxListeners(5)
+      this.server.maxConnections = 5
+      // 当连接数达到server.maxConnections阈值时,服务器将丢弃新连接并'drop'改为发出事件
+      this.server.on('drop', (data) => {
+        this.log(`数据丢失: ${util.inspect(data)}`)
+      })
       this.server.listen(this.port, this.host, () => {
-        // 在服务器上设置最大监听器数量,以避免内存泄漏警告.默认NaN
-        this.server.setMaxListeners(this.maxConnections)
         const address = this.server.address() as AddressInfo
         this.log(`服务器监听在 ${address.address}:${address.port}`)
         resolve(address)
-      })
-      // 当连接数达到server.maxConnections阈值时,服务器将丢弃新连接并'drop'改为发出事件
-      this.server.on('drop', (data) => {
-        if (this.isLog)
-          this.log(`数据丢失: ${util.inspect(data)}`)
       })
       this.server.on('error', (err: NodeJS.ErrnoException) => {
         if (err.code === 'EADDRINUSE') {
@@ -125,6 +131,7 @@ class SocketServer extends EventEmitter {
         }
         else {
           this.log(`服务器错误: ${err.message}`)
+          reject(err)
         }
       })
     })

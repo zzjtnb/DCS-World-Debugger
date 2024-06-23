@@ -3,10 +3,13 @@ import { io } from 'socket.io-client'
 const luaStore = useLuaStore()
 
 const socket = io('ws://localhost:4000', {
-  autoConnect: false,
-  withCredentials: false,
+  // autoConnect: false,
+  transports: ['websocket'],
 })
-
+socket.on('debug', (data) => {
+  luaStore.loading = false
+  luaStore.received = data
+})
 socket.on('connect_error', (_err) => {
   console.log(`connect_error due to ${_err.message}`)
   luaStore.loading = false
@@ -17,9 +20,8 @@ socket.on('connect_error', (_err) => {
   }
   socket.close()
 })
-
 socket.on('disconnect', (reason) => {
-  console.log(`disconnect due to ${reason}`)
+  console.log(`socket 断开连接: ${reason}`)
 })
 // 发送消息
 export function sendMessage(type: lua.runType): Promise<lua.received> {
@@ -30,7 +32,7 @@ export function sendMessage(type: lua.runType): Promise<lua.received> {
         status: false,
         data: '代码不能为空',
       }
-      return
+      return reject(luaStore.received)
     }
     const request: lua.request = {
       type: 'debug',
@@ -47,12 +49,12 @@ export function sendMessage(type: lua.runType): Promise<lua.received> {
 
     if (!socket.connected)
       socket.open()
-    // console.log(request.payload.content)
     socket.emit('debug', request)
-    socket.on('debug', (data) => {
-      luaStore.loading = false
-      luaStore.received = data
-      resolve(data)
+    socket.on('debug', () => {
+      resolve(luaStore.received)
+    })
+    socket.on('connect_error', () => {
+      reject(luaStore.received)
     })
   })
 }

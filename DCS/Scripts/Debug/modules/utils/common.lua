@@ -18,24 +18,7 @@ function utils.isempty(val)
   return val == nil or val == ''
 end
 
--- this is used for "net.dostring_in()" Lua API
--- serialization
----@usage val={code = 200,msg = 'Hello World'} 返回{code:200,msg:"Hello World",}
----@param val string|boolean|table
-function utils.value2json(val)
-  local t = type(val)
-  if t == "number" or t == "boolean" then
-    return tostring(val)
-  elseif t == "table" then
-    local result = {}
-    for k, v in pairs(val) do
-      base.table.insert(result, base.string.format("%s:%s", utils.value2json(k), utils.value2json(v)))
-    end
-    return '{' .. base.table.concat(result, ',') .. '}'
-  else
-    return base.string.format("%q", tostring(val))
-  end
-end
+
 
 -- this is used for "net.dostring_in()" Lua API
 -- serialization
@@ -44,24 +27,32 @@ end
 function utils.value2string(val)
   local t = type(val)
   if t == "number" or t == "boolean" then
-    return tostring(val)
+      return tostring(val)
   elseif t == "table" then
-    local result = {}
-    for k, v in pairs(val) do
-      base.table.insert(result, base.string.format("[%s]=%s", utils.value2string(k), utils.value2string(v)))
-    end
-    return '{' .. base.table.concat(result, ',') .. '}'
+      local str = ''
+      local k,v
+      for k,v in pairs(val) do
+          str = str ..'['..utils.value2string(k)..']='..utils.value2string(v)..','
+      end
+      return '{'..str..'}'
   else
-    return base.string.format("%q", tostring(val))
+      return string.format("%q", tostring(val))
   end
 end
+
 
 --- 将给定值转换为可执行的代码
 ---@param val any
 ---@return string
 ---@usage val='Hello World' 返回 return 'Hello World'
+--	local t = loadstring(utils.value2code(val))
+--  game.slots = t()
 function utils.value2code(val)
   return base.string.format("return %s", utils.value2string(val))
+end
+
+function utils.value2table(val)
+  return utils.value2string(val)
 end
 
 --- 判断环境是否存在变量

@@ -4,7 +4,7 @@ declare global {
     interface ProcessEnv {
       HOST: string
       SERVER_PORT: number
-      IS_LOG: boolean
+      LOG: boolean
     }
   }
 }

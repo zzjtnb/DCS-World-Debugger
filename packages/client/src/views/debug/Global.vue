@@ -115,10 +115,8 @@ function handleLoad(node: TreeOption) {
     }
 
     sendMessage(type).then((res) => {
-      if (!res.data) {
-        resolve(false)
-        return
-      }
+      if (!res.data)
+        return resolve(false)
       try {
         if (!isNumeric) {
           try {

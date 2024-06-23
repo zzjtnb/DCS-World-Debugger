@@ -96,7 +96,7 @@ class SocketClient extends EventEmitter {
         }
         else {
           if (attempt < tryCount) {
-            this.log(`尚未连接,正在重试: ${attempt + 1}/${tryCount}...`)
+            // this.log(`尚未连接,正在重试: ${attempt + 1}/${tryCount}...`)
             this.connect()
               .then(() => setTimeout(() => sendAttempt(attempt + 1, currentDelay * 2), currentDelay)) // 延迟重试,退避策略
               .catch((err) => {
