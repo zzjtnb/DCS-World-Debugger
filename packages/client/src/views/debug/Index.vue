@@ -53,7 +53,7 @@ const runType = computed<lua.runType>(() => {
       </n-space>
     </template>
     <n-alert :title="$t('debug.status')" :type="luaStore.alertType" :bordered="false" my-4>
-      <span v-if="luaStore.received.type === 'message'">{{ luaStore.received.data }}</span>
+      <span v-if="luaStore.received.type === 'debug'">{{ luaStore.received.status ? '成功' : '失败' }}</span>
     </n-alert>
 
     <template v-if="luaStore.show.received">

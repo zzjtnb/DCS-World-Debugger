@@ -1,13 +1,13 @@
 {
   // Enable the ESlint flat config support
-  "eslint.experimental.useFlatConfig": true,
+  "eslint.useFlatConfig": true,
   // 禁用默认格式化程序,改用 eslint
   "prettier.enable": false,
   "editor.formatOnSave": false,
   // 自动修复
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.fixAll.stylelint": "explicit",
+    "source.fixAll.eslint": "always",
+    "source.fixAll.stylelint": "always",
     "source.organizeImports": "never"
   },
   // 将您的IDE中的风格规则设为静默,但仍然自动修复它们
@@ -92,6 +92,5 @@
     "unref",
     "vueuse",
     "zzjtnb"
-  ],
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  ]
 }

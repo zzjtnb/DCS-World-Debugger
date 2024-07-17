@@ -16,6 +16,10 @@ import presetWebFonts from '@unocss/preset-web-fonts'
 // https://icones.js.org
 // https://fontawesome.com
 export default defineConfig({
+  // 如果@vitejs/plugin-legacy有renderModernChunks: false，您需要将其添加到unocss选项
+  legacy: {
+    renderModernChunks: false,
+  },
   shortcuts: [],
   presets: [
     // 这个预设提供了流行的实用程序优先框架的通用超集，包括Tailwind CSS，Windi CSS，Bootstrap，Tachyons等

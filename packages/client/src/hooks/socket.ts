@@ -1,5 +1,6 @@
 import { io } from 'socket.io-client'
 
+const { notification } = window
 const luaStore = useLuaStore()
 
 const socket = io('ws://localhost:4000', {
@@ -8,16 +9,25 @@ const socket = io('ws://localhost:4000', {
 })
 socket.on('debug', (data) => {
   luaStore.loading = false
+  // luaStore.received = Object.assign(luaStore.received, data)
   luaStore.received = data
+  if (data.type === 'message') {
+    notification[data.status ? 'success' : 'error']({
+      content: data.message,
+    })
+  }
 })
 socket.on('connect_error', (_err) => {
   console.log(`connect_error due to ${_err.message}`)
   luaStore.loading = false
-  luaStore.received = {
-    type: 'message',
-    status: false,
-    data: '连接 NodeJs 服务器失败,请检查 NodeJs 服务器是否启动',
-  }
+  // luaStore.received = {
+  //   type: 'message',
+  //   status: false,
+  //   message: '连接 NodeJs 服务器失败,请检查 NodeJs 服务器是否启动',
+  // }
+  notification.error({
+    content: '连接 NodeJs 服务器失败,请检查 NodeJs 服务器是否启动',
+  })
   socket.close()
 })
 socket.on('disconnect', (reason) => {
@@ -45,7 +55,7 @@ export function sendMessage(type: lua.runType): Promise<lua.received> {
       request.payload.state = luaStore.state
     }
     luaStore.loading = true
-    luaStore.resetReceived()
+    // luaStore.resetReceived()
 
     if (!socket.connected)
       socket.open()

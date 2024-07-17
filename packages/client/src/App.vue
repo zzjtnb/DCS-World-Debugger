@@ -6,14 +6,8 @@ import json from 'highlight.js/lib/languages/json'
 hljs.registerLanguage('lua', lua)
 hljs.registerLanguage('json', json)
 
-const menuStore = useMenuStore()
-const current = computed(() => {
-  return {
-    locale: menuStore.locale === 'zh-CN' ? zhCN : enUS,
-    dateLocale: menuStore.locale === 'zh-CN' ? dateZhCN : dateEnUS,
-    theme: menuStore.theme === 'dark' ? darkTheme : lightTheme,
-  }
-})
+const appStore = useAppStore()
+
 hljs.registerLanguage('lua', lua)
 hljs.registerLanguage('json', json)
 </script>
@@ -21,14 +15,16 @@ hljs.registerLanguage('json', json)
 <template>
   <n-config-provider
     :hljs="hljs"
-    :theme="current.theme" :locale="current.locale" :date-locale="current.dateLocale"
+    :theme="appStore.getTheme" :locale="appStore.getLocale" :date-locale="appStore.getDateLocale"
     abstract
     inline-theme-disabled
   >
-    <n-message-provider>
-      <n-theme-editor>
-        <RouterView />
-      </n-theme-editor>
-    </n-message-provider>
+    <n-notification-provider :max="appStore.provider.notification.max">
+      <n-message-provider>
+        <n-theme-editor>
+          <RouterView />
+        </n-theme-editor>
+      </n-message-provider>
+    </n-notification-provider>
   </n-config-provider>
 </template>

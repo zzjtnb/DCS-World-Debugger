@@ -7,7 +7,8 @@ namespace lua {
     type: 'debug' | 'message'
     status: boolean | undefined
     // data: Record<string, any> | string
-    data: string
+    data?: string
+    message?: string
   }
   export interface state {
     state: lua.net['state']

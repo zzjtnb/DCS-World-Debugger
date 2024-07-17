@@ -26,8 +26,8 @@ export const useLuaStore = defineStore({
     },
     received: {
       type: 'message',
-      status: true,
-      data: '',
+      status: undefined,
+      message: '',
     },
 
   }),
@@ -39,21 +39,19 @@ export const useLuaStore = defineStore({
       this.received = {
         type: 'message',
         status: undefined,
-        data: '',
+        message: '',
       }
       this.loading = false
     },
   },
   getters: {
     alertType: (state) => {
-      const status = state.received.status
-      if (status === undefined)
+      const { status, type } = state.received
+      if (status === undefined || type === 'message')
         return 'default'
       return status ? 'success' : 'error'
     },
     getReceived: ({ received }): string => {
-      if (received.type === 'message')
-        return ''
       let code = received.data
       if (!code)
         return ''

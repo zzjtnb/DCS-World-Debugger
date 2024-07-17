@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 
 import App from './App.vue'
 import router from './router'
-
+import { setupNaiveDiscreteApi } from '@/utils/globalMessage'
 /** 重置样式 这里引入自定义的重置样式也可 */
 import '@/assets/reset/normalize.css'
 import '@/assets/fonts/fonts.css'
@@ -25,4 +25,6 @@ app.use(pinia)
 app.use(i18n)
 app.use(router)
 
+// 必须在 createApp 之后
+setupNaiveDiscreteApi()
 app.mount('#app')

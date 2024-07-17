@@ -10,6 +10,7 @@ declare global {
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
+  const createDiscreteApi: typeof import('naive-ui')['createDiscreteApi']
   const createPinia: typeof import('pinia')['createPinia']
   const customRef: typeof import('vue')['customRef']
   const darkTheme: typeof import('naive-ui')['darkTheme']
@@ -66,18 +67,21 @@ declare global {
   const shallowRef: typeof import('vue')['shallowRef']
   const storeToRefs: typeof import('pinia')['storeToRefs']
   const stores: typeof import('../../src/stores/index')['default']
+  const testPost: typeof import('../../src/api/test')['testPost']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
   const toValue: typeof import('vue')['toValue']
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
+  const useAppStore: typeof import('../../src/stores/modules/app')['useAppStore']
   const useAttrs: typeof import('vue')['useAttrs']
   const useClipboard: typeof import('@vueuse/core')['useClipboard']
   const useCounterStore: typeof import('../../src/stores/modules/counter')['useCounterStore']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useDialog: typeof import('naive-ui')['useDialog']
+  const useEnv: typeof import('../../src/hooks/useEnv')['useEnv']
   const useI18n: typeof import('vue-i18n')['useI18n']
   const useLink: typeof import('vue-router')['useLink']
   const useLoadingBar: typeof import('naive-ui')['useLoadingBar']
@@ -111,6 +115,7 @@ declare module 'vue' {
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
+    readonly createDiscreteApi: UnwrapRef<typeof import('naive-ui')['createDiscreteApi']>
     readonly createPinia: UnwrapRef<typeof import('pinia')['createPinia']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly darkTheme: UnwrapRef<typeof import('naive-ui')['darkTheme']>
@@ -167,23 +172,25 @@ declare module 'vue' {
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
     readonly stores: UnwrapRef<typeof import('../../src/stores/index')['default']>
+    readonly testPost: UnwrapRef<typeof import('../../src/api/test')['testPost']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
+    readonly useAppStore: UnwrapRef<typeof import('../../src/stores/modules/app')['useAppStore']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useClipboard: UnwrapRef<typeof import('@vueuse/core')['useClipboard']>
     readonly useCounterStore: UnwrapRef<typeof import('../../src/stores/modules/counter')['useCounterStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useDialog: UnwrapRef<typeof import('naive-ui')['useDialog']>
+    readonly useEnv: UnwrapRef<typeof import('../../src/hooks/useEnv')['useEnv']>
     readonly useI18n: UnwrapRef<typeof import('vue-i18n')['useI18n']>
     readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
     readonly useLoadingBar: UnwrapRef<typeof import('naive-ui')['useLoadingBar']>
     readonly useLuaStore: UnwrapRef<typeof import('../../src/stores/modules/lua')['useLuaStore']>
-    readonly useMenuStore: UnwrapRef<typeof import('../../src/stores/modules/menu')['useMenuStore']>
     readonly useMessage: UnwrapRef<typeof import('naive-ui')['useMessage']>
     readonly useNotification: UnwrapRef<typeof import('naive-ui')['useNotification']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
@@ -205,6 +212,7 @@ declare module '@vue/runtime-core' {
     readonly acceptHMRUpdate: UnwrapRef<typeof import('pinia')['acceptHMRUpdate']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
+    readonly createDiscreteApi: UnwrapRef<typeof import('naive-ui')['createDiscreteApi']>
     readonly createPinia: UnwrapRef<typeof import('pinia')['createPinia']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly darkTheme: UnwrapRef<typeof import('naive-ui')['darkTheme']>
@@ -261,23 +269,25 @@ declare module '@vue/runtime-core' {
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
     readonly stores: UnwrapRef<typeof import('../../src/stores/index')['default']>
+    readonly testPost: UnwrapRef<typeof import('../../src/api/test')['testPost']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
     readonly toValue: UnwrapRef<typeof import('vue')['toValue']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
+    readonly useAppStore: UnwrapRef<typeof import('../../src/stores/modules/app')['useAppStore']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useClipboard: UnwrapRef<typeof import('@vueuse/core')['useClipboard']>
     readonly useCounterStore: UnwrapRef<typeof import('../../src/stores/modules/counter')['useCounterStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useDialog: UnwrapRef<typeof import('naive-ui')['useDialog']>
+    readonly useEnv: UnwrapRef<typeof import('../../src/hooks/useEnv')['useEnv']>
     readonly useI18n: UnwrapRef<typeof import('vue-i18n')['useI18n']>
     readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
     readonly useLoadingBar: UnwrapRef<typeof import('naive-ui')['useLoadingBar']>
     readonly useLuaStore: UnwrapRef<typeof import('../../src/stores/modules/lua')['useLuaStore']>
-    readonly useMenuStore: UnwrapRef<typeof import('../../src/stores/modules/menu')['useMenuStore']>
     readonly useMessage: UnwrapRef<typeof import('naive-ui')['useMessage']>
     readonly useNotification: UnwrapRef<typeof import('naive-ui')['useNotification']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>

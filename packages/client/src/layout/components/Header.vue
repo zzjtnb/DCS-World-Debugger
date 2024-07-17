@@ -1,25 +1,36 @@
 <script lang="ts" setup>
 import type { Component } from 'vue'
 import type { MenuOption } from 'naive-ui/es/menu'
+
 import { type RouteRecordRaw, RouterLink } from 'vue-router'
 import { setI18nLanguage } from '@/plugins/i18n'
 
 const { t, te } = useI18n()
-const menuStore = useMenuStore()
+const appStore = useAppStore()
 
 function handleLocaleUpdate() {
-  if (menuStore.locale === 'zh-CN') {
-    menuStore.locale = 'en-US'
+  if (appStore.locale === 'zh-CN') {
+    appStore.locale = 'en-US'
   }
   else {
-    menuStore.locale = 'zh-CN'
+    appStore.locale = 'zh-CN'
   }
-  setI18nLanguage(menuStore.locale)
+  setI18nLanguage(appStore.locale)
 }
 const luaStore = useLuaStore()
 function handleThemeUpdate() {
-  menuStore.theme === 'dark' ? menuStore.theme = 'light' : menuStore.theme = 'dark'
-  menuStore.theme === 'dark' ? luaStore.codemirror.theme = 'oneDark' : luaStore.codemirror.theme = 'default'
+  if (appStore.theme === 'dark') {
+    appStore.theme = 'light'
+  }
+  else {
+    appStore.theme = 'dark'
+  }
+  if (appStore.theme === 'dark') {
+    luaStore.codemirror.theme = 'oneDark'
+  }
+  else {
+    luaStore.codemirror.theme = 'default'
+  }
 }
 
 const route = useRoute()
@@ -90,14 +101,14 @@ const menuOptions = generateMenuData(flatRoutes)
         <template #icon>
           <div class="i-fa6-solid:globe " />
         </template>
-        {{ $t(`menu.${menuStore.locale}`) }}
+        {{ $t(`menu.${appStore.locale}`) }}
       </n-button>
       <n-button mx-4 quaternary type="primary" @click="handleThemeUpdate">
         <template #icon>
-          <div v-if="menuStore.theme === 'light'" class="i-fa6-solid:sun " />
+          <div v-if="appStore.theme === 'light'" class="i-fa6-solid:sun " />
           <div v-else class="i-fa6-solid:moon " />
         </template>
-        {{ $t(`menu.${menuStore.theme}`) }}
+        {{ $t(`menu.${appStore.theme}`) }}
       </n-button>
       <!-- <p>
         <span>Icon</span>
@@ -123,4 +134,4 @@ const menuOptions = generateMenuData(flatRoutes)
   width: 100%;
   height: 100%;
 }
-</style>
+</style>import { type RouteRecordRaw, RouterLink } from 'vue-router';

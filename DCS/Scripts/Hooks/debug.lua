@@ -23,12 +23,20 @@ addToPackagePath(paths)
 local function createMessage(message)
   local res = {
     type = "message",
-    data = message
+    status = true,
+    message = message
   }
   return res
 end
 
 local TCP = require("tcp")
+
+if not TCP.server.server.current then
+  TCP.server:create_server()
+  local data = 'DCS World Debugger 已启动,可以调试Lua脚本'
+  -- net.log(data)
+  TCP.client:send(createMessage(data))
+end
 
 ------------------------ 定义 Debug 的 callbacks ------------------------
 
@@ -37,18 +45,23 @@ function hooks.onMissionLoadBegin()
   -- 初始化游戏数据
   -- world.addEventHandler尚未执行
   local data = '开始加载任务'
+  net.log('Debug Hooks Callbacks: ' .. data)
   TCP.client:send(createMessage(data))
 end
 
 function hooks.onMissionLoadEnd()
   -- world.addEventHandler已经执行
   local data = '任务加载结束'
+  net.log('Debug Hooks Callbacks: ' .. data)
   TCP.client:send(createMessage(data))
 end
 
 function hooks.onSimulationStart()
-  TCP.server:create_server()
-  local data = '游戏界面开始运行,可以调试Lua脚本'
+  if not TCP.server.server.current then
+    TCP.server:create_server()
+  end
+  local data = '游戏界面开始运行'
+  -- net.log('Debug Hooks Callbacks: ' .. data)
   TCP.client:send(createMessage(data))
 end
 
@@ -60,11 +73,12 @@ end
 
 function hooks.onSimulationStop()
   local data = '游戏界面已停止运行'
+  -- net.log('Debug Hooks Callbacks: ' .. data)
   TCP.client:send(createMessage(data))
-  TCP.server:stop()
+  -- TCP.server:stop()
 end
 
 -- 设置用户callbacs,使用上面定义的功能映射DCS事件处理程序
 DCS.setUserCallbacks(hooks)
 
-net.log("Debug Hooks Callbacks 加载完成")
+net.log("Debug Hooks Callbacks: 加载完成")

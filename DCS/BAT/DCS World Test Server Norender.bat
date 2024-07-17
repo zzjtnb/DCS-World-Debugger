@@ -1,8 +1,8 @@
 @ECHO off
 ::SETLOCAL EnableDelayedExpansion
-set sweverPath="D:\Games\Eagle Dynamics\DCS World OpenBeta\bin\DCS.exe"
+set sweverPath="D:\Games\Eagle Dynamics\DCS World\bin\DCS.exe"
 @REM set title=DCS_Server
-set title=DCS_World_Test_Server_Norender
+set title=DCS.Test_Server_Norender
 set parameter= --server --norender --webgui -w %title%
 REM ECHO "WINDOWTITLE eq %title%"
 REM set parameter= --webgui -w DCS

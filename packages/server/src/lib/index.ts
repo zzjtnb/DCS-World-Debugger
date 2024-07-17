@@ -26,7 +26,7 @@ class SocketIO {
           socket.emit('debug', {
             type: 'message',
             status: false,
-            data: '连接DCS World 服务器失败,请检查DCS World 服务器是否启动',
+            message: '连接DCS World 服务器失败,请检查DCS World 服务器是否启动',
           })
         })
       })
