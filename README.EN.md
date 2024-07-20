@@ -49,7 +49,7 @@ pnpm setup
    pnpm dev
    ```
 
-   You can also simply double-click `RUN SERVER.bat`
+   You can also simply double-click `RUN.bat`
 
 4. 🗂️ Move Lua scripts
 

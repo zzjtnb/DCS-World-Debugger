@@ -7,10 +7,10 @@ import { useEnv } from '@/hooks/useEnv'
 
 const axiosCancel = new AxiosCancel()
 
-const { VITE_BASE_API } = useEnv()
+const { VITE_BASE_URL } = useEnv()
 
 const service: AxiosInstance = axios.create({
-  baseURL: VITE_BASE_API || '/',
+  baseURL: VITE_BASE_URL || '/',
   timeout: 1000 * 20,
 })
 

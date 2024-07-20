@@ -9,10 +9,9 @@ declare module 'vue' {
   export interface GlobalComponents {
     Breadcrumb: typeof import('./../../src/layout/components/Breadcrumb.vue')['default']
     CodeMirror: typeof import('./../../src/components/auto/CodeMirror.vue')['default']
-    Fa6SolidBroom: typeof import('~icons/fa6-solid/broom')['default']
-    Fa6Solidcopy: typeof import('~icons/fa6-solid/copy')['default']
-    Fa6SolidUpload: typeof import('~icons/fa6-solid/upload')['default']
     Header: typeof import('./../../src/layout/components/Header.vue')['default']
+    'IFa6Solid:copy': typeof import('~icons/fa6-solid/copy')['default']
+    IFa6SolidBroom: typeof import('~icons/fa6-solid/broom')['default']
     Main: typeof import('./../../src/layout/components/Main.vue')['default']
     NAlert: typeof import('naive-ui')['NAlert']
     NBackTop: typeof import('naive-ui')['NBackTop']

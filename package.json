@@ -1,33 +1,44 @@
 {
   "name": "dcs-world-debugger",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "author": "",
   "license": "MIT",
   "keywords": [],
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=9"
+  },
   "scripts": {
-    "type-check": "pnpm -r type-check",
-    "dev": "pnpm -r dev",
-    "preinstall": "node .husky/preinstall.js",
     "prepare": "husky",
-    "lint:lint-staged": "lint-staged -c ./.husky/.lintstagedrc.js",
-    "lint:eslint": "eslint \"**/**/*.{js,ts,cjs,mjs,vue,html,md,json,jsonc,yaml}\"",
-    "lint:eslint-fix": "eslint \"**/**/*.{js,ts,cjs,mjs,vue,html,md,json,jsonc,yaml}\" --fix",
-    "lint:stylelint": "stylelint \"**/*.{css,scss,vue,html,xml,svelte,astro,php}\"",
-    "lint:stylelint-fix": "stylelint \"**/*.{css,scss,vue,html,xml,svelte,astro,php}\" --fix",
+    "preinstall": "node .husky/preinstall.js",
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build",
+    "type-check": "pnpm -r type-check",
+    "lint:lint-staged": "lint-staged -c .husky/lint-staged.config.js",
+    "lint:eslint": "eslint \"**/*.{js,ts,cjs,mjs,vue,html,md,json,jsonc,yaml}\"",
+    "lint:eslint-fix": "eslint \"**/*.{js,ts,cjs,mjs,vue,html,md,json,jsonc,yaml}\" --fix",
+    "lint:eslint-debug": "eslint \"**/*.{js,ts,cjs,mjs,vue,html,md,json,jsonc,yaml}\" --fix --debug",
+    "lint:stylelint": "stylelint \"**/*.{css,scss,vue,html,xml,svelte,astro,php,md}\"",
+    "lint:stylelint-fix": "stylelint \"**/*.{css,scss,vue,html,xml,svelte,astro,php,md}\" --fix",
     "lint": "pnpm lint:eslint && pnpm lint:stylelint",
     "lint:fix": "pnpm lint:eslint-fix && pnpm lint:stylelint-fix",
     "clear": "pnpm exec -- rm -rf packages/*/node_modules && pnpm exec -- rm -rf node_modules",
     "test": "node test/app.js"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
-    "@antfu/eslint-config": "^2.22.0",
-    "eslint": "^9.6.0",
+    "@antfu/eslint-config": "^2.23.0",
+    "@unocss/eslint-plugin": "^0.61.5",
+    "eslint": "^9.7.0",
     "eslint-plugin-format": "^0.1.2",
     "get-installed-apps": "^1.1.0",
-    "husky": "^9.0.11",
+    "husky": "^9.1.1",
     "lint-staged": "^15.2.7",
-    "stylelint": "^16.6.1",
-    "stylelint-config-zzjtnb": "^0.0.4"
+    "stylelint": "^16.7.0",
+    "stylelint-config-zzjtnb": "^0.0.5"
   }
 }

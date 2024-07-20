@@ -1,4 +1,4 @@
-# DCS World Debuger
+# DCS World Debugger
 
 monorepo
 

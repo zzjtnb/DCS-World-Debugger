@@ -1,8 +1,13 @@
 # Vue3
 
+[unocss 中文文档](https://unocss-cn.pages.dev)
+[unocss 练习场](https://unocss.dev/play)
 [unocss 交互式文档](https://unocss.dev/interactive)
 [unocss本地调试](http://localhost:3000/__unocss)
 [Tailwind 组件](https://tailwindcomponents.com)
+
+## 图标
+
 [icones](https://icones.js.org)
 [fontawesome](https://fontawesome.com)
 
@@ -30,14 +35,14 @@
    # 安装 Unocss
    pnpm i -D unocss
 
-   # 安装 Unocss 的 Web Fonts 预设
-   pnpm i -D @unocss/preset-web-fonts
+   # 将 unocss 自带的 rem 转换为 px
+   pnpm add -D @unocss/preset-rem-to-px
 
    # 安装 Iconify 的 FA6 Solid 图标集
    pnpm i -D @iconify-json/fa6-solid
 
-   # 安装所有 CodeMirror 依赖
-   pnpm i -D unocss @unocss/preset-web-fonts @iconify-json/fa6-solid
+   # 安装所有 Unocss 依赖
+   pnpm i -D unocss @unocss/preset-rem-to-px @iconify-json/fa6-solid
    ```
 
 4. 配置Iconify
@@ -94,7 +99,7 @@
     ```
 
 11. CodeMirror
-    CodeMirror 是一个基于浏览器的文本编辑器，它提供了丰富的 API 和插件来扩展其功能。以下是安装 CodeMirror 和相关插件的命令和注释：
+    CodeMirror 是一个基于浏览器的文本编辑器,它提供了丰富的 API 和插件来扩展其功能.以下是安装 CodeMirror 和相关插件的命令和注释:
 
     ```bash
     # 安装 CodeMirror

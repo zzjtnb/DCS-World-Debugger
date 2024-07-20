@@ -24,6 +24,7 @@ declare global {
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
+  const getPNG: typeof import('../../src/api/test')['getPNG']
   const h: typeof import('vue')['h']
   const inject: typeof import('vue')['inject']
   const isObject: typeof import('@vueuse/core')['isObject']
@@ -67,7 +68,6 @@ declare global {
   const shallowRef: typeof import('vue')['shallowRef']
   const storeToRefs: typeof import('pinia')['storeToRefs']
   const stores: typeof import('../../src/stores/index')['default']
-  const testPost: typeof import('../../src/api/test')['testPost']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
@@ -86,7 +86,6 @@ declare global {
   const useLink: typeof import('vue-router')['useLink']
   const useLoadingBar: typeof import('naive-ui')['useLoadingBar']
   const useLuaStore: typeof import('../../src/stores/modules/lua')['useLuaStore']
-  const useMenuStore: typeof import('../../src/stores/modules/menu')['useMenuStore']
   const useMessage: typeof import('naive-ui')['useMessage']
   const useNotification: typeof import('naive-ui')['useNotification']
   const useRoute: typeof import('vue-router')['useRoute']
@@ -129,6 +128,7 @@ declare module 'vue' {
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getPNG: UnwrapRef<typeof import('../../src/api/test')['getPNG']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isObject: UnwrapRef<typeof import('@vueuse/core')['isObject']>
@@ -172,7 +172,6 @@ declare module 'vue' {
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
     readonly stores: UnwrapRef<typeof import('../../src/stores/index')['default']>
-    readonly testPost: UnwrapRef<typeof import('../../src/api/test')['testPost']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
@@ -226,6 +225,7 @@ declare module '@vue/runtime-core' {
     readonly getActivePinia: UnwrapRef<typeof import('pinia')['getActivePinia']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
+    readonly getPNG: UnwrapRef<typeof import('../../src/api/test')['getPNG']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly inject: UnwrapRef<typeof import('vue')['inject']>
     readonly isObject: UnwrapRef<typeof import('@vueuse/core')['isObject']>
@@ -269,7 +269,6 @@ declare module '@vue/runtime-core' {
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
     readonly storeToRefs: UnwrapRef<typeof import('pinia')['storeToRefs']>
     readonly stores: UnwrapRef<typeof import('../../src/stores/index')['default']>
-    readonly testPost: UnwrapRef<typeof import('../../src/api/test')['testPost']>
     readonly toRaw: UnwrapRef<typeof import('vue')['toRaw']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>

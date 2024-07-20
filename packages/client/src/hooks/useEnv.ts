@@ -1,7 +1,10 @@
 export function useEnv() {
-  const { VITE_BASE_API, MODE } = import.meta.env
+  const env = import.meta.env
+  return env
+  const { VITE_BASE_URL, VITE_API_URL, MODE } = env
   return {
     MODE,
-    VITE_BASE_API,
+    VITE_BASE_URL,
+    VITE_API_URL,
   }
 }

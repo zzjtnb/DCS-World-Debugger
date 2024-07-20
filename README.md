@@ -49,7 +49,7 @@ pnpm setup
    pnpm dev
    ```
 
-   你也可以直接双击`RUN SERVER.bat`
+   你也可以直接双击`RUN.bat`
 
 4. 🗂️ 移动Lua 脚本
 

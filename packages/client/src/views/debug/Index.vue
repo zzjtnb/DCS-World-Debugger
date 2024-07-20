@@ -39,30 +39,30 @@ const runType = computed<lua.runType>(() => {
     <RouterView />
     <template v-if="luaStore.show.codemirror">
       <n-spin :show="luaStore.loading">
-        <div class="code" my-4>
+        <div class="code" my-16>
           <CodeMirror />
         </div>
       </n-spin>
-      <n-space v-show="luaStore.show.codemirror" justify="center" container mx-auto my-4>
-        <n-button type="error" text-4 fw-900 :disabled="luaStore.loading" @click="luaStore.resetCode()">
+      <n-space v-show="luaStore.show.codemirror" justify="center" mx-auto my-16 container>
+        <n-button type="error" text-16 fw-900 :disabled="luaStore.loading" @click="luaStore.resetCode()">
           {{ $t('debug.clear') }}
         </n-button>
-        <n-button type="primary" text-4 fw-900 :disabled="luaStore.loading" @click="sendMessage(runType)">
+        <n-button type="primary" text-16 fw-900 :disabled="luaStore.loading" @click="sendMessage(runType)">
           {{ $t('debug.send') }}
         </n-button>
       </n-space>
     </template>
-    <n-alert :title="$t('debug.status')" :type="luaStore.alertType" :bordered="false" my-4>
+    <n-alert :title="$t('debug.status')" :type="luaStore.alertType" :bordered="false" my-16>
       <span v-if="luaStore.received.type === 'debug'">{{ luaStore.received.status ? '成功' : '失败' }}</span>
     </n-alert>
-
+    <!-- && luaStore.getReceived -->
     <template v-if="luaStore.show.received">
-      <n-space mx-auto my-4>
+      <n-space mx-auto my-16>
         <n-tooltip trigger="hover">
           <template #trigger>
             <n-button icon-placement="right" type="error" quaternary @click="luaStore.resetReceived">
               <template #icon>
-                <fa6-solid-broom />
+                <i-fa6-solid-broom />
               </template>
             </n-button>
           </template>
@@ -72,7 +72,8 @@ const runType = computed<lua.runType>(() => {
           <template #trigger>
             <n-button icon-placement="right" type="success" quaternary @click="handleCopy()">
               <template #icon>
-                <fa6-solidcopy />
+                <i-fa6-solid:copy />
+                <!-- <div i-fa6-solid:copy /> -->
               </template>
             </n-button>
           </template>

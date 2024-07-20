@@ -4,10 +4,10 @@ const routes = [
   {
     path: '/test',
     component: Layout,
-    redirect: '/test/index',
+    redirect: '/test',
     children: [
       {
-        path: 'index',
+        path: '/test',
         name: 'test',
         meta: { title: 'test' },
         component: () => import('@/views/Test.vue'),

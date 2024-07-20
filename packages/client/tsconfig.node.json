@@ -10,11 +10,12 @@
     "noEmit": true
   },
   "include": [
-    "build",
     "vite.config.*",
     "vitest.config.*",
     "cypress.config.*",
     "nightwatch.conf.*",
-    "playwright.config.*"
+    "playwright.config.*",
+    "build",
+    "types/*.d.ts"
   ]
 }

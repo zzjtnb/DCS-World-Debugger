@@ -93,20 +93,20 @@ const menuOptions = generateMenuData(flatRoutes)
 </script>
 
 <template>
-  <header grid="~ cols-3" px-20 mb-2>
+  <header grid="~ cols-3" mb-2 px-20>
     <n-menu v-model:value="activeKey" accordion mode="horizontal" :options="menuOptions" />
-    <div flex items-center hidden />
+    <div hidden flex items-center />
     <nav flex items-center justify-end>
       <n-button quaternary type="info" @click="handleLocaleUpdate">
         <template #icon>
-          <div class="i-fa6-solid:globe " />
+          <div class="i-fa6-solid:globe" />
         </template>
         {{ $t(`menu.${appStore.locale}`) }}
       </n-button>
-      <n-button mx-4 quaternary type="primary" @click="handleThemeUpdate">
+      <n-button quaternary mx-4 type="primary" @click="handleThemeUpdate">
         <template #icon>
-          <div v-if="appStore.theme === 'light'" class="i-fa6-solid:sun " />
-          <div v-else class="i-fa6-solid:moon " />
+          <div v-if="appStore.theme === 'light'" class="i-fa6-solid:sun" />
+          <div v-else class="i-fa6-solid:moon" />
         </template>
         {{ $t(`menu.${appStore.theme}`) }}
       </n-button>

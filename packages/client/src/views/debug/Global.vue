@@ -159,8 +159,8 @@ function handleLoad(node: TreeOption) {
 </script>
 
 <template>
-  <div text-center container mx-auto my-4>
-    <p text-8 fw-900 mt--2 mb-2>
+  <div mx-auto my-16 text-center container>
+    <p mb-8 mt-8 text-32 fw-900>
       <n-gradient-text type="info">
         {{ $t('debug.state') }}:
       </n-gradient-text>
@@ -179,9 +179,8 @@ function handleLoad(node: TreeOption) {
     <n-input v-model:value="pattern" :placeholder="$t('placeholder.search')" />
     <n-tree
       style="max-height: 600px"
-      block-line
-      expand-on-click
-      virtual-scroll
+
+      expand-on-click virtual-scroll block-line
       :show-irrelevant-nodes="false"
       :pattern="pattern"
       :data="treeData"

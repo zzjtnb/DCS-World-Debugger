@@ -1,13 +1,15 @@
 // eslint.config.js
 // 如果你的项目没有"type":"module"在其package.json文件中指定,那么eslint.config.js必须采用 CommonJS 格式
 
-const { antfu } = require('@antfu/eslint-config')
+import antfu from '@antfu/eslint-config'
 
-module.exports = antfu(
+export default antfu(
   {
+    unocss: true,
     vue: true,
     typescript: true,
     formatters: true,
+    ignores: ['**/**/stats.html'],
   },
   {
     rules: {

@@ -3,7 +3,7 @@ import { net } from '@/utils/model'
 </script>
 
 <template>
-  <div text-center container mx-auto mb-4>
+  <div mx-auto mb-4 text-center container>
     <n-gradient-text
       :size="28" fw-900 :gradient="{
         deg: 160,
@@ -20,7 +20,7 @@ import { net } from '@/utils/model'
     </p>
   </n-alert>
 
-  <n-descriptions label-placement="top" bordered :column="Object.keys(net).length" my-4>
+  <n-descriptions label-placement="top" bordered :column="Object.keys(net).length" my-16>
     <template v-for="(item, key) in net" :key="key">
       <n-descriptions-item>
         <template #label>

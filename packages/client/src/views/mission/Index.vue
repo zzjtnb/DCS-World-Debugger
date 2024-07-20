@@ -84,12 +84,12 @@ function downloadText(text: string, filename = '') {
           {{ mizFile.name }}
         </n-text>
       </n-text>
-      <n-button strong secondary type="primary" ml-4 @click="downloadText(luaStore.codemirror.code, `${mizFile.name.replace('.miz', '.lua')}`)">
+      <n-button strong secondary type="primary" ml-16 @click="downloadText(luaStore.codemirror.code, `${mizFile.name.replace('.miz', '.lua')}`)">
         {{ $t('mission.download') }}
       </n-button>
     </n-p>
   </n-card>
-  <div mx-4 my-2>
+  <div mx-16 my-8>
     <CodeMirror />
   </div>
 </template>

@@ -7,9 +7,8 @@ hljs.registerLanguage('lua', lua)
 hljs.registerLanguage('json', json)
 
 const appStore = useAppStore()
-
-hljs.registerLanguage('lua', lua)
-hljs.registerLanguage('json', json)
+const env = useEnv()
+console.log('🚀 ~ env:', env)
 </script>
 
 <template>

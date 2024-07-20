@@ -1,7 +1,7 @@
 /**
  * 自定义格式化规则
  */
-module.exports = {
+export default {
   '*.{js,ts,cjs,mjs,vue,html,md,json,jsonc,yaml}': ['eslint --fix'],
-  '*.{css,scss,vue,html,xml,svelte,astro,php}': ['stylelint --fix'],
+  '*.{css,scss,vue,html,xml,svelte,astro,php,md}': ['stylelint --fix'],
 }

@@ -35,8 +35,8 @@ updateLua()
     你可以把一个table转成json返回出来,但没法直接返回一个table.<br>
   </n-alert>
 
-  <div text-center container mx-auto my-4>
-    <p text-8 fw-900 mt--2 mb-2>
+  <div mx-auto my-16 text-center container>
+    <p mb-8 mt--8 text-32 fw-900>
       <n-gradient-text type="info">
         {{ $t('debug.state') }}:
       </n-gradient-text>
@@ -51,7 +51,7 @@ updateLua()
     </n-radio-group>
 
     <div v-if="luaStore.state === 'mission'">
-      <n-checkbox v-model:checked="autoFill" size="large" my-2 @update:checked="handleUpdateChecked">
+      <n-checkbox v-model:checked="autoFill" size="large" my-8 @update:checked="handleUpdateChecked">
         <span>{{ $t('debug.auto') }} <b>a_do_script()</b>
         </span>
       </n-checkbox>
@@ -63,13 +63,13 @@ updateLua()
           <li>
             <span text-red>错误示范: </span>
             <span flex><n-code
-              inline
-              word-wrap
+
+              word-wrap inline
               code="a_do_script('net.log('测试LUA')')"
               language="lua"
             />或者  <n-code
-              inline
-              word-wrap
+
+              word-wrap inline
               code="a_do_script(&quot;net.log(&quot;测试LUA&quot;)&quot;)"
               language="lua"
             /></span>
@@ -77,13 +77,13 @@ updateLua()
           <li>
             <span text-emerald> 正确示范: </span>
             <span flex><n-code
-              inline
-              word-wrap
+
+              word-wrap inline
               code="a_do_script('net.log(&quot;测试LUA&quot;)')"
               language="lua"
             /> 或者 <n-code
-              inline
-              word-wrap
+
+              word-wrap inline
               code="a_do_script(&quot;net.log('测试LUA')&quot;)"
               language="lua"
             /></span>
@@ -92,8 +92,8 @@ updateLua()
             <span text-lightblue>推荐使用: </span>
             <span flex>
               <n-code
-                inline
-                word-wrap
+
+                word-wrap inline
                 code="a_do_script([[net.log('测试LUA')]])"
                 language="lua"
               />

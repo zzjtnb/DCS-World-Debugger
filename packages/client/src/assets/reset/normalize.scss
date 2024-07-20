@@ -3,6 +3,11 @@
 
 /* Document
    ========================================================================== */
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
 /**
  * 1. Correct the line height in all browsers.
@@ -354,4 +359,8 @@ template {
 
 [hidden] {
   display: none;
+}
+
+li{
+  list-style: none;
 }
