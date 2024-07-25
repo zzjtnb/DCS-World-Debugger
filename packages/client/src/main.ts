@@ -5,13 +5,12 @@ import router from './router'
 import { setupNaiveDiscreteApi } from '@/utils/globalMessage'
 
 /** 重置样式 这里引入自定义的重置样式也可 */
-import '@/assets/reset/normalize.scss'
+// import '@/assets/reset/normalize.scss'
 // import '@/assets/fonts/fonts.scss'
 /**
  *  项目内的样式，
  *  注意：最好放在重置样式后，uno.css前
  */
-
 import 'highlight.js/styles/atom-one-dark.css'
 import 'virtual:uno.css'
 

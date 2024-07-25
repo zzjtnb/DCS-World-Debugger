@@ -1,9 +1,9 @@
 import { URL, fileURLToPath } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
 import { wrapperEnv } from './build/utils'
-import { useBuild } from './build/build'
 import { useServer } from './build/server'
 import { usePlugins } from './build/plugins'
+import { useBuild } from './build/build'
 
 // https://vitejs.dev/config/
 // https:// cn.vitejs.dev/config/#conditional-config

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { Component } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const router = useRouter()

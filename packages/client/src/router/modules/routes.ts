@@ -11,6 +11,7 @@ const routes = [
     path: '/',
     component: Layout,
     redirect: '/',
+    meta: { showInMenu: true },
     children: [
       {
         path: '/',
@@ -52,12 +53,7 @@ const routes = [
       },
     ],
   },
-  // {
-  //   path: '/test',
-  //   name: 'test',
-  //   meta: { title: 'test', icon: Fa6SolidFolderOpen },
-  //   component: () => import('@/views/Test.vue'),
-  // },
+
 ]
 
 export default routes

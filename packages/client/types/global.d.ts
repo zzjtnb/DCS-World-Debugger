@@ -1,5 +1,11 @@
 declare global {
-
+  // interface obj {
+  //   [key: string]: any
+  // }
+  type obj = Record<string, any>
+  // interface Number {
+  //   truncate: (decimalPlaces: number) => number
+  // }
 }
 declare interface Window {
   loadingBar: import('naive-ui').LoadingBarProviderInst

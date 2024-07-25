@@ -9,7 +9,6 @@ function legacyPluginWithoutCrossOrigin(options: LegacyPluginOptions) {
     const origin = item.transformIndexHtml
     if (typeof origin === 'function') {
       item.transformIndexHtml = (html, context) => {
-        console.log(html)
         const result = origin(html, context) as {
           html: string
           tags: HtmlTagDescriptor[]

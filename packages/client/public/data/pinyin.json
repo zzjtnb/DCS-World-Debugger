@@ -1,0 +1,1962 @@
+{
+  "乳": {
+    "withTone": "rǔ",
+    "withoutTone": "ru"
+  },
+  "白": {
+    "withTone": "bái",
+    "withoutTone": "bai"
+  },
+  "杏": {
+    "withTone": "xìng",
+    "withoutTone": "xing"
+  },
+  "仁": {
+    "withTone": "rén",
+    "withoutTone": "ren"
+  },
+  "黄": {
+    "withTone": "huáng",
+    "withoutTone": "huang"
+  },
+  "茉": {
+    "withTone": "mò",
+    "withoutTone": "mo"
+  },
+  "莉": {
+    "withTone": "lì",
+    "withoutTone": "li"
+  },
+  "麦": {
+    "withTone": "mài",
+    "withoutTone": "mai"
+  },
+  "秆": {
+    "withTone": "gǎn",
+    "withoutTone": "gan"
+  },
+  "油": {
+    "withTone": "yóu",
+    "withoutTone": "you"
+  },
+  "菜": {
+    "withTone": "cài",
+    "withoutTone": "cai"
+  },
+  "花": {
+    "withTone": "huā",
+    "withoutTone": "hua"
+  },
+  "佛": {
+    "withTone": "fó",
+    "withoutTone": "fo"
+  },
+  "手": {
+    "withTone": "shǒu",
+    "withoutTone": "shou"
+  },
+  "篾": {
+    "withTone": "miè",
+    "withoutTone": "mie"
+  },
+  "葵": {
+    "withTone": "kuí",
+    "withoutTone": "kui"
+  },
+  "扇": {
+    "withTone": "shàn",
+    "withoutTone": "shan"
+  },
+  "柠": {
+    "withTone": "níng",
+    "withoutTone": "ning"
+  },
+  "檬": {
+    "withTone": "méng",
+    "withoutTone": "meng"
+  },
+  "金": {
+    "withTone": "jīn",
+    "withoutTone": "jin"
+  },
+  "瓜": {
+    "withTone": "guā",
+    "withoutTone": "gua"
+  },
+  "藤": {
+    "withTone": "téng",
+    "withoutTone": "teng"
+  },
+  "酪": {
+    "withTone": "lào",
+    "withoutTone": "lao"
+  },
+  "香": {
+    "withTone": "xiāng",
+    "withoutTone": "xiang"
+  },
+  "水": {
+    "withTone": "shuǐ",
+    "withoutTone": "shui"
+  },
+  "玫": {
+    "withTone": "méi",
+    "withoutTone": "mei"
+  },
+  "瑰": {
+    "withTone": "guī",
+    "withoutTone": "gui"
+  },
+  "淡": {
+    "withTone": "dàn",
+    "withoutTone": "dan"
+  },
+  "密": {
+    "withTone": "mì",
+    "withoutTone": "mi"
+  },
+  "大": {
+    "withTone": "dà",
+    "withoutTone": "da"
+  },
+  "豆": {
+    "withTone": "dòu",
+    "withoutTone": "dou"
+  },
+  "素": {
+    "withTone": "sù",
+    "withoutTone": "su"
+  },
+  "馨": {
+    "withTone": "xīn",
+    "withoutTone": "xin"
+  },
+  "向": {
+    "withTone": "xiàng",
+    "withoutTone": "xiang"
+  },
+  "日": {
+    "withTone": "rì",
+    "withoutTone": "ri"
+  },
+  "雅": {
+    "withTone": "yǎ",
+    "withoutTone": "ya"
+  },
+  "梨": {
+    "withTone": "lí",
+    "withoutTone": "li"
+  },
+  "连": {
+    "withTone": "lián",
+    "withoutTone": "lian"
+  },
+  "盏": {
+    "withTone": "zhǎn",
+    "withoutTone": "zhan"
+  },
+  "蛋": {
+    "withTone": "dàn",
+    "withoutTone": "dan"
+  },
+  "壳": {
+    "withTone": "ké",
+    "withoutTone": "ke"
+  },
+  "肉": {
+    "withTone": "ròu",
+    "withoutTone": "rou"
+  },
+  "色": {
+    "withTone": "sè",
+    "withoutTone": "se"
+  },
+  "鹅": {
+    "withTone": "é",
+    "withoutTone": "e"
+  },
+  "掌": {
+    "withTone": "zhǎng",
+    "withoutTone": "zhang"
+  },
+  "鸡": {
+    "withTone": "jī",
+    "withoutTone": "ji"
+  },
+  "鼬": {
+    "withTone": "yòu",
+    "withoutTone": "you"
+  },
+  "榴": {
+    "withTone": "liú",
+    "withoutTone": "liu"
+  },
+  "萼": {
+    "withTone": "è",
+    "withoutTone": "e"
+  },
+  "橘": {
+    "withTone": "jú",
+    "withoutTone": "ju"
+  },
+  "橙": {
+    "withTone": "chéng",
+    "withoutTone": "cheng"
+  },
+  "枇": {
+    "withTone": "pí",
+    "withoutTone": "pi"
+  },
+  "杷": {
+    "withTone": "pá",
+    "withoutTone": "pa"
+  },
+  "皮": {
+    "withTone": "pí",
+    "withoutTone": "pi"
+  },
+  "北": {
+    "withTone": "běi",
+    "withoutTone": "bei"
+  },
+  "雄": {
+    "withTone": "xióng",
+    "withoutTone": "xiong"
+  },
+  "万": {
+    "withTone": "wàn",
+    "withoutTone": "wan"
+  },
+  "寿": {
+    "withTone": "shòu",
+    "withoutTone": "shou"
+  },
+  "菊": {
+    "withTone": "jú",
+    "withoutTone": "ju"
+  },
+  "蕾": {
+    "withTone": "lěi",
+    "withoutTone": "lei"
+  },
+  "秋": {
+    "withTone": "qiū",
+    "withoutTone": "qiu"
+  },
+  "硫": {
+    "withTone": "liú",
+    "withoutTone": "liu"
+  },
+  "华": {
+    "withTone": "huá",
+    "withoutTone": "hua"
+  },
+  "柚": {
+    "withTone": "yòu",
+    "withoutTone": "you"
+  },
+  "芒": {
+    "withTone": "máng",
+    "withoutTone": "mang"
+  },
+  "果": {
+    "withTone": "guǒ",
+    "withoutTone": "guo"
+  },
+  "蒿": {
+    "withTone": "hāo",
+    "withoutTone": "hao"
+  },
+  "姜": {
+    "withTone": "jiāng",
+    "withoutTone": "jiang"
+  },
+  "蕉": {
+    "withTone": "jiāo",
+    "withoutTone": "jiao"
+  },
+  "草": {
+    "withTone": "cǎo",
+    "withoutTone": "cao"
+  },
+  "新": {
+    "withTone": "xīn",
+    "withoutTone": "xin"
+  },
+  "禾": {
+    "withTone": "hé",
+    "withoutTone": "he"
+  },
+  "绿": {
+    "withTone": "lǜ",
+    "withoutTone": "lv"
+  },
+  "月": {
+    "withTone": "yuè",
+    "withoutTone": "yue"
+  },
+  "灰": {
+    "withTone": "huī",
+    "withoutTone": "hui"
+  },
+  "苔": {
+    "withTone": "tái",
+    "withoutTone": "tai"
+  },
+  "碧": {
+    "withTone": "bì",
+    "withoutTone": "bi"
+  },
+  "螺": {
+    "withTone": "luó",
+    "withoutTone": "luo"
+  },
+  "春": {
+    "withTone": "chūn",
+    "withoutTone": "chun"
+  },
+  "燕": {
+    "withTone": "yàn",
+    "withoutTone": "yan"
+  },
+  "羽": {
+    "withTone": "yǔ",
+    "withoutTone": "yu"
+  },
+  "蟹": {
+    "withTone": "xiè",
+    "withoutTone": "xie"
+  },
+  "潭": {
+    "withTone": "tán",
+    "withoutTone": "tan"
+  },
+  "橄": {
+    "withTone": "gǎn",
+    "withoutTone": "gan"
+  },
+  "榄": {
+    "withTone": "lǎn",
+    "withoutTone": "lan"
+  },
+  "蚌": {
+    "withTone": "bàng",
+    "withoutTone": "bang"
+  },
+  "汁": {
+    "withTone": "zhī",
+    "withoutTone": "zhi"
+  },
+  "茧": {
+    "withTone": "jiǎn",
+    "withoutTone": "jian"
+  },
+  "鸭": {
+    "withTone": "yā",
+    "withoutTone": "ya"
+  },
+  "荔": {
+    "withTone": "lì",
+    "withoutTone": "li"
+  },
+  "象": {
+    "withTone": "xiàng",
+    "withoutTone": "xiang"
+  },
+  "牙": {
+    "withTone": "yá",
+    "withoutTone": "ya"
+  },
+  "炒": {
+    "withTone": "chǎo",
+    "withoutTone": "chao"
+  },
+  "米": {
+    "withTone": "mǐ",
+    "withoutTone": "mi"
+  },
+  "鹦": {
+    "withTone": "yīng",
+    "withoutTone": "ying"
+  },
+  "鹉": {
+    "withTone": "wǔ",
+    "withoutTone": "wu"
+  },
+  "冠": {
+    "withTone": "guān",
+    "withoutTone": "guan"
+  },
+  "木": {
+    "withTone": "mù",
+    "withoutTone": "mu"
+  },
+  "浅": {
+    "withTone": "qiǎn",
+    "withoutTone": "qian"
+  },
+  "烙": {
+    "withTone": "lào",
+    "withoutTone": "lao"
+  },
+  "莲": {
+    "withTone": "lián",
+    "withoutTone": "lian"
+  },
+  "子": {
+    "withTone": "zǐ",
+    "withoutTone": "zi"
+  },
+  "谷": {
+    "withTone": "gǔ",
+    "withoutTone": "gu"
+  },
+  "栀": {
+    "withTone": "zhī",
+    "withoutTone": "zhi"
+  },
+  "芥": {
+    "withTone": "jiè",
+    "withoutTone": "jie"
+  },
+  "银": {
+    "withTone": "yín",
+    "withoutTone": "yin"
+  },
+  "鼠": {
+    "withTone": "shǔ",
+    "withoutTone": "shu"
+  },
+  "尘": {
+    "withTone": "chén",
+    "withoutTone": "chen"
+  },
+  "枯": {
+    "withTone": "kū",
+    "withoutTone": "ku"
+  },
+  "鲛": {
+    "withTone": "jiāo",
+    "withoutTone": "jiao"
+  },
+  "青": {
+    "withTone": "qīng",
+    "withoutTone": "qing"
+  },
+  "粽": {
+    "withTone": "zòng",
+    "withoutTone": "zong"
+  },
+  "叶": {
+    "withTone": "yè",
+    "withoutTone": "ye"
+  },
+  "鹤": {
+    "withTone": "hè",
+    "withoutTone": "he"
+  },
+  "松": {
+    "withTone": "sōng",
+    "withoutTone": "song"
+  },
+  "烟": {
+    "withTone": "yān",
+    "withoutTone": "yan"
+  },
+  "暗": {
+    "withTone": "àn",
+    "withoutTone": "an"
+  },
+  "海": {
+    "withTone": "hǎi",
+    "withoutTone": "hai"
+  },
+  "棕": {
+    "withTone": "zōng",
+    "withoutTone": "zong"
+  },
+  "榈": {
+    "withTone": "lǘ",
+    "withoutTone": "lv"
+  },
+  "芽": {
+    "withTone": "yá",
+    "withoutTone": "ya"
+  },
+  "糖": {
+    "withTone": "táng",
+    "withoutTone": "tang"
+  },
+  "琥": {
+    "withTone": "hǔ",
+    "withoutTone": "hu"
+  },
+  "珀": {
+    "withTone": "pò",
+    "withoutTone": "po"
+  },
+  "甘": {
+    "withTone": "gān",
+    "withoutTone": "gan"
+  },
+  "初": {
+    "withTone": "chū",
+    "withoutTone": "chu"
+  },
+  "熟": {
+    "withTone": "shú",
+    "withoutTone": "shu"
+  },
+  "驼": {
+    "withTone": "tuó",
+    "withoutTone": "tuo"
+  },
+  "沙": {
+    "withTone": "shā",
+    "withoutTone": "sha"
+  },
+  "石": {
+    "withTone": "shí",
+    "withoutTone": "shi"
+  },
+  "虎": {
+    "withTone": "hǔ",
+    "withoutTone": "hu"
+  },
+  "土": {
+    "withTone": "tǔ",
+    "withoutTone": "tu"
+  },
+  "百": {
+    "withTone": "bǎi",
+    "withoutTone": "bai"
+  },
+  "灵": {
+    "withTone": "líng",
+    "withoutTone": "ling"
+  },
+  "鸟": {
+    "withTone": "niǎo",
+    "withoutTone": "niao"
+  },
+  "山": {
+    "withTone": "shān",
+    "withoutTone": "shan"
+  },
+  "龟": {
+    "withTone": "guī",
+    "withoutTone": "gui"
+  },
+  "背": {
+    "withTone": "bèi",
+    "withoutTone": "bei"
+  },
+  "苍": {
+    "withTone": "cāng",
+    "withoutTone": "cang"
+  },
+  "莱": {
+    "withTone": "lái",
+    "withoutTone": "lai"
+  },
+  "阳": {
+    "withTone": "yáng",
+    "withoutTone": "yang"
+  },
+  "蜴": {
+    "withTone": "yì",
+    "withoutTone": "yi"
+  },
+  "蜊": {
+    "withTone": "lī",
+    "withoutTone": "li"
+  },
+  "古": {
+    "withTone": "gǔ",
+    "withoutTone": "gu"
+  },
+  "铜": {
+    "withTone": "tóng",
+    "withoutTone": "tong"
+  },
+  "焦": {
+    "withTone": "jiāo",
+    "withoutTone": "jiao"
+  },
+  "茶": {
+    "withTone": "chá",
+    "withoutTone": "cha"
+  },
+  "粉": {
+    "withTone": "fěn",
+    "withoutTone": "fen"
+  },
+  "落": {
+    "withTone": "luò",
+    "withoutTone": "luo"
+  },
+  "英": {
+    "withTone": "yīng",
+    "withoutTone": "ying"
+  },
+  "瓤": {
+    "withTone": "ráng",
+    "withoutTone": "rang"
+  },
+  "蜜": {
+    "withTone": "mì",
+    "withoutTone": "mi"
+  },
+  "莺": {
+    "withTone": "yīng",
+    "withoutTone": "ying"
+  },
+  "鹿": {
+    "withTone": "lù",
+    "withoutTone": "lu"
+  },
+  "角": {
+    "withTone": "jiǎo",
+    "withoutTone": "jiao"
+  },
+  "凋": {
+    "withTone": "diāo",
+    "withoutTone": "diao"
+  },
+  "玳": {
+    "withTone": "dài",
+    "withoutTone": "dai"
+  },
+  "瑁": {
+    "withTone": "mào",
+    "withoutTone": "mao"
+  },
+  "软": {
+    "withTone": "ruǎn",
+    "withoutTone": "ruan"
+  },
+  "风": {
+    "withTone": "fēng",
+    "withoutTone": "feng"
+  },
+  "帆": {
+    "withTone": "fān",
+    "withoutTone": "fan"
+  },
+  "桂": {
+    "withTone": "guì",
+    "withoutTone": "gui"
+  },
+  "猴": {
+    "withTone": "hóu",
+    "withoutTone": "hou"
+  },
+  "毛": {
+    "withTone": "máo",
+    "withoutTone": "mao"
+  },
+  "褐": {
+    "withTone": "hè",
+    "withoutTone": "he"
+  },
+  "荷": {
+    "withTone": "hé",
+    "withoutTone": "he"
+  },
+  "美": {
+    "withTone": "měi",
+    "withoutTone": "mei"
+  },
+  "人": {
+    "withTone": "rén",
+    "withoutTone": "ren"
+  },
+  "润": {
+    "withTone": "rùn",
+    "withoutTone": "run"
+  },
+  "红": {
+    "withTone": "hóng",
+    "withoutTone": "hong"
+  },
+  "桃": {
+    "withTone": "táo",
+    "withoutTone": "tao"
+  },
+  "颊": {
+    "withTone": "jiá",
+    "withoutTone": "jia"
+  },
+  "罂": {
+    "withTone": "yīng",
+    "withoutTone": "ying"
+  },
+  "粟": {
+    "withTone": "sù",
+    "withoutTone": "su"
+  },
+  "晨": {
+    "withTone": "chén",
+    "withoutTone": "chen"
+  },
+  "曦": {
+    "withTone": "xī",
+    "withoutTone": "xi"
+  },
+  "莓": {
+    "withTone": "méi",
+    "withoutTone": "mei"
+  },
+  "龙": {
+    "withTone": "lóng",
+    "withoutTone": "long"
+  },
+  "睛": {
+    "withTone": "jīng",
+    "withoutTone": "jing"
+  },
+  "鱼": {
+    "withTone": "yú",
+    "withoutTone": "yu"
+  },
+  "蜻": {
+    "withTone": "qīng",
+    "withoutTone": "qing"
+  },
+  "蜓": {
+    "withTone": "tíng",
+    "withoutTone": "ting"
+  },
+  "柿": {
+    "withTone": "shì",
+    "withoutTone": "shi"
+  },
+  "朱": {
+    "withTone": "zhū",
+    "withoutTone": "zhu"
+  },
+  "鲑": {
+    "withTone": "guī",
+    "withoutTone": "gui"
+  },
+  "醉": {
+    "withTone": "zuì",
+    "withoutTone": "zui"
+  },
+  "麂": {
+    "withTone": "jǐ",
+    "withoutTone": "ji"
+  },
+  "赭": {
+    "withTone": "zhě",
+    "withoutTone": "zhe"
+  },
+  "槟": {
+    "withTone": "bīn",
+    "withoutTone": "bin"
+  },
+  "榔": {
+    "withTone": "láng",
+    "withoutTone": "lang"
+  },
+  "综": {
+    "withTone": "zōng",
+    "withoutTone": "zong"
+  },
+  "鸥": {
+    "withTone": "ōu",
+    "withoutTone": "ou"
+  },
+  "咖": {
+    "withTone": "kā",
+    "withoutTone": "ka"
+  },
+  "啡": {
+    "withTone": "fēi",
+    "withoutTone": "fei"
+  },
+  "岩": {
+    "withTone": "yán",
+    "withoutTone": "yan"
+  },
+  "板": {
+    "withTone": "bǎn",
+    "withoutTone": "ban"
+  },
+  "珠": {
+    "withTone": "zhū",
+    "withoutTone": "zhu"
+  },
+  "母": {
+    "withTone": "mǔ",
+    "withoutTone": "mu"
+  },
+  "丁": {
+    "withTone": "dīng",
+    "withoutTone": "ding"
+  },
+  "筍": {
+    "withTone": "sǔn",
+    "withoutTone": "sun"
+  },
+  "颔": {
+    "withTone": "hàn",
+    "withoutTone": "han"
+  },
+  "玉": {
+    "withTone": "yù",
+    "withoutTone": "yu"
+  },
+  "铁": {
+    "withTone": "tiě",
+    "withoutTone": "tie"
+  },
+  "蛛": {
+    "withTone": "zhū",
+    "withoutTone": "zhu"
+  },
+  "网": {
+    "withTone": "wǎng",
+    "withoutTone": "wang"
+  },
+  "可": {
+    "withTone": "kě",
+    "withoutTone": "ke"
+  },
+  "中": {
+    "withTone": "zhōng",
+    "withoutTone": "zhong"
+  },
+  "椰": {
+    "withTone": "yē",
+    "withoutTone": "ye"
+  },
+  "栗": {
+    "withTone": "lì",
+    "withoutTone": "li"
+  },
+  "柞": {
+    "withTone": "zuò",
+    "withoutTone": "zuo"
+  },
+  "野": {
+    "withTone": "yě",
+    "withoutTone": "ye"
+  },
+  "蔷": {
+    "withTone": "qiáng",
+    "withoutTone": "qiang"
+  },
+  "薇": {
+    "withTone": "wēi",
+    "withoutTone": "wei"
+  },
+  "菠": {
+    "withTone": "bō",
+    "withoutTone": "bo"
+  },
+  "萝": {
+    "withTone": "luó",
+    "withoutTone": "luo"
+  },
+  "藕": {
+    "withTone": "ǒu",
+    "withoutTone": "ou"
+  },
+  "陶": {
+    "withTone": "táo",
+    "withoutTone": "tao"
+  },
+  "瓷": {
+    "withTone": "cí",
+    "withoutTone": "ci"
+  },
+  "晓": {
+    "withTone": "xiǎo",
+    "withoutTone": "xiao"
+  },
+  "余": {
+    "withTone": "yú",
+    "withoutTone": "yu"
+  },
+  "烬": {
+    "withTone": "jìn",
+    "withoutTone": "jin"
+  },
+  "火": {
+    "withTone": "huǒ",
+    "withoutTone": "huo"
+  },
+  "砖": {
+    "withTone": "zhuān",
+    "withoutTone": "zhuan"
+  },
+  "泥": {
+    "withTone": "ní",
+    "withoutTone": "ni"
+  },
+  "绀": {
+    "withTone": "gàn",
+    "withoutTone": "gan"
+  },
+  "橡": {
+    "withTone": "xiàng",
+    "withoutTone": "xiang"
+  },
+  "树": {
+    "withTone": "shù",
+    "withoutTone": "shu"
+  },
+  "报": {
+    "withTone": "bào",
+    "withoutTone": "bao"
+  },
+  "介": {
+    "withTone": "jiè",
+    "withoutTone": "jie"
+  },
+  "藏": {
+    "withTone": "zàng",
+    "withoutTone": "zang"
+  },
+  "芙": {
+    "withTone": "fú",
+    "withoutTone": "fu"
+  },
+  "蓉": {
+    "withTone": "róng",
+    "withoutTone": "rong"
+  },
+  "酱": {
+    "withTone": "jiàng",
+    "withoutTone": "jiang"
+  },
+  "法": {
+    "withTone": "fǎ",
+    "withoutTone": "fa"
+  },
+  "霞": {
+    "withTone": "xiá",
+    "withoutTone": "xia"
+  },
+  "蝥": {
+    "withTone": "máo",
+    "withoutTone": "mao"
+  },
+  "洋": {
+    "withTone": "yáng",
+    "withoutTone": "yang"
+  },
+  "仙": {
+    "withTone": "xiān",
+    "withoutTone": "xian"
+  },
+  "鞘": {
+    "withTone": "qiào",
+    "withoutTone": "qiao"
+  },
+  "苹": {
+    "withTone": "píng",
+    "withoutTone": "ping"
+  },
+  "极": {
+    "withTone": "jí",
+    "withoutTone": "ji"
+  },
+  "光": {
+    "withTone": "guāng",
+    "withoutTone": "guang"
+  },
+  "舌": {
+    "withTone": "shé",
+    "withoutTone": "she"
+  },
+  "曲": {
+    "withTone": "qū",
+    "withoutTone": "qu"
+  },
+  "汞": {
+    "withTone": "gǒng",
+    "withoutTone": "gong"
+  },
+  "绯": {
+    "withTone": "fēi",
+    "withoutTone": "fei"
+  },
+  "无": {
+    "withTone": "wú",
+    "withoutTone": "wu"
+  },
+  "胭": {
+    "withTone": "yān",
+    "withoutTone": "yan"
+  },
+  "脂": {
+    "withTone": "zhī",
+    "withoutTone": "zhi"
+  },
+  "合": {
+    "withTone": "hé",
+    "withoutTone": "he"
+  },
+  "欢": {
+    "withTone": "huān",
+    "withoutTone": "huan"
+  },
+  "梅": {
+    "withTone": "méi",
+    "withoutTone": "mei"
+  },
+  "珊": {
+    "withTone": "shān",
+    "withoutTone": "shan"
+  },
+  "瑚": {
+    "withTone": "hú",
+    "withoutTone": "hu"
+  },
+  "卜": {
+    "withTone": "bǔ",
+    "withoutTone": "bu"
+  },
+  "茜": {
+    "withTone": "qiàn",
+    "withoutTone": "qian"
+  },
+  "艳": {
+    "withTone": "yàn",
+    "withoutTone": "yan"
+  },
+  "菽": {
+    "withTone": "shū",
+    "withoutTone": "shu"
+  },
+  "鳃": {
+    "withTone": "sāi",
+    "withoutTone": "sai"
+  },
+  "樱": {
+    "withTone": "yīng",
+    "withoutTone": "ying"
+  },
+  "蕊": {
+    "withTone": "ruǐ",
+    "withoutTone": "rui"
+  },
+  "竹": {
+    "withTone": "zhú",
+    "withoutTone": "zhu"
+  },
+  "枸": {
+    "withTone": "gǒu",
+    "withoutTone": "gou"
+  },
+  "枢": {
+    "withTone": "shū",
+    "withoutTone": "shu"
+  },
+  "棠": {
+    "withTone": "táng",
+    "withoutTone": "tang"
+  },
+  "丽": {
+    "withTone": "lì",
+    "withoutTone": "li"
+  },
+  "夕": {
+    "withTone": "xī",
+    "withoutTone": "xi"
+  },
+  "顶": {
+    "withTone": "dǐng",
+    "withoutTone": "ding"
+  },
+  "血": {
+    "withTone": "xuè",
+    "withoutTone": "xue"
+  },
+  "覆": {
+    "withTone": "fù",
+    "withoutTone": "fu"
+  },
+  "盆": {
+    "withTone": "pén",
+    "withoutTone": "pen"
+  },
+  "貂": {
+    "withTone": "diāo",
+    "withoutTone": "diao"
+  },
+  "紫": {
+    "withTone": "zǐ",
+    "withoutTone": "zi"
+  },
+  "葡": {
+    "withTone": "pú",
+    "withoutTone": "pu"
+  },
+  "萄": {
+    "withTone": "táo",
+    "withoutTone": "tao"
+  },
+  "牡": {
+    "withTone": "mǔ",
+    "withoutTone": "mu"
+  },
+  "丹": {
+    "withTone": "dān",
+    "withoutTone": "dan"
+  },
+  "高": {
+    "withTone": "gāo",
+    "withoutTone": "gao"
+  },
+  "粱": {
+    "withTone": "liáng",
+    "withoutTone": "liang"
+  },
+  "满": {
+    "withTone": "mǎn",
+    "withoutTone": "man"
+  },
+  "江": {
+    "withTone": "jiāng",
+    "withoutTone": "jiang"
+  },
+  "枣": {
+    "withTone": "zǎo",
+    "withoutTone": "zao"
+  },
+  "曙": {
+    "withTone": "shǔ",
+    "withoutTone": "shu"
+  },
+  "唐": {
+    "withTone": "táng",
+    "withoutTone": "tang"
+  },
+  "菖": {
+    "withTone": "chāng",
+    "withoutTone": "chang"
+  },
+  "蒲": {
+    "withTone": "pú",
+    "withoutTone": "pu"
+  },
+  "枫": {
+    "withTone": "fēng",
+    "withoutTone": "feng"
+  },
+  "苋": {
+    "withTone": "xiàn",
+    "withoutTone": "xian"
+  },
+  "苑": {
+    "withTone": "yuàn",
+    "withoutTone": "yuan"
+  },
+  "殷": {
+    "withTone": "yīn",
+    "withoutTone": "yin"
+  },
+  "猪": {
+    "withTone": "zhū",
+    "withoutTone": "zhu"
+  },
+  "肝": {
+    "withTone": "gān",
+    "withoutTone": "gan"
+  },
+  "绛": {
+    "withTone": "jiàng",
+    "withoutTone": "jiang"
+  },
+  "品": {
+    "withTone": "pǐn",
+    "withoutTone": "pin"
+  },
+  "凤": {
+    "withTone": "fèng",
+    "withoutTone": "feng"
+  },
+  "团": {
+    "withTone": "tuán",
+    "withoutTone": "tuan"
+  },
+  "夹": {
+    "withTone": "jiā",
+    "withoutTone": "jia"
+  },
+  "榲": {
+    "withTone": "hūn",
+    "withoutTone": "hun"
+  },
+  "桲": {
+    "withTone": "bā",
+    "withoutTone": "ba"
+  },
+  "瓣": {
+    "withTone": "bàn",
+    "withoutTone": "ban"
+  },
+  "季": {
+    "withTone": "jì",
+    "withoutTone": "ji"
+  },
+  "豇": {
+    "withTone": "jiāng",
+    "withoutTone": "jiang"
+  },
+  "喜": {
+    "withTone": "xǐ",
+    "withoutTone": "xi"
+  },
+  "鼻": {
+    "withTone": "bí",
+    "withoutTone": "bi"
+  },
+  "尖": {
+    "withTone": "jiān",
+    "withoutTone": "jian"
+  },
+  "晶": {
+    "withTone": "jīng",
+    "withoutTone": "jing"
+  },
+  "黎": {
+    "withTone": "lí",
+    "withoutTone": "li"
+  },
+  "锦": {
+    "withTone": "jǐn",
+    "withoutTone": "jin"
+  },
+  "蔗": {
+    "withTone": "zhè",
+    "withoutTone": "zhe"
+  },
+  "蝇": {
+    "withTone": "yíng",
+    "withoutTone": "ying"
+  },
+  "卵": {
+    "withTone": "luǎn",
+    "withoutTone": "luan"
+  },
+  "李": {
+    "withTone": "lǐ",
+    "withoutTone": "li"
+  },
+  "茄": {
+    "withTone": "qié",
+    "withoutTone": "qie"
+  },
+  "吊": {
+    "withTone": "diào",
+    "withoutTone": "diao"
+  },
+  "钟": {
+    "withTone": "zhōng",
+    "withoutTone": "zhong"
+  },
+  "兔": {
+    "withTone": "tù",
+    "withoutTone": "tu"
+  },
+  "眼": {
+    "withTone": "yǎn",
+    "withoutTone": "yan"
+  },
+  "荆": {
+    "withTone": "jīng",
+    "withoutTone": "jing"
+  },
+  "头": {
+    "withTone": "tóu",
+    "withoutTone": "tou"
+  },
+  "鹞": {
+    "withTone": "yào",
+    "withoutTone": "yao"
+  },
+  "酒": {
+    "withTone": "jiǔ",
+    "withoutTone": "jiu"
+  },
+  "磨": {
+    "withTone": "mó",
+    "withoutTone": "mo"
+  },
+  "檀": {
+    "withTone": "tán",
+    "withoutTone": "tan"
+  },
+  "墨": {
+    "withTone": "mò",
+    "withoutTone": "mo"
+  },
+  "扁": {
+    "withTone": "biǎn",
+    "withoutTone": "bian"
+  },
+  "芨": {
+    "withTone": "jī",
+    "withoutTone": "ji"
+  },
+  "嫩": {
+    "withTone": "nèn",
+    "withoutTone": "nen"
+  },
+  "菱": {
+    "withTone": "líng",
+    "withoutTone": "ling"
+  },
+  "根": {
+    "withTone": "gēn",
+    "withoutTone": "gen"
+  },
+  "酢": {
+    "withTone": "cuò",
+    "withoutTone": "cuo"
+  },
+  "葱": {
+    "withTone": "cōng",
+    "withoutTone": "cong"
+  },
+  "芍": {
+    "withTone": "sháo",
+    "withoutTone": "shao"
+  },
+  "药": {
+    "withTone": "yào",
+    "withoutTone": "yao"
+  },
+  "耕": {
+    "withTone": "gēng",
+    "withoutTone": "geng"
+  },
+  "马": {
+    "withTone": "mǎ",
+    "withoutTone": "ma"
+  },
+  "鞭": {
+    "withTone": "biān",
+    "withoutTone": "bian"
+  },
+  "牵": {
+    "withTone": "qiān",
+    "withoutTone": "qian"
+  },
+  "牛": {
+    "withTone": "niú",
+    "withoutTone": "niu"
+  },
+  "信": {
+    "withTone": "xìn",
+    "withoutTone": "xin"
+  },
+  "兰": {
+    "withTone": "lán",
+    "withoutTone": "lan"
+  },
+  "槿": {
+    "withTone": "jǐn",
+    "withoutTone": "jin"
+  },
+  "蕈": {
+    "withTone": "xùn",
+    "withoutTone": "xun"
+  },
+  "桔": {
+    "withTone": "jué",
+    "withoutTone": "jue"
+  },
+  "梗": {
+    "withTone": "gěng",
+    "withoutTone": "geng"
+  },
+  "魏": {
+    "withTone": "wèi",
+    "withoutTone": "wei"
+  },
+  "芝": {
+    "withTone": "zhī",
+    "withoutTone": "zhi"
+  },
+  "锰": {
+    "withTone": "méng",
+    "withoutTone": "meng"
+  },
+  "须": {
+    "withTone": "xū",
+    "withoutTone": "xu"
+  },
+  "蓟": {
+    "withTone": "jì",
+    "withoutTone": "ji"
+  },
+  "电": {
+    "withTone": "diàn",
+    "withoutTone": "dian"
+  },
+  "气": {
+    "withTone": "qì",
+    "withoutTone": "qi"
+  },
+  "芦": {
+    "withTone": "lú",
+    "withoutTone": "lu"
+  },
+  "穗": {
+    "withTone": "suì",
+    "withoutTone": "sui"
+  },
+  "隐": {
+    "withTone": "yǐn",
+    "withoutTone": "yin"
+  },
+  "暮": {
+    "withTone": "mù",
+    "withoutTone": "mu"
+  },
+  "云": {
+    "withTone": "yún",
+    "withoutTone": "yun"
+  },
+  "斑": {
+    "withTone": "bān",
+    "withoutTone": "ban"
+  },
+  "鸠": {
+    "withTone": "jiū",
+    "withoutTone": "jiu"
+  },
+  "蛤": {
+    "withTone": "há",
+    "withoutTone": "ha"
+  },
+  "蔻": {
+    "withTone": "kòu",
+    "withoutTone": "kou"
+  },
+  "芓": {
+    "withTone": "zhǎ",
+    "withoutTone": "zha"
+  },
+  "葛": {
+    "withTone": "gé",
+    "withoutTone": "ge"
+  },
+  "巾": {
+    "withTone": "jīn",
+    "withoutTone": "jin"
+  },
+  "荸": {
+    "withTone": "bì",
+    "withoutTone": "bi"
+  },
+  "荠": {
+    "withTone": "jī",
+    "withoutTone": "ji"
+  },
+  "鼎": {
+    "withTone": "dǐng",
+    "withoutTone": "ding"
+  },
+  "乌": {
+    "withTone": "wū",
+    "withoutTone": "wu"
+  },
+  "深": {
+    "withTone": "shēn",
+    "withoutTone": "shen"
+  },
+  "芡": {
+    "withTone": "qiàn",
+    "withoutTone": "qian"
+  },
+  "食": {
+    "withTone": "shí",
+    "withoutTone": "shi"
+  },
+  "远": {
+    "withTone": "yuǎn",
+    "withoutTone": "yuan"
+  },
+  "蓝": {
+    "withTone": "lán",
+    "withoutTone": "lan"
+  },
+  "甸": {
+    "withTone": "diān",
+    "withoutTone": "dian"
+  },
+  "玛": {
+    "withTone": "mǎ",
+    "withoutTone": "ma"
+  },
+  "瑙": {
+    "withTone": "nǎo",
+    "withoutTone": "nao"
+  },
+  "天": {
+    "withTone": "tiān",
+    "withoutTone": "tian"
+  },
+  "星": {
+    "withTone": "xīng",
+    "withoutTone": "xing"
+  },
+  "锌": {
+    "withTone": "xīn",
+    "withoutTone": "xin"
+  },
+  "剑": {
+    "withTone": "jiàn",
+    "withoutTone": "jian"
+  },
+  "锋": {
+    "withTone": "fēng",
+    "withoutTone": "feng"
+  },
+  "胆": {
+    "withTone": "dǎn",
+    "withoutTone": "dan"
+  },
+  "景": {
+    "withTone": "jǐng",
+    "withoutTone": "jing"
+  },
+  "泰": {
+    "withTone": "tài",
+    "withoutTone": "tai"
+  },
+  "尼": {
+    "withTone": "ní",
+    "withoutTone": "ni"
+  },
+  "罗": {
+    "withTone": "luó",
+    "withoutTone": "luo"
+  },
+  "虹": {
+    "withTone": "hóng",
+    "withoutTone": "hong"
+  },
+  "湖": {
+    "withTone": "hú",
+    "withoutTone": "hu"
+  },
+  "波": {
+    "withTone": "bō",
+    "withoutTone": "bo"
+  },
+  "涧": {
+    "withTone": "jiàn",
+    "withoutTone": "jian"
+  },
+  "潮": {
+    "withTone": "cháo",
+    "withoutTone": "chao"
+  },
+  "群": {
+    "withTone": "qún",
+    "withoutTone": "qun"
+  },
+  "霁": {
+    "withTone": "jì",
+    "withoutTone": "ji"
+  },
+  "宝": {
+    "withTone": "bǎo",
+    "withoutTone": "bao"
+  },
+  "柏": {
+    "withTone": "bǎi",
+    "withoutTone": "bai"
+  },
+  "林": {
+    "withTone": "lín",
+    "withoutTone": "lin"
+  },
+  "钴": {
+    "withTone": "gǔ",
+    "withoutTone": "gu"
+  },
+  "鸢": {
+    "withTone": "yuān",
+    "withoutTone": "yuan"
+  },
+  "尾": {
+    "withTone": "wěi",
+    "withoutTone": "wei"
+  },
+  "飞": {
+    "withTone": "fēi",
+    "withoutTone": "fei"
+  },
+  "安": {
+    "withTone": "ān",
+    "withoutTone": "an"
+  },
+  "鲸": {
+    "withTone": "jīng",
+    "withoutTone": "jing"
+  },
+  "参": {
+    "withTone": "cān",
+    "withoutTone": "can"
+  },
+  "钢": {
+    "withTone": "gāng",
+    "withoutTone": "gang"
+  },
+  "晴": {
+    "withTone": "qíng",
+    "withoutTone": "qing"
+  },
+  "靛": {
+    "withTone": "diàn",
+    "withoutTone": "dian"
+  },
+  "理": {
+    "withTone": "lǐ",
+    "withoutTone": "li"
+  },
+  "涛": {
+    "withTone": "tāo",
+    "withoutTone": "tao"
+  },
+  "蝶": {
+    "withTone": "dié",
+    "withoutTone": "die"
+  },
+  "翅": {
+    "withTone": "chì",
+    "withoutTone": "chi"
+  },
+  "军": {
+    "withTone": "jūn",
+    "withoutTone": "jun"
+  },
+  "峰": {
+    "withTone": "fēng",
+    "withoutTone": "feng"
+  },
+  "井": {
+    "withTone": "jǐng",
+    "withoutTone": "jing"
+  },
+  "釉": {
+    "withTone": "yòu",
+    "withoutTone": "you"
+  },
+  "搪": {
+    "withTone": "táng",
+    "withoutTone": "tang"
+  },
+  "磁": {
+    "withTone": "cí",
+    "withoutTone": "ci"
+  },
+  "影": {
+    "withTone": "yǐng",
+    "withoutTone": "ying"
+  },
+  "鷃": {
+    "withTone": "yàn",
+    "withoutTone": "yan"
+  },
+  "战": {
+    "withTone": "zhàn",
+    "withoutTone": "zhan"
+  },
+  "舰": {
+    "withTone": "jiàn",
+    "withoutTone": "jian"
+  },
+  "瓦": {
+    "withTone": "wǎ",
+    "withoutTone": "wa"
+  },
+  "罐": {
+    "withTone": "guàn",
+    "withoutTone": "guan"
+  },
+  "鸽": {
+    "withTone": "gē",
+    "withoutTone": "ge"
+  },
+  "清": {
+    "withTone": "qīng",
+    "withoutTone": "qing"
+  },
+  "瀑": {
+    "withTone": "pù",
+    "withoutTone": "pu"
+  },
+  "布": {
+    "withTone": "bù",
+    "withoutTone": "bu"
+  },
+  "蔚": {
+    "withTone": "wèi",
+    "withoutTone": "wei"
+  },
+  "孔": {
+    "withTone": "kǒng",
+    "withoutTone": "kong"
+  },
+  "雀": {
+    "withTone": "què",
+    "withoutTone": "que"
+  },
+  "篁": {
+    "withTone": "huáng",
+    "withoutTone": "huang"
+  },
+  "梢": {
+    "withTone": "shāo",
+    "withoutTone": "shao"
+  },
+  "苗": {
+    "withTone": "miáo",
+    "withoutTone": "miao"
+  },
+  "蛙": {
+    "withTone": "wā",
+    "withoutTone": "wa"
+  },
+  "穹": {
+    "withTone": "qióng",
+    "withoutTone": "qiong"
+  },
+  "翠": {
+    "withTone": "cuì",
+    "withoutTone": "cui"
+  },
+  "矾": {
+    "withTone": "fán",
+    "withoutTone": "fan"
+  },
+  "樫": {
+    "withTone": "jiān",
+    "withoutTone": "jian"
+  },
+  "闪": {
+    "withTone": "shǎn",
+    "withoutTone": "shan"
+  },
+  "冰": {
+    "withTone": "bīng",
+    "withoutTone": "bing"
+  },
+  "虾": {
+    "withTone": "xiā",
+    "withoutTone": "xia"
+  },
+  "晚": {
+    "withTone": "wǎn",
+    "withoutTone": "wan"
+  },
+  "鈫": {
+    "withTone": "shān",
+    "withoutTone": "shan"
+  },
+  "垩": {
+    "withTone": "è",
+    "withoutTone": "e"
+  },
+  "夏": {
+    "withTone": "xià",
+    "withoutTone": "xia"
+  },
+  "昏": {
+    "withTone": "hūn",
+    "withoutTone": "hun"
+  },
+  "簪": {
+    "withTone": "zān",
+    "withoutTone": "zan"
+  },
+  "原": {
+    "withTone": "yuán",
+    "withoutTone": "yuan"
+  },
+  "梧": {
+    "withTone": "wú",
+    "withoutTone": "wu"
+  },
+  "枝": {
+    "withTone": "zhī",
+    "withoutTone": "zhi"
+  },
+  "浪": {
+    "withTone": "làng",
+    "withoutTone": "lang"
+  },
+  "王": {
+    "withTone": "wáng",
+    "withoutTone": "wang"
+  },
+  "亚": {
+    "withTone": "yà",
+    "withoutTone": "ya"
+  },
+  "镍": {
+    "withTone": "niè",
+    "withoutTone": "nie"
+  },
+  "明": {
+    "withTone": "míng",
+    "withoutTone": "ming"
+  },
+  "泉": {
+    "withTone": "quán",
+    "withoutTone": "quan"
+  },
+  "狼": {
+    "withTone": "láng",
+    "withoutTone": "lang"
+  },
+  "长": {
+    "withTone": "cháng",
+    "withoutTone": "chang"
+  },
+  "苷": {
+    "withTone": "gān",
+    "withoutTone": "gan"
+  },
+  "莽": {
+    "withTone": "mǎng",
+    "withoutTone": "mang"
+  },
+  "丛": {
+    "withTone": "cóng",
+    "withoutTone": "cong"
+  },
+  "田": {
+    "withTone": "tián",
+    "withoutTone": "tian"
+  },
+  "园": {
+    "withTone": "yuán",
+    "withoutTone": "yuan"
+  },
+  "艾": {
+    "withTone": "ài",
+    "withoutTone": "ai"
+  },
+  "蟾": {
+    "withTone": "chán",
+    "withoutTone": "chan"
+  },
+  "宫": {
+    "withTone": "gōng",
+    "withoutTone": "gong"
+  },
+  "殿": {
+    "withTone": "diàn",
+    "withoutTone": "dian"
+  },
+  "霜": {
+    "withTone": "shuāng",
+    "withoutTone": "shuang"
+  },
+  "薄": {
+    "withTone": "bó",
+    "withoutTone": "bo"
+  },
+  "屈": {
+    "withTone": "qū",
+    "withoutTone": "qu"
+  },
+  "河": {
+    "withTone": "hé",
+    "withoutTone": "he"
+  },
+  "豚": {
+    "withTone": "tún",
+    "withoutTone": "tun"
+  },
+  "蒽": {
+    "withTone": "ēn",
+    "withoutTone": "en"
+  },
+  "槲": {
+    "withTone": "hú",
+    "withoutTone": "hu"
+  },
+  "寄": {
+    "withTone": "jì",
+    "withoutTone": "ji"
+  },
+  "生": {
+    "withTone": "shēng",
+    "withoutTone": "sheng"
+  },
+  "杉": {
+    "withTone": "shān",
+    "withoutTone": "shan"
+  },
+  "嘉": {
+    "withTone": "jiā",
+    "withoutTone": "jia"
+  },
+  "陵": {
+    "withTone": "líng",
+    "withoutTone": "ling"
+  },
+  "髓": {
+    "withTone": "suǐ",
+    "withoutTone": "sui"
+  },
+  "鲜": {
+    "withTone": "xiān",
+    "withoutTone": "xian"
+  },
+  "沬": {
+    "withTone": "mèi",
+    "withoutTone": "mei"
+  },
+  "姚": {
+    "withTone": "yáo",
+    "withoutTone": "yao"
+  },
+  "苇": {
+    "withTone": "wěi",
+    "withoutTone": "wei"
+  },
+  "槐": {
+    "withTone": "huái",
+    "withoutTone": "huai"
+  },
+  "汉": {
+    "withTone": "hàn",
+    "withoutTone": "han"
+  },
+  "雪": {
+    "withTone": "xuě",
+    "withoutTone": "xue"
+  },
+  "肚": {
+    "withTone": "dù",
+    "withoutTone": "du"
+  },
+  "珍": {
+    "withTone": "zhēn",
+    "withoutTone": "zhen"
+  },
+  "铅": {
+    "withTone": "qiān",
+    "withoutTone": "qian"
+  },
+  "夜": {
+    "withTone": "yè",
+    "withoutTone": "ye"
+  },
+  "雁": {
+    "withTone": "yàn",
+    "withoutTone": "yan"
+  }
+}

@@ -180,7 +180,7 @@ function handleLoad(node: TreeOption) {
     <n-tree
       style="max-height: 600px"
 
-      expand-on-click virtual-scroll block-line
+      virtual-scroll expand-on-click block-line
       :show-irrelevant-nodes="false"
       :pattern="pattern"
       :data="treeData"

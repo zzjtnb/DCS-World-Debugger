@@ -6,6 +6,7 @@
     "antfu",
     "Attributify",
     "brotli",
+    "CMYK",
     "icones",
     "IIRC",
     "lintstagedrc",
@@ -20,7 +21,12 @@
     "Windi",
     "zzjtnb"
   ],
-
+  "[json]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
   // ========================== 搜索忽略 ==========================
   "search.exclude": {
     "**/.git": true,
@@ -116,5 +122,6 @@
     "scss",
     "pcss",
     "postcss"
-  ]
+  ],
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }

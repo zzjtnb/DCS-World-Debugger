@@ -36,3 +36,4 @@ playwright-report/
 # 自定义
 /test/
 stats.html
+types/auto/**

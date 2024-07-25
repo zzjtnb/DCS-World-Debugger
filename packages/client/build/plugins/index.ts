@@ -9,9 +9,10 @@ import { compressionPlugin } from './modules/compression'
 import { visualizerPlugin } from './modules/visualizer'
 import { legacyPlugin } from './modules/legacy'
 import { optimizePlugins } from './modules/optimizer'
+import { moveSourcemap } from './modules/moveSourcemap'
 
 export function usePlugins(viteEnv: ViteEnv, isBuild: boolean): PluginOption[] {
-  const { VITE_BUILD_GZIP, VITE_VISUALIZER, VITE_LEGACY } = viteEnv
+  const { VITE_BUILD_GZIP, VITE_VISUALIZER, VITE_LEGACY, VITE_SOURCEMAP, VITE_SOURCEMAP_DIR } = viteEnv
   const plugins: PluginOption = [vue(), vueJsx()]
   // 生产环境和开发环境加载的插件
   plugins.push(
@@ -33,6 +34,9 @@ export function usePlugins(viteEnv: ViteEnv, isBuild: boolean): PluginOption[] {
     }
     if (VITE_LEGACY) {
       plugins.push(legacyPlugin())
+    }
+    if (VITE_SOURCEMAP) {
+      plugins.push(moveSourcemap({ dirName: VITE_SOURCEMAP_DIR }))
     }
   }
 

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import type { UploadFileInfo } from 'naive-ui/es/upload'
 import JSZip from 'jszip'
 
 const message = useMessage()
@@ -60,7 +59,7 @@ function downloadText(text: string, filename = '') {
     <n-upload-dragger>
       <div style="margin-bottom: 12px;">
         <n-icon size="48" :depth="3">
-          <fa6-solid-upload />
+          <i-fa6-solid-upload />
         </n-icon>
       </div>
       <n-text style="font-size: 16px;">

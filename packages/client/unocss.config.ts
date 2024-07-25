@@ -9,6 +9,8 @@ import {
 } from 'unocss'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
+
 export default defineConfig({
 
   presets: [
@@ -16,8 +18,6 @@ export default defineConfig({
     presetUno(),
     /* 继承了WindiCSS的属性化模式,简化了书写class,以属性的形式去写class,但是在使用组件的时候,较大可能出现属性太多,容易混淆的情况. */
     presetAttributify(),
-
-    //
     /**
      * 预设图标, 可用图标集npm包需要自己去npm查找.
      * UnoCSS提供了图标的预设,它是纯CSS的图标。
@@ -33,6 +33,13 @@ export default defineConfig({
       extraProperties: {
         'display': 'inline-block',
         'vertical-align': 'middle',
+      },
+      // https://unocss-cn.pages.dev/presets/icons#filesystemiconloader
+      collections: {
+        lc: FileSystemIconLoader(
+          'src/assets/icons',
+          svg => svg.replace(/^<svg /, '<svg fill="currentColor" '),
+        ),
       },
     }),
     /* 将 rem 转换为 px 的基准字体大小 (1rem = n px) */

@@ -20,8 +20,9 @@ function deleteFile(fileName: string) {
 deleteFile('stats.html')
 
 export function useBuild(viteEnv: ViteEnv): BuildOptions {
-  const { VITE_CHECK } = viteEnv
+  const { VITE_CHECK, VITE_SOURCEMAP } = viteEnv
   const options: BuildOptions = {
+    sourcemap: VITE_SOURCEMAP,
     // 10kb以下转 base64
     assetsInlineLimit: 1024 * 10,
     // chunkSizeWarningLimit: 2000, //配置文件大小提雄县之,默认 500kb

@@ -2,10 +2,10 @@
 import hljs from 'highlight.js/lib/core'
 import lua from 'highlight.js/lib/languages/lua'
 import json from 'highlight.js/lib/languages/json'
+import themeOverrides from '@/theme/global'
 
 hljs.registerLanguage('lua', lua)
 hljs.registerLanguage('json', json)
-
 const appStore = useAppStore()
 const env = useEnv()
 console.log('🚀 ~ env:', env)
@@ -17,6 +17,7 @@ console.log('🚀 ~ env:', env)
     :theme="appStore.getTheme" :locale="appStore.getLocale" :date-locale="appStore.getDateLocale"
     abstract
     inline-theme-disabled
+    :theme-overrides="themeOverrides"
   >
     <n-notification-provider :max="appStore.provider.notification.max">
       <n-message-provider>

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <n-layout h-full>
+  <n-layout>
     <n-layout-header bordered>
       <Header />
     </n-layout-header>
