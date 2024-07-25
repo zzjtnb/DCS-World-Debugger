@@ -36,4 +36,6 @@ playwright-report/
 # 自定义
 /test/
 stats.html
-types/auto/**
+# 忽略所有项目下的 types 文件夹下的 auto 文件夹及其子目录下的所有文件
+# git rm --cached -r types/auto
+**/types/auto/**/*
