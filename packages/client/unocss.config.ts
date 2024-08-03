@@ -38,7 +38,15 @@ export default defineConfig({
       collections: {
         lc: FileSystemIconLoader(
           'src/assets/icons',
-          svg => svg.replace(/^<svg /, '<svg fill="currentColor" '),
+          (svg) => {
+            // 删除path元素的fill属性
+            svg = svg.replace(/<path[^>]*>/g, (match) => {
+              return match.replace(/fill="[^"]*"/g, 'fill=""')
+            })
+            // 添加fill属性为currentColor
+            svg = svg.replace(/<svg /, '<svg fill="currentColor" ')
+            return svg
+          },
         ),
       },
     }),
@@ -91,7 +99,7 @@ export default defineConfig({
   shortcuts: [
     {
       // 横着垂直水平居中
-      'flex-row-center': 'flex justify-center items-center',
+      'flex-center': 'flex justify-center items-center',
       // 竖着垂直水平居中
       'flex-col-center': 'flex flex-col justify-center items-center',
       // 分开两边

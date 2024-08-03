@@ -20,8 +20,8 @@
     },
     // 声明文件目录,默认时node_modules/@types
     "typeRoots": [
-      "node_modules/@types",
-      "types"
+      "types",
+      "node_modules/@types"
     ],
     // 用于指定需要包含的模块,只有在这里列出的模块的声明文件才会被加载
     "types": ["node"],

@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 import Fa6SolidDesktop from '~icons/fa6-solid/desktop'
-import Layout from '@/layout/Index.vue'
+import Layout from '@/layout/default/Index.vue'
 
 const IFrame = () => import('@/views/iframe/Index.vue')
 

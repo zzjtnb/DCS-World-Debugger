@@ -1,6 +1,12 @@
 <script lang="ts" setup>
-const appStore = useAppStore()
-appStore.theme = 'light'
+// const appStore = useAppStore()
+// onBeforeMount(() => {
+//   appStore.theme = 'light'
+// })
+
+// onUnmounted(() => {
+//   appStore.theme = 'dark'
+// })
 
 const reg = /[\u4E00-\u9FA5]/
 function isChinese(char: string) {
@@ -8,13 +14,11 @@ function isChinese(char: string) {
 }
 
 const data = ref()
-const pinyin = ref()
 
-getPinyin().then((res) => {
-  pinyin.value = res
-  getColors().then((res) => {
-    data.value = sortColorsByHsv(res, 'RGB')
-  })
+getColor().then((res) => {
+  console.log('🚀 ~ getColor ~ res:', res)
+
+  data.value = res
 })
 function renderTooltip(trigger: any, content: any) {
   return h(NTooltip, null, {
@@ -28,7 +32,6 @@ function createColumns(): DataTableColumns<RowData> {
     {
       title: '中文颜色名',
       key: 'name',
-
       render(row: any) {
         // console.log('🚀 ~ render ~ row:', row)
         return row.name.split('').map((item: string) => {
@@ -37,12 +40,11 @@ function createColumns(): DataTableColumns<RowData> {
               'ruby',
               [
                 item,
-
-                h('rp', '('),
-                h('rt', {
-                  class: 'tone',
-                }, pinyin.value[item].withTone),
-                h('rp', ')'),
+                // h('rp', '('),
+                // h('rt', {
+                //   class: 'tone',
+                // }, pinyin.value[item].withTone),
+                // h('rp', ')'),
               ],
             )
           }
@@ -75,7 +77,7 @@ function createColumns(): DataTableColumns<RowData> {
       },
     },
     {
-      key: 'CMYK',
+      key: 'cmyk',
       // title: '印刷四分色模式(CMYK)',
       title() {
         return renderTooltip(
@@ -86,14 +88,14 @@ function createColumns(): DataTableColumns<RowData> {
               size: 'small',
               border: false,
             },
-            { default: () => 'CMYK' },
+            { default: () => 'cmyk' },
           ),
           '印刷四分色模式',
         )
       },
     },
     {
-      key: 'RGB',
+      key: 'rgb',
       title() {
         return renderTooltip(
           h(
@@ -103,11 +105,36 @@ function createColumns(): DataTableColumns<RowData> {
               size: 'small',
               border: false,
             },
-            { default: () => 'RGB' },
+            { default: () => 'rgb' },
           ),
           '三原色光模式',
         )
       },
+    },
+    {
+      key: 'source 1',
+      title: '《中国传统色》',
+    },
+    {
+      key: 'source 2',
+      title: '中科院《色谱》（无解释）',
+    },
+    {
+      key: 'source 3',
+      title: '《中国色彩图典》(画师整理)',
+    },
+    {
+      key: 'source 4',
+      title: '中华遗产《中国美色》（无色值）',
+    },
+    {
+      key: 'source 5',
+      title: '《中国颜色》黄仁达',
+    },
+    {
+      key: 'explanation',
+      title: '解释',
+      ellipsis: true,
     },
   ]
 }
@@ -115,15 +142,24 @@ function rowProps(row: RowData) {
   return {
     style: {
       cursor: 'pointer',
-
     },
   }
 }
 function cellProps(row: RowData) {
+  // 获取背景颜色
+  const backgroundColor = row.hex
+  // 将背景颜色转换为RGB值
+  const rgb = row.rgb.split(',')
+  const r = Number.parseInt(rgb[0])
+  const g = Number.parseInt(rgb[1])
+  const b = Number.parseInt(rgb[2])
+  // 计算文本颜色
+  const textColor = (r * 0.299 + g * 0.587 + b * 0.114) > 186 ? 'black' : 'white'
+  // 返回样式对象
   return {
     style: {
-      backgroundColor: row.hex,
-      color: 'white',
+      backgroundColor,
+      color: textColor,
     },
   }
 }
@@ -132,19 +168,25 @@ columns.forEach((column) => {
   // column.cellProps = rowData => cellProps(rowData)
   column.cellProps = cellProps
 })
+const pagination = {
+  pageSize: 10,
+}
 </script>
 
 <template>
-  <!-- :pagination="pagination" -->
   <n-card title=" 中国色 - 中国传统颜色">
-    <n-data-table
-      :columns="columns"
-      :data="data"
-      :bordered="false"
-      max-height="760px"
-      virtual-scroll
-      :row-props="rowProps"
-    />
+    <n-tabs default-value="红" size="large" justify-content="space-evenly">
+      <template v-for="(item, key) in data " :key="key">
+        <n-tab-pane :name="key" :tab="key">
+          <n-data-table
+            :columns="columns"
+            :data="item"
+            :row-props="rowProps"
+            :pagination="pagination"
+          />
+        </n-tab-pane>
+      </template>
+    </n-tabs>
   </n-card>
   <!-- <n-list bordered>
     <template #header>

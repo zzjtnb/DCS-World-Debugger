@@ -5,7 +5,7 @@ import router from './router'
 import { setupNaiveDiscreteApi } from '@/utils/globalMessage'
 
 /** 重置样式 这里引入自定义的重置样式也可 */
-// import '@/assets/reset/normalize.scss'
+import '@/assets/reset/normalize.scss'
 // import '@/assets/fonts/fonts.scss'
 /**
  *  项目内的样式，

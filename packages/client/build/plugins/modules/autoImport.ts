@@ -24,7 +24,15 @@ export function autoImportPlugins() {
       customCollections: {
         lc: FileSystemIconLoader(
           'src/assets/icons',
-          svg => svg.replace(/^<svg /, '<svg fill="currentColor" '),
+          (svg) => {
+            // 删除path元素的fill属性
+            svg = svg.replace(/<path[^>]*>/g, (match) => {
+              return match.replace(/fill="[^"]*"/g, 'fill=""')
+            })
+            // 添加fill属性为currentColor
+            svg = svg.replace(/<svg /, '<svg fill="currentColor" ')
+            return svg
+          },
         ),
       },
     }),
@@ -63,16 +71,22 @@ export function autoImportPlugins() {
             'isObject',
             'useVModel',
             'useClipboard',
+            'onClickOutside',
           ],
         },
         {
-          from: 'naive-ui',
-          imports: ['MenuOption', 'DataTableColumns', 'RowData', 'UploadFileInfo'],
+          from: 'vue',
+          imports: ['VNodeChild'],
           type: true,
         },
         {
           from: 'vue-router',
           imports: ['RouteRecordRaw'],
+          type: true,
+        },
+        {
+          from: 'naive-ui',
+          imports: ['MenuOption', 'DataTableColumns', 'RowData', 'UploadFileInfo', 'FormInst', 'FormItemRule'],
           type: true,
         },
       ],
@@ -104,7 +118,7 @@ export function autoImportPlugins() {
       // 用于匹配不要转换的文件的正则表达式或glob模式
       exclude: ['src/components/exclude'],
       // 用于搜索组件的目录的相对路径.默认为'src/components'
-      dirs: ['src/components/auto', 'src/assets/icons', 'src/layout/components'],
+      dirs: ['src/components/auto', 'src/assets/icons', 'src/layout/**/components'],
       // 组件的有效文件扩展名
       extensions: ['vue', 'svg', 'ts'],
       // 搜索子目录

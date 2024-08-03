@@ -3,13 +3,14 @@
 // declare module '*.vue' {
 //   import type { DefineComponent } from 'vue'
 
-//   const component: DefineComponent<{}, {}, any>
+//   const component: DefineComponent<object, unknown, unknown>
 //   export default component
 // }
-declare module '~icons/*' {
-  import type { DefineComponent } from 'vue'
 
-  const component: DefineComponent<object, unknown, unknown>
+declare module '~icons/*' {
+  import type { FunctionalComponent, SVGAttributes } from 'vue'
+
+  const component: FunctionalComponent<SVGAttributes>
   export default component
 }
 

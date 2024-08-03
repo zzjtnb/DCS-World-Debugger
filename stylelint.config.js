@@ -2,7 +2,9 @@ export default {
   extends: [
     'stylelint-config-zzjtnb',
   ],
-  rules: {},
+  rules: {
+    'selector-class-pattern': ['^(?!.*--).*'],
+  },
   ignoreFiles: [
     '**/dist/**/*',
     '**/**/stats.html',

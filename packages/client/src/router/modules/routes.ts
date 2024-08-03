@@ -4,7 +4,7 @@ import Fa6SolidCode from '~icons/fa6-solid/code'
 import Fa6SolidLaptopCode from '~icons/fa6-solid/laptop-code'
 import Fa6SolidFile from '~icons/fa6-solid/file'
 import Fa6SolidGlobe from '~icons/fa6-solid/globe'
-import Layout from '@/layout/Index.vue'
+import Layout from '@/layout/default/Index.vue'
 
 const routes = [
   {

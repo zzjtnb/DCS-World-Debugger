@@ -1,7 +1,6 @@
 {
-
   "npm.packageManager": "pnpm",
-  "scss.lint.unknownAtRules": "ignore",
+  "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.words": [
     "antfu",
     "Attributify",
@@ -83,6 +82,7 @@
   // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit",
     "source.organizeImports": "never"
   },
 
@@ -123,5 +123,8 @@
     "pcss",
     "postcss"
   ],
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "css.customData": [
+    "@apply"
+  ]
+
 }
